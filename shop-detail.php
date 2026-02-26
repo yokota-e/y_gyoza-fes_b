@@ -1,3 +1,30 @@
+<?php
+include('function/function.php');
+
+$page_id = htmlspecialchars($_GET['id']);
+
+
+
+try {
+    // DBへ接続
+    $db = db_connect();
+    // プリペアードステートメント作成
+    $sql = 'SELECT shops.id AS shop_id,shops.name AS shop_name,shops.description AS shop_description,shops.tel,shops.address,menus.name AS menu_name,menus.amount,menus.price,menus.description,menus.image FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.id WHERE shops.id = :page_id';
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':page_id', $page_id, PDO::PARAM_STR);
+
+    // SQLの実行
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    exit('エラー:' . $e->getMessage());
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -67,35 +94,36 @@
     <main class="l-main">
         <div class="l-wrapper">
             <p class="c-sub-page-heading">店舗詳細</p>
+
             <div class="l-section__shop-detail">
                 <div class="c-shop-introduction">
                     <div class="c-shop-introduction__description">
-                        <h1 class="c-shop-introduction__description__name">博多ぎょうざ堂</h1>
+                        <h1 class="c-shop-introduction__description__name"><?php echo $result['shop_name'] ?></h1>
                         <p class="c-shop-introduction__description__text">
-                            福岡を代表する老舗餃子専門店。国産豚とキャベツを使用し、ひとつひとつ手包みで仕上げています。外はカリッと、中は肉汁たっぷりの博多スタイルが人気
+                            <?php echo $result['shop_description'] ?>
                         </p>
                     </div>
                     <div class="c-shop-introduction__address">
-                        <p class="c-shop-introduction__address__phone-number">0X-XXXX-XXXX</p>
-                        <p class="c-shop-introduction__address__email-address">mailmailmail@mail.com</p>
+                        <p class="c-shop-introduction__address__phone-number"><?php echo $result['tel'] ?></p>
+                        <p class="c-shop-introduction__address__email-address"><?php echo $result['address'] ?>/p>
                     </div>
                 </div>
                 <div class="c-product-introduction">
                     <div class="c-product-introduction__img">
-                        <img src="./img/menu01.jpg" alt="肉汁あふれる焼き餃子">
+                        <img src="./img/<?php echo $result['image'] ?>" alt="<?php echo $result['menu_name'] ?>">
                     </div>
                     <div class="c-product-introduction__description">
                         <div class="c-product-introduction__description__detail">
-                            <p>肉汁あふれる焼き餃子</p>
-                            <p>6個入り 580円（税込み）</p>
+                            <p><?php echo $result['menu_name'] ?></p>
+                            <p><?php echo $result['amount'] ?>個入り <?php echo $result['price'] ?>円（税込み）</p>
                         </div>
                         <p class="c-product-introduction__description__text">
-                            香ばしく焼き上げた皮の中には、あふれんばかりの肉汁がぎっしり。厳選された国産豚とキャベツの旨味が広がる、満足感たっぷりの一品です。<br>
-                            一口噛めば、ジュワッとした肉汁が口いっぱいに広がります。
+                            <?php echo $result['description'] ?>
                         </p>
                     </div>
                 </div>
             </div>
+
             <div class="l-btn-area">
                 <a class="c-btn" href="./shop-list.php">一覧に戻る</a>
             </div>

@@ -1,7 +1,4 @@
 <?php
-
-use LDAP\Result;
-
 include('function/function.php');
 try {
     // DBへ接続
