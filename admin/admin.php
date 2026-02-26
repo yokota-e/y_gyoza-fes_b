@@ -1,6 +1,13 @@
 <!-- http://localhost:8080/y_gyoza-fes_b/admin/ -->
 
-<?php include('../function/function.php'); ?>
+<?php 
+require_once __DIR__ . '/../function/function.php';
+
+session_start();
+
+?>
+
+
 
 <!doctype html>
 <html lang="ja" >
@@ -59,9 +66,12 @@
         </div>
         <div> 
           <p>ユーザー</p>
-          <a href="./user_edit.php" class="btn btn-primary">編集</a>
-          <a href="./user_add.php" class="btn btn-success">追加</a> 
-          <a href="./user_del_do.php" class="btn btn-danger">削除</a>      
+          <a href="./admin_user/user_edit.php" class="btn btn-primary">編集</a>
+          <a href="./admin_user/user_add.php" class="btn btn-success">追加</a> 
+          <a href="./admin_user/user_del_do.php" class="btn btn-danger">削除</a>      
+        </div>
+        <div> 
+          <a href="./logout.php" class="btn btn-warning">ログアウトする</a>        
         </div>
        
        
