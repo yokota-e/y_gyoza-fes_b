@@ -29,7 +29,7 @@
         <div id="top" class="c-top">
             <div class="l-wrapper c-top__contents">
                 <h1 class="c-logo">
-                    <a href="index.html">
+                    <a href="index.php">
                         <picture>
                             <source srcset="./img/logo_02.svg" media="(min-width: 768px)">
                             <img src="./img/logo_line_02.svg" alt="ふくおか餃子FES">
@@ -39,16 +39,16 @@
                 <nav class="c-header-nav">
                     <ul class="c-header-nav__list">
                         <li class="c-header-nav__item">
-                            <a href="./index.html">Home</a>
+                            <a href="./index.php">Home</a>
                         </li>
                         <li class="c-header-nav__item">
-                            <a href="./shop-list.html">店舗一覧</a>
+                            <a href="./shop-list.php">店舗一覧</a>
                         </li>
                         <li class="c-header-nav__item">
-                            <a href="./faq.html">よくある質問</a>
+                            <a href="./faq.php">よくある質問</a>
                         </li>
                         <li class="c-header-nav__item">
-                            <a href="./form.html">お問い合わせ</a>
+                            <a href="./form.php">お問い合わせ</a>
                         </li>
                     </ul>
                     <img class="c-header-nav__hamburger" src="./img/icon_hamburger.png" alt="">
@@ -58,8 +58,8 @@
         <nav class="c-breadcrumbs">
             <div class="l-wrapper">
                 <ol class="c-breadcrumbs__list">
-                    <li class="c-breadcrumbs__item"><a href="./index.html">Home</a></li>
-                    <li class="c-breadcrumbs__item"><a href="./news.html">お知らせ詳細</a></li>
+                    <li class="c-breadcrumbs__item"><a href="./index.php">Home</a></li>
+                    <li class="c-breadcrumbs__item"><a href="./news.php">お知らせ詳細</a></li>
                 </ol>
             </div>
         </nav>
@@ -88,7 +88,7 @@
                 </div>
 
                 <div class="l-btn-area l-news-cat">
-                    <a class="c-btn" href="index.html#news">一覧に戻る</a>
+                    <a class="c-btn" href="index.php#news">一覧に戻る</a>
                 </div>
                 <div class="social">
                     <p class="social-text">シェアする</p>
@@ -128,7 +128,7 @@
             <div class="l-wrapper l-footer-contets">
                 <div class="c-organization">
                     <div class="c-logo c-logo--footer">
-                        <a href="index.html"><img src="./img/logo_02.svg" alt="ふくおか餃子FES"></a>
+                        <a href="index.php"><img src="./img/logo_02.svg" alt="ふくおか餃子FES"></a>
                     </div>
                     <dl class="c-organization__list">
                         <div class="c-organization__item">
@@ -145,7 +145,7 @@
                         </div>
                     </dl>
                 </div>
-                <nav class="c-footer-nav"><a href="./privacy.html">プライバシーポリシー</a></nav>
+                <nav class="c-footer-nav"><a href="./privacy.php">プライバシーポリシー</a></nav>
                 <div class="c-sns">
                     <ul class="c-sns__list">
                         <li class="c-sns__item">
