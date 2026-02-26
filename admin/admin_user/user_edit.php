@@ -54,7 +54,7 @@ try {
           <input type="submit" value="変更する" class="btn btn-primary">
         </div>
       </form>
-
+      <a href="../admin.php">管理者画面に戻る</a>
       <!-- 本文ここまで -->
     </div>
   </main>
