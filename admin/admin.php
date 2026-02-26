@@ -1,4 +1,4 @@
-<!-- http://localhost:8080/y_gyoza-fes_b/admin/login.php -->
+<!-- http://localhost:8080/y_gyoza-fes_b/admin/ -->
 
 <?php include('../function/function.php'); ?>
 
@@ -41,7 +41,30 @@
 
         <!-- ここから「本文」-->
         <h1>管理者画面</h1>
-        <label for=""></label>
+        <div> 
+          <p>お問い合わせ</p>
+          <a href="./admin_form/form_list.php" class="btn btn-primary">一覧</a>        
+        </div>
+        <div> 
+          <p>店舗</p>
+          <a href="./admin_shops/shops_list.php" class="btn btn-primary">一覧</a>       
+        </div>
+        <div> 
+          <p>メニュー</p>
+          <a href="./admin_menu/menu_list.php" class="btn btn-primary">一覧</a>       
+        </div>
+        <div> 
+          <p>お知らせ</p>
+          <a href="./admin_news/news_list.php" class="btn btn-primary">一覧</a>        
+        </div>
+        <div> 
+          <p>ユーザー</p>
+          <a href="./user_edit.php" class="btn btn-primary">編集</a>
+          <a href="./user_add.php" class="btn btn-success">追加</a> 
+          <a href="./user_del_do.php" class="btn btn-danger">削除</a>      
+        </div>
+       
+       
        
        
 
