@@ -49,4 +49,4 @@ if (!empty($_POST)) {
 }
 echo $name;
 
-// header('location:admin.php');
+header('location:../admin.php');

@@ -3,8 +3,9 @@ require_once __DIR__ . '/../../function/function.php';
 // DBに接続
 // TODO: ID取得とバリデーション
 
-// $id = (int)$_POST['id'];
-$id = 1;
+// セッション開始
+session_start();
+$id = (int)$_SESSION['id'];
 
 // DB接続
 try {

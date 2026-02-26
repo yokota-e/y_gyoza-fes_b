@@ -35,18 +35,16 @@
   </head>
   <body>
 
-    <!-- <?php include('navbar.php'); ?> -->
-
     <main role="main" class="container" style="padding:60px 15px 0">
       <div>
         <!-- ここから「本文」-->
 
-        <form action="login.php" method="post">
+        <form action="login_do.php" method="post">
           <h1>サークルサイト</h1>
           <label for="name" class="sr-only">ユーザー名</label>
-          <input type="text" name="name" id="name" class="form-control" placeholder="ユーザー名">
-          <label for="passwprd" class="sr-only" >パスワード</label>
-          <input type="password" id="password" name="password" class="form-control" placeholder="パスワード">
+          <input type="text" name="name" id="name" class="form-control" placeholder="ユーザー名" required>
+          <label for="password" class="sr-only" >パスワード</label>
+          <input type="password" id="password" name="password" class="form-control" placeholder="パスワード" required>
           <input type="submit" class="btn btn-primary btn-block" value="ログイン">
 
         </form>
