@@ -1,3 +1,28 @@
+<?php
+
+include('function/function.php');
+// try {
+// DBへ接続
+// $db = db_connect();
+// プリペアードステートメント作成
+// $sql = 'SELECT * FROM ';
+// $stmt = $db->prepare($sql);
+
+
+// SQLの実行
+// $stmt->execute();
+
+// $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+// } catch (PDOException $e) {
+// exit('エラー:' . $e->getMessage());
+// }
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -70,7 +95,19 @@
         <div class="l-wrapper">
             <h1 class="c-sub-page-heading">店舗一覧</h1>
             <ul class="l-shop-list">
+
+                <!-- <?php foreach ($result as $shop): ?> -->
                 <li class="c-shop-card">
+                    <img src="./img/<?php echo $shop[''] ?>" alt="<?php echo $shop[''] ?>">
+
+
+
+                </li>
+
+
+                <!-- <?php endforeach; ?> -->
+
+                <!-- <li class="c-shop-card">
                     <img src="./img/menu01.jpg" alt="博多ぎょうざ堂">
                     <div class="c-shop-card_detail">
                         <div class="c-shop-card_detailtext">
@@ -82,87 +119,8 @@
                         </div>
                         <a href="shop-detail.php">詳しくはこちら</a>
                     </div>
-                </li>
-                <li class="c-shop-card">
-                    <img src="./img/menu02.jpg" alt="中華食堂 蒸々屋">
-                    <div class="c-shop-card_detail">
-                        <div class="c-shop-card_detailtext">
-                            <p class="c-shop-card__shopname">中華食堂蒸々屋<br class="sp-only">（むしむしや）</p>
-                            <div class="c-shop-card_detailgyoza">
-                                <p class="c-shop-card__gyozaname">ふっくら蒸しあげ餃子</p>
-                                <p class="c-shop-card__gyozadetail">8個入り 520円（税込）</p>
-                            </div>
-                        </div>
-                        <a href="shop-detail.php">詳しくはこちら</a>
-                    </div>
-                </li>
-                <li class="c-shop-card">
-                    <img src="./img/menu03.jpg" alt="餃子茶寮 彩香">
-                    <div class="c-shop-card_detail">
-                        <div class="c-shop-card_detailtext">
-                            <p class="c-shop-card__shopname">餃子茶寮 彩香</p>
-                            <div class="c-shop-card_detailgyoza">
-                                <p class="c-shop-card__gyozaname">中華風スープ餃子</p>
-                                <p class="c-shop-card__gyozadetail">5個入り 680円（税込）</p>
-                            </div>
-                        </div>
-                        <a href="shop-detail.php">詳しくはこちら</a>
-                    </div>
-                </li>
-                <li class="c-shop-card">
-                    <img src="./img/menu04.jpg" alt="餃子バル 風来坊">
-                    <div class="c-shop-card_detail">
-                        <div class="c-shop-card_detailtext">
-                            <p class="c-shop-card__shopname">餃子バル 風来坊<br class="sp-only">（ふうらいぼう）</p>
-                            <div class="c-shop-card_detailgyoza">
-                                <p class="c-shop-card__gyozaname">カリもち！揚げ餃子</p>
-                                <p class="c-shop-card__gyozadetail">5個入り 600円（税込）</p>
-                            </div>
-                        </div>
-                        <a href="shop-detail.php">詳しくはこちら</a>
-                    </div>
-                </li>
-                <li class="c-shop-card">
-                    <img src="./img/menu05.jpg" alt="メディテラオネ ギョウザ">
-                    <div class="c-shop-card_detail">
-                        <div class="c-shop-card_detailtext">
-                            <p class="c-shop-card__shopname">Mediterraneo Gyoza
-                                <br class="sp-only">（メディテラオネ ギョウザ）
-                            </p>
-                            <div class="c-shop-card_detailgyoza">
-                                <p class="c-shop-card__gyozaname">お口に広がる地中海の風</p>
-                                <p class="c-shop-card__gyozadetail">5個入り 720円（税込）</p>
-                            </div>
-                        </div>
-                        <a href="shop-detail.php">詳しくはこちら</a>
-                    </div>
-                </li>
-                <li class="c-shop-card">
-                    <img src="./img/menu06.jpg" alt="餃子処 湯心">
-                    <div class="c-shop-card_detail">
-                        <div class="c-shop-card_detailtext">
-                            <p class="c-shop-card__shopname">餃子処 湯心<br class="sp-only">（ゆごころ）</p>
-                            <div class="c-shop-card_detailgyoza">
-                                <p class="c-shop-card__gyozaname">素材の旨味ひきたつ水餃子</p>
-                                <p class="c-shop-card__gyozadetail">8個入り 550円（税込）</p>
-                            </div>
-                        </div>
-                        <a href="shop-detail.php">詳しくはこちら</a>
-                    </div>
-                </li>
-                <li class="c-shop-card">
-                    <img src="./img/menu07.jpg" alt="辛味房 赤龍">
-                    <div class="c-shop-card_detail">
-                        <div class="c-shop-card_detailtext">
-                            <p class="c-shop-card__shopname">辛味房 赤龍<br class="sp-only">（しんみさぼう せきりゅう）</p>
-                            <div class="c-shop-card_detailgyoza">
-                                <p class="c-shop-card__gyozaname">しびうまラー油餃子</p>
-                                <p class="c-shop-card__gyozadetail">6個入り 620円（税込）</p>
-                            </div>
-                        </div>
-                        <a href="shop-detail.php">詳しくはこちら</a>
-                    </div>
-                </li>
+                </li> -->
+
             </ul>
         </div>
     </main>
