@@ -82,6 +82,25 @@ a:hover {
 /* ヘッダー
 ----------------------------------------- */
 
+/* ハンバーガーメニュー ここから */
+.nav{
+  position: fixed;
+  /* top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; */
+
+  /* top right bottom leftを一括指定 */
+  inset: 0 -100% 0 100%;
+  background-color: rgba(255,255,255,0.8);
+}
+/* メニューが開いてる時 */
+.open .nav{
+  translate: -100% 0;
+  z-index: 1;
+}
+/* ハンバーガーメニュー ここまで */
+
 .l-header--sub-page {
     display: flex;
     flex-direction: column;
