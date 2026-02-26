@@ -1,23 +1,25 @@
 <?php
 
+use LDAP\Result;
+
 include('function/function.php');
-// try {
-// DBへ接続
-// $db = db_connect();
-// プリペアードステートメント作成
-// $sql = 'SELECT * FROM ';
-// $stmt = $db->prepare($sql);
+try {
+    // DBへ接続
+    $db = db_connect();
+    // プリペアードステートメント作成
+    $sql = 'SELECT shops.id AS shop_id,shops.name AS shop_name,menus.name AS menu_name,menus.amount,menus.price,menus.image FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.id';
+    $stmt = $db->prepare($sql);
 
 
-// SQLの実行
-// $stmt->execute();
+    // SQLの実行
+    $stmt->execute();
 
-// $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
-// } catch (PDOException $e) {
-// exit('エラー:' . $e->getMessage());
-// }
+    var_dump($result);
+} catch (PDOException $e) {
+    exit('エラー:' . $e->getMessage());
+}
 
 
 ?>
@@ -98,29 +100,19 @@ include('function/function.php');
 
                 <!-- <?php foreach ($result as $shop): ?> -->
                 <li class="c-shop-card">
-                    <img src="./img/<?php echo $shop[''] ?>" alt="<?php echo $shop[''] ?>">
-
-
-
-                </li>
-
-
-                <!-- <?php endforeach; ?> -->
-
-                <!-- <li class="c-shop-card">
-                    <img src="./img/menu01.jpg" alt="博多ぎょうざ堂">
+                    <img src="./img/<?php echo $shop['image'] ?>" alt="<?php echo $shop['shop_name'] ?>">
                     <div class="c-shop-card_detail">
                         <div class="c-shop-card_detailtext">
-                            <p class="c-shop-card__shopname">博多ぎょうざ堂</p>
+                            <p class="c-shop-card__shopname"><?php echo $shop['shop_name'] ?></p>
                             <div class="c-shop-card_detailgyoza">
-                                <p class="c-shop-card__gyozaname">肉汁あふれる焼き餃子</p>
-                                <p class="c-shop-card__gyozadetail">6個入り 580円（税込）</p>
+                                <p class="c-shop-card__gyozaname"><?php echo $shop['menu_name'] ?></p>
+                                <p class="c-shop-card__gyozadetail"><?php echo $shop['amount'] ?>個入り <?php echo $shop['price'] ?>円（税込）</p>
                             </div>
                         </div>
-                        <a href="shop-detail.php">詳しくはこちら</a>
+                        <a href="shop-detail.php?id=<?php echo $shop['shop_id'] ?>">詳しくはこちら</a>
                     </div>
-                </li> -->
-
+                </li>
+            <?php endforeach; ?>
             </ul>
         </div>
     </main>
