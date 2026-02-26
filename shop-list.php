@@ -1,7 +1,4 @@
 <?php
-
-use LDAP\Result;
-
 include('function/function.php');
 try {
     // DBへ接続
@@ -15,8 +12,6 @@ try {
     $stmt->execute();
 
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    var_dump($result);
 } catch (PDOException $e) {
     exit('エラー:' . $e->getMessage());
 }
@@ -98,21 +93,21 @@ try {
             <h1 class="c-sub-page-heading">店舗一覧</h1>
             <ul class="l-shop-list">
 
-                <!-- <?php foreach ($result as $shop): ?> -->
-                <li class="c-shop-card">
-                    <img src="./img/<?php echo $shop['image'] ?>" alt="<?php echo $shop['shop_name'] ?>">
-                    <div class="c-shop-card_detail">
-                        <div class="c-shop-card_detailtext">
-                            <p class="c-shop-card__shopname"><?php echo $shop['shop_name'] ?></p>
-                            <div class="c-shop-card_detailgyoza">
-                                <p class="c-shop-card__gyozaname"><?php echo $shop['menu_name'] ?></p>
-                                <p class="c-shop-card__gyozadetail"><?php echo $shop['amount'] ?>個入り <?php echo $shop['price'] ?>円（税込）</p>
+                <?php foreach ($result as $shop): ?>
+                    <li class="c-shop-card">
+                        <img src="./img/<?php echo $shop['image'] ?>" alt="<?php echo $shop['shop_name'] ?>">
+                        <div class="c-shop-card_detail">
+                            <div class="c-shop-card_detailtext">
+                                <p class="c-shop-card__shopname"><?php echo $shop['shop_name'] ?></p>
+                                <div class="c-shop-card_detailgyoza">
+                                    <p class="c-shop-card__gyozaname"><?php echo $shop['menu_name'] ?></p>
+                                    <p class="c-shop-card__gyozadetail"><?php echo $shop['amount'] ?>個入り <?php echo $shop['price'] ?>円（税込）</p>
+                                </div>
                             </div>
+                            <a href="shop-detail.php?id=<?php echo $shop['shop_id'] ?>">詳しくはこちら</a>
                         </div>
-                        <a href="shop-detail.php?id=<?php echo $shop['shop_id'] ?>">詳しくはこちら</a>
-                    </div>
-                </li>
-            <?php endforeach; ?>
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </div>
     </main>
