@@ -9,7 +9,7 @@
                         </picture>
                     </a>
                 </h1>
-                <nav class="c-header-nav">
+                <nav class="c-header-nav nav">
                     <ul class="c-header-nav__list">
                         <li class="c-header-nav__item">
                             <a href="./index.html">Home</a>
@@ -24,7 +24,15 @@
                             <a href="./form.html">お問い合わせ</a>
                         </li>
                     </ul>
-                    <img class="c-header-nav__hamburger" src="./img/icon_hamburger.png" alt="">
                 </nav>
+                 <button type="button" class="ham-button" id="js-ham-button">
+                        <span class="ham-line">
+                        <span class="visually-hidden">
+                             メニュー開閉
+                        </span>
+                        </span>
+                </button>
             </div>
         </div>
+
+        <script src="../js/script.js"></script>
