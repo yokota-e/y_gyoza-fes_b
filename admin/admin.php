@@ -48,35 +48,41 @@ session_start();
   <main role="main" class="container" style="padding:60px 15px 0">
 
     <!-- ここから「本文」-->
-    <h1>管理者画面</h1>
-    <ul>
-      <li>
-        <p>お問い合わせ</p>
-        <a href="./admin_form/form_list.php" class="btn btn-primary">一覧</a>
-      </li>
-      <li>
-        <p>店舗</p>
-        <a href="./admin_shops/shops_list.php" class="btn btn-primary">一覧</a>
-      </li>
-      <li>
-        <p>メニュー</p>
-        <a href="./admin_menu/menu_list.php" class="btn btn-primary">一覧</a>
-      </li>
-      <li>
-        <p>お知らせ</p>
-        <a href="./admin_news/news_list.php" class="btn btn-primary">一覧</a>
-      </li>
+    <h1 class="text-center m-5">管理者画面</h1>
+    <main class="d-flex flex-column align-items-center m-5">
+      <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-between">
+            <p>お問い合わせ</p>
+            <a href="./admin_form/form_list.php" class="btn btn-primary">一覧</a>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <p>店舗</p>
+            <a href="./admin_shops/shops_list.php" class="btn btn-primary">一覧</a>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <p>メニュー</p>
+            <a href="./admin_menu/menu_list.php" class="btn btn-primary">一覧</a>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <p>お知らせ</p>
+            <a href="./admin_news/news_list.php" class="btn btn-primary">一覧</a>
+          </li>
 
-    </ul>
-    <div>
-      <p>ユーザー</p>
-      <a href="./admin_user/user_edit.php" class="btn btn-primary">編集</a>
-      <a href="./admin_user/user_add.php" class="btn btn-success">追加</a>
-      <a href="./admin_user/user_del_do.php" class="btn btn-danger">削除</a>
-    </div>
-    <div>
-      <a href="./logout.php" class="btn btn-warning">ログアウトする</a>
-    </div>
+        </ul>
+      </div>
+      <div>
+        <p>ユーザー一覧</p>
+        <?php ?>
+
+        <a href="./admin_user/user_edit.php" class="btn btn-primary">編集</a>
+        <a href="./admin_user/user_add.php" class="btn btn-success">追加</a>
+        <a href="./admin_user/user_del_do.php" class="btn btn-danger">削除</a>
+      </div>
+      <div>
+        <a href="./logout.php" class="btn btn-warning">ログアウトする</a>
+      </div>
+    </main>
 
 
 
