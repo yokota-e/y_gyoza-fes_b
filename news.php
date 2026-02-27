@@ -26,35 +26,7 @@
 
 <body>
     <header class="l-header l-header--sub-page">
-        <div id="top" class="c-top">
-            <div class="l-wrapper c-top__contents">
-                <h1 class="c-logo">
-                    <a href="index.php">
-                        <picture>
-                            <source srcset="./img/logo_02.svg" media="(min-width: 768px)">
-                            <img src="./img/logo_line_02.svg" alt="ふくおか餃子FES">
-                        </picture>
-                    </a>
-                </h1>
-                <nav class="c-header-nav">
-                    <ul class="c-header-nav__list">
-                        <li class="c-header-nav__item">
-                            <a href="./index.php">Home</a>
-                        </li>
-                        <li class="c-header-nav__item">
-                            <a href="./shop-list.php">店舗一覧</a>
-                        </li>
-                        <li class="c-header-nav__item">
-                            <a href="./faq.php">よくある質問</a>
-                        </li>
-                        <li class="c-header-nav__item">
-                            <a href="./form.php">お問い合わせ</a>
-                        </li>
-                    </ul>
-                    <img class="c-header-nav__hamburger" src="./img/icon_hamburger.png" alt="">
-                </nav>
-            </div>
-        </div>
+        <?php include('./common/nav_var.php');  ?>
         <nav class="c-breadcrumbs">
             <div class="l-wrapper">
                 <ol class="c-breadcrumbs__list">
@@ -118,56 +90,11 @@
             </div>
         </article>
     </main>
-    <footer class="l-footer">
-        <div class="l-wrapper">
-            <div class="l-btn-area l-btn-area--end">
-                <a class="c-top-btn" href="#top">top</a>
-            </div>
-        </div>
-        <div class="l-footer-inner">
-            <div class="l-wrapper l-footer-contets">
-                <div class="c-organization">
-                    <div class="c-logo c-logo--footer">
-                        <a href="index.php"><img src="./img/logo_02.svg" alt="ふくおか餃子FES"></a>
-                    </div>
-                    <dl class="c-organization__list">
-                        <div class="c-organization__item">
-                            <dt>主催</dt>
-                            <dd>ふくおか餃子フェス実行委員会</dd>
-                        </div>
-                        <div class="c-organization__item">
-                            <dt>協賛</dt>
-                            <dd>九州餃子部</dd>
-                        </div>
-                        <div class="c-organization__item">
-                            <dt>制作協力</dt>
-                            <dd>創造社リカレントスクール 福岡校</dd>
-                        </div>
-                    </dl>
-                </div>
-                <nav class="c-footer-nav"><a href="./privacy.php">プライバシーポリシー</a></nav>
-                <div class="c-sns">
-                    <ul class="c-sns__list">
-                        <li class="c-sns__item">
-                            <a href="#"><img src="./img/sns_icon_x.png" alt="エックス"></a>
-                        </li>
-                        <li class="c-sns__item">
-                            <a href="#"><img src="./img/sns_icon_instagram.png" alt="インスタグラム"></a>
-                        </li>
-                        <li class="c-sns__item">
-                            <a href="#"><img src="./img/sns_icon_line.png" alt="ライン"></a>
-                        </li>
-                        <li class="c-sns__item">
-                            <a href="#"><img src="./img/sns_icon_facebook.png" alt="フェイスブック"></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="l-wrapper">
-                <small class="c-copyright">&copy; 2025 ふくおか餃子FES実行委員会</small>
-            </div>
-        </div>
+       <footer class="l-footer">
+        <?php include('./common/footer_bar.php');  ?>
+
     </footer>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
