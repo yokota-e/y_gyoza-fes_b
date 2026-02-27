@@ -1,3 +1,5 @@
+<!-- http://localhost:8080/gyoza-fes_b/admin/admin_shops/shops_list.php -->
+
 <?php
 require_once __DIR__ . '/../../function/function.php';
 require_once __DIR__ . '/../../common/login_check.php';
