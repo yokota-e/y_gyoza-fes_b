@@ -70,10 +70,19 @@ body {
     color: var(--color-black);
     font-weight: bold;
     font-size: var(--fz-16px);
-    padding-inline: 48px;
+    padding-inline:72px;
     padding-block: 16px;
 }
 
+.c-btn-return{
+    display: inline-block;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    font-weight: bold;
+    font-size: var(--fz-16px);
+    padding-inline: 48px;
+    padding-block: 16px;
+}
 
 a:hover {
     text-decoration: underline;
