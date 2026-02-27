@@ -27,4 +27,4 @@ if (!empty($_SESSION)) {
         }
     }
 }
-header('location:../admin.php');
+header('location:../login.php');
