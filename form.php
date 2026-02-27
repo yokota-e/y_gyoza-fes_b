@@ -74,7 +74,7 @@
                         当イベントへのお問い合わせは、下記のフォームよりお願い致します。
                     </p>
                 </section>
-                <form action="#" method="post">
+                <form action="./form_addition.php" method="post">
                     <dl class="l-contact-form">
                         <div class="c-contact-type">
                             <dt class="c-contact-type__title">
