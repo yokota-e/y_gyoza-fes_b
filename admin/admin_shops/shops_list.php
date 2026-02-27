@@ -36,7 +36,7 @@ try {
     <h1 class="text-center m-5">店舗一覧</h1>
     <main class="d-flex flex-column align-items-center m-5">
         <div class="card " style="width: 18rem;">
-            <ul class="list-group list-group-flush ">
+            <ul class="list-group list-group-flush">
                 <?php foreach ($result as $shop): ?>
                     <li class="list-group-item"><a href="shops_detail.php?id=<?php echo $shop['id'] ?>"><?php echo $shop['name'] ?></a></li>
                 <?php endforeach; ?>
