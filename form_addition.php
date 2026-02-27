@@ -60,31 +60,25 @@ $text_body = $_POST["inquiry-details"];
                         下記の内容で送信してよろしいですか？
                     </p>
                 </section>
-                <form action="./form_addition_do.php" method="post">
+                <form action="./form_addtion_do.php" method="post">
                     <dl class="l-contact-form">
                         <div class="c-contact-type">
                             <dt class="c-contact-type__title">
                                 <label for="inquiry-type">お問い合わせ種別</label>
                             </dt>
-                            <!-- <dd class="c-contact-type__content c-contact-type__content--select"> -->
                             <p><?php echo $role ?></p>
-                            <!-- </dd> -->
                         </div>
                         <div class="c-contact-type">
                             <dt class="c-contact-type__title">
                                 <label for="user-name">お名前</label>
                             </dt>
-                            <!-- <dd class="c-contact-type__content"> -->
                             <p><?php echo $name ?></p>
-                            <!-- </dd> -->
                         </div>
                         <div class="c-contact-type">
                             <dt class="c-contact-type__title">
                                 <label for="user-name-furigana">ふりがな</label>
                             </dt>
-                            <!-- <dd class="c-contact-type__content"> -->
                             <p><?php echo $name_kana ?></p>
-                            <!-- </dd> -->
                         </div>
                         <div class="c-contact-type">
                             <dt class="c-contact-type__title">
@@ -102,36 +96,26 @@ $text_body = $_POST["inquiry-details"];
                             <dt class="c-contact-type__title">
                                 <label for="user-email-address">メールアドレス</label>
                             </dt>
-                            <!-- <dd class="c-contact-type__content"> -->
                             <p><?php echo $address ?></p>
-                            <!-- </dd>  -->
                         </div>
                         <div class="c-contact-type">
                             <dt class="c-contact-type__title">
                                 <label for="store-name">店名・媒体名</label>
                             </dt>
-                            <!-- <dd class="c-contact-type__content"> -->
                             <p><?php echo $shop_name ?></p>
-                            <!-- </dd>? -->
                         </div>
                         <div class="c-contact-type">
                             <dt class="c-contact-type__title">
                                 <label for="inquiry-details">お問い合わせ内容</label>
                             </dt>
-                            <!-- <dd class="c-contact-type__content c-contact-type__content--long"> -->
                             <p><?php echo $text_body ?></p>
-                            <!-- </dd> -->
                         </div>
                     </dl>
                     <div class="l-contact-agree">
                         <form action="./form.php" method="post">
                             <input class="c-btn-return" type="button" value="前の画面に戻る" onclick="history.back()">
                         </form>
-                    </div>
-                    <div class="l-contact-agree">
-                        <form action="./form_addtion_do.php" method="post">
-                            <input class="c-btn" type="submit" value="送信する">
-                        </form>
+                        <input class="c-btn" type="submit" value="送信する">
                     </div>
                 </form>
             </div>
