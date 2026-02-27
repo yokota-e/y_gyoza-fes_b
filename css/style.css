@@ -316,6 +316,19 @@ a:hover {
 /* トップページ
 ----------------------------------------- */
 
+/* スライドショー ここから*/
+.slideshow {
+  min-width:  340px;
+  margin: auto;
+}
+
+.slideshow img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+}
+/* スライドショー ここまで*/
+
 /* メインビジュアル */
 .c-mv-area {
     background: url(../img/mv.png) no-repeat center / cover;
@@ -438,9 +451,11 @@ a:hover {
 }
 
 .l-scroll-list {
-    display: flex;
+    /* display: flex; */
     align-items: center;
     padding-inline: clamp(10px, 6.479px + 0.939vw, 20px);
+    height: 450px;
+
 }
 
 .c-scroll-btn {

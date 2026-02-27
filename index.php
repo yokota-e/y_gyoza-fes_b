@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
     <!-- my style css -->
     <link rel="stylesheet" href="./css/style.css">
+    <!-- slick css -->
+     <link rel="stylesheet" href="./slick/slick.css">
+    <link rel="stylesheet" href="./slick/slick-theme.css">
     <!-- ファビコン -->
     <link rel="icon" href="./img/logo_symbol_02.svg" type="image/svg+xml">
     <link rel="icon alternate" href="./img/logo_symbol_02.png" type="image/png">
@@ -72,7 +75,17 @@
             <div class="l-shop-list-section l-wrapper">
                 <h2 class="c-section-title c-section-title--black">出店店舗一覧</h2>
                 <div class="l-scroll-list">
-                    <div class="c-scroll-btn"><img src="./img/btn_scroll.png" alt=""></div>
+ 
+                    <div class="slideshow">
+                        <div><a href="./shop-detail.php"><img src="./img/menu01.jpg" alt="肉汁あふれる焼き餃子"></a></div>
+                        <div><a href="./shop-detail.php"><img src="./img/menu02.jpg" alt=""></a></div>
+                        <div><a href="./shop-detail.php"><img src="./img/menu03.jpg" alt=""></a></div>
+                        <div><a href="./shop-detail.php"><img src="./img/menu04.jpg" alt=""></a></div>
+                        <div><a href="./shop-detail.php"><img src="./img/menu05.jpg" alt=""></a></div>
+                        <div><a href="./shop-detail.php"><img src="./img/menu06.jpg" alt=""></a></div>
+                        <div><a href="./shop-detail.php"><img src="./img/menu07.jpg" alt=""></a></div>
+                    </div>
+                                        <!-- <div class="c-scroll-btn"><img src="./img/btn_scroll.png" alt=""></div>
                     <ul class="c-shop-card__list">
                         <li class="c-shop-card__item">
                             <a href="./shop-detail.php">
@@ -94,10 +107,10 @@
                         </li>
                     </ul>
                     <div class="c-scroll-btn"><img src="./img/btn_scroll.png" alt=""></div>
-                </div>
-                <div class="l-btn-area">
-                    <a class="c-btn c-btn--shop-list" href="shop-list.php">店舗一覧へ</a>
-                </div>
+                </div> -->
+                    <div class="l-btn-area">
+                        <a class="c-btn c-btn--shop-list" href="shop-list.php">店舗一覧へ</a>
+                    </div>
             </div>
         </section>
         <section id="event-info" class="c-section c-section--event-info">
@@ -225,6 +238,8 @@
         <?php include('./common/footer_bar.php');  ?>
 
     </footer>
+     <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./slick/slick.min.js"></script>
     <script src="./js/script.js"></script>
 </body>
 
