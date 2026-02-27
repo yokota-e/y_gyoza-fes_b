@@ -336,6 +336,15 @@ a:hover {
   height: 450px;
   object-fit: cover;
 }
+
+.slideshow .slick-slide {
+  margin: 0 10px;  /* ← ここで左右の間隔を調整 */
+}
+
+.slideshow .slick-list {
+  margin: 0 -10px; /* ← 外側のズレを打ち消す（重要） */
+}
+
 /* スライドショー ここまで*/
 
 /* メインビジュアル */

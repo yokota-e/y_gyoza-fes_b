@@ -1,3 +1,9 @@
+<?php
+include('function/function.php');
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -29,6 +35,7 @@
 
 <body>
     <header class="l-header">
+        <?php var_dump($result) ?>
        
         <?php include('./common/nav_var.php');  ?>
 
@@ -77,13 +84,13 @@
                 <div class="l-scroll-list">
  
                     <div class="slideshow">
-                        <div><a href="./shop-detail.php"><img src="./img/menu01.jpg" alt="肉汁あふれる焼き餃子"></a></div>
-                        <div><a href="./shop-detail.php"><img src="./img/menu02.jpg" alt=""></a></div>
-                        <div><a href="./shop-detail.php"><img src="./img/menu03.jpg" alt=""></a></div>
-                        <div><a href="./shop-detail.php"><img src="./img/menu04.jpg" alt=""></a></div>
-                        <div><a href="./shop-detail.php"><img src="./img/menu05.jpg" alt=""></a></div>
-                        <div><a href="./shop-detail.php"><img src="./img/menu06.jpg" alt=""></a></div>
-                        <div><a href="./shop-detail.php"><img src="./img/menu07.jpg" alt=""></a></div>
+                        <div><a href="./shop-detail"><img src="./img/menu01.jpg" alt="肉汁あふれる焼き餃子"> <p class="c-shop-card__name">博多ぎょうざ堂</p></a></div>
+                        <div><a href="./shop-detail.php?id=2"><img src="./img/menu02.jpg" alt="ふっくら蒸しあげ餃子"><p class="c-shop-card__name">中華食堂 蒸々屋</p></a></div>
+                        <div><a href="./shop-detail.php?id=3"><img src="./img/menu03.jpg" alt="中華風スープ餃子"><p class="c-shop-card__name">餃子茶寮 彩香</p></a></div>
+                        <div><a href="./shop-detail.php?id=4"><img src="./img/menu04.jpg" alt="カリもち！揚げ餃子"><p class="c-shop-card__name">餃子バル 風雷坊</p></a></div>
+                        <div><a href="./shop-detail.php?id=5"><img src="./img/menu05.jpg" alt="お口に広がる地中海の風"><p class="c-shop-card__name">Mediterraneo Gyoza</p></a></div>
+                        <div><a href="./shop-detail.php?id=6"><img src="./img/menu06.jpg" alt="素材の旨味ひきたつ水餃子"><p class="c-shop-card__name">餃子処 湯心</p></a></div>
+                        <div><a href="./shop-detail.php?id=7"><img src="./img/menu07.jpg" alt="しびうまラー油餃子"><p class="c-shop-card__name">辛味房 赤龍</p></a></div>
                     </div>
                                         <!-- <div class="c-scroll-btn"><img src="./img/btn_scroll.png" alt=""></div>
                     <ul class="c-shop-card__list">
