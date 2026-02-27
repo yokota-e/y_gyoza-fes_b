@@ -33,17 +33,22 @@ try {
 
 <body>
 
-    <h1>店舗一覧</h1>
-
-    <ul>
-        <?php foreach ($result as $shop): ?>
-            <li><a href="shops_detail.php?id=<?php echo $shop['id'] ?>"><?php echo $shop['name'] ?></a></li>
-        <?php endforeach; ?>
-    </ul>
-    <div class="d-block">
-        <a href="shops_add.php" class="btn btn-outline-primary mb-5">店舗を追加する</a>
-    </div>
-    <a href="../admin.php" class="btn btn-primary">管理者TOPに戻る</a>
+    <h1 class="text-center m-5">店舗一覧</h1>
+    <main class="d-flex flex-column align-items-center m-5">
+        <div class="card " style="width: 18rem;">
+            <ul class="list-group list-group-flush ">
+                <?php foreach ($result as $shop): ?>
+                    <li class="list-group-item"><a href="shops_detail.php?id=<?php echo $shop['id'] ?>"><?php echo $shop['name'] ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <div class="d-block">
+            <a href="shops_add.php" class="btn btn-outline-primary m-5">店舗を追加する</a>
+        </div>
+    </main>
+    <footer class="text-center m-5">
+        <a href="../admin.php" class="btn btn-primary">管理者TOPに戻る</a>
+    </footer>
 </body>
 
 </html>
