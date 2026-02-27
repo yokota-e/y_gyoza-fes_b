@@ -83,22 +83,81 @@ a:hover {
 ----------------------------------------- */
 
 /* ハンバーガーメニュー ここから */
-.nav{
+/* メニューのスタイル */
+.hum-menu {
   position: fixed;
-  /* top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0; */
+  top: 0;
+  right: -100%; /* 初期状態では画面の外に隠れている */
+  width: 300px;
+  height: 100%;
+  background-color: #fafad2;
+  color: #333;
+  transition: right 0.3s ease; /* スライドインのアニメーション */
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 10;
+  color: var(--color-black);
+}
 
-  /* top right bottom leftを一括指定 */
-  inset: 0 -100% 0 100%;
-  background-color: rgba(255,255,255,0.8);
+/* メニューが開いているとき */
+.open {
+  right: 0;
 }
-/* メニューが開いてる時 */
-.open .nav{
-  translate: -100% 0;
-  z-index: 1;
+
+/* ボタンのスタイル */
+.hamburger {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+  cursor: pointer;
+  z-index: 20;
+  
 }
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #333;
+  margin: 5px 0;
+  transition: 0.4s;
+}
+
+/* バツ印に変化するスタイル */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* メニューリストのスタイル */
+.hum-menu{
+    background-color: color-mix(in srgb, var(--color-red) 70%, transparent 30%);
+}
+.hum-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 80px;
+}
+
+.hum-menu li {
+  padding: 20px 0;
+  border-bottom: 1px solid #fff;
+}
+
+.hum-menu ul li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
 /* ハンバーガーメニュー ここまで */
 
 .l-header--sub-page {
@@ -1007,6 +1066,12 @@ a:hover {
     .c-header-nav__hamburger {
         display: none;
     }
+
+    /* ハンバーガーメニュー */
+    .hum-menu{
+        display: none;
+    }
+
 
     /* フッター
     ----------------------------------------- */
