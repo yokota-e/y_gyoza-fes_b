@@ -43,27 +43,26 @@ try {
 
                 <div class="mb-3">
                     <label for="name" class="form-label">店舗名</label>
-                    <input type="text" name="name" id="name" class="form-control" value="<?php echo $target['name']; ?>">
+                    <input type="text" name="name" id="name" class="form-control" value="<?php echo htmlspecialchars($target['name'], ENT_QUOTES, 'UTF-8'); ?>">
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">店舗詳細文</label>
-                    <textarea name="description" id="description" class="form-control" rows="6"><?php echo $target['description']; ?>
-                    </textarea>
+                    <label for="description" class="form-label">店舗詳細文</label>
+                    <textarea name="description" id="description" class="form-control" rows="6"><?php echo htmlspecialchars($target['description'], ENT_QUOTES, 'UTF-8'); ?></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="booth" class="form-label">ブース番号</label>
-                    <input type="text" name="booth" id="booth" class="form-control" value="<?php echo $target['booth']; ?>">
+                    <input type="text" name="booth" id="booth" class="form-control" value="<?php echo htmlspecialchars($target['booth'], ENT_QUOTES, 'UTF-8'); ?>">
                 </div>
 
                 <div class="mb-3">
                     <label for="tel" class="form-label">電話番号</label>
-                    <input type="tel" name="tel" id="tel" class="form-control" value="<?php echo $target['tel']; ?>">
+                    <input type="tel" name="tel" id="tel" class="form-control" value="<?php echo htmlspecialchars($target['tel'], ENT_QUOTES, 'UTF-8'); ?>">
                 </div>
 
                 <div class="mb-3">
-                    <label for="email" class="form-label">メールアドレス</label>
-                    <input type="email" name="email" id="email" class="form-control" value="<?php echo $target['address']; ?>">
+                    <label for="address" class="form-label">メールアドレス</label>
+                    <input type="email" name="address" id="address" class="form-control" value="<?php echo htmlspecialchars($target['address'], ENT_QUOTES, 'UTF-8'); ?>">
                 </div>
 
                 <div class="mb-3">
