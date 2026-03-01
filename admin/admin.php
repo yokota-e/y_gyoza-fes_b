@@ -23,7 +23,7 @@ try {
   $stmt->bindParam(':id', $id, PDO::PARAM_INT);
   $stmt->execute();
 
-  $logged_in_acount = $stmt->fetch(PDO::FETCH_ASSOC);
+  $logged_in_account = $stmt->fetch(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
   exit('エラー:' . $e->getMessage());
 }
@@ -108,19 +108,19 @@ try {
 
               <dt>ID</dt>
               <dd class="list-group-item card-text">
-                <?php echo $logged_in_acount['id'] ?>
+                <?php echo $logged_in_account['id'] ?>
               </dd>
 
 
               <dt>名前</dt>
               <dd class="list-group-item card-text">
-                <?php echo $logged_in_acount['name'] ?>
+                <?php echo $logged_in_account['name'] ?>
               </dd>
 
 
-              <dt>投稿日時</dt>
+              <dt>追加日時</dt>
               <dd class="list-group-item card-text">
-                <?php echo date('Y年m月d日',  strtotime($logged_in_acount['date'])) ?>
+                <?php echo date('Y年m月d日',  strtotime($logged_in_account['date'])) ?>
               </dd>
 
 
