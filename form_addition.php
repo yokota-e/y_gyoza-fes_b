@@ -9,9 +9,7 @@ $tel = $_POST["telephone-number"];
 $address = $_POST["user-email-address"];
 $shop_name = $_POST["store-name"];
 $text_body = $_POST["inquiry-details"];
-
-$test = get_type_list();
-var_dump($test);
+$type = get_type_list();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -41,7 +39,8 @@ var_dump($test);
 
 <body>
     <header class="l-header l-header--sub-page">
-        <?php include('./common/nav_var.php');  ?>
+        <?php include('./common/nav_var.php');
+        ?>
         <nav class="c-breadcrumbs">
             <div class="l-wrapper">
                 <ol class="c-breadcrumbs__list">
@@ -67,7 +66,7 @@ var_dump($test);
                             <dt class="c-contact-type__title">
                                 <label for="inquiry-type">お問い合わせ種別</label>
                             </dt>
-                            <p><?php echo $role ?></p>
+                            <p><?php echo $type[$role] ?></p>
                             <input type="hidden" name="type" value="<?php echo $role ?>">
                         </div>
                         <div class="c-contact-type">
