@@ -10,7 +10,8 @@ $address = $_POST["user-email-address"];
 $shop_name = $_POST["store-name"];
 $text_body = $_POST["inquiry-details"];
 
-
+$test = get_type_list();
+var_dump($test);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
