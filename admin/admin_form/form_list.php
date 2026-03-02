@@ -16,7 +16,7 @@ try {
     // DBへ接続
     $db = db_connect();
     // プリペアードステートメント作成
-    $sql = 'SELECT * FROM contacts ORDER BY id ASC';
+    $sql = 'SELECT id,role,name,body,body,post_date,status FROM contacts ORDER BY id ASC';
     $stmt = $db->prepare($sql);
     // SQLの実行
     $stmt->execute();
@@ -25,36 +25,9 @@ try {
 } catch (PDOException $e) {
     exit('エラー（contactテーブル読み込み時）:' . $e->getMessage());
 }
-
-//typeテーブルから読み込み
-try {
-    // DBへ接続
-    $db = db_connect();
-    // プリペアードステートメント作成
-    $sql = 'SELECT * FROM type ORDER BY id ASC';
-    $stmt = $db->prepare($sql);
-    // SQLの実行
-    $stmt->execute();
-
-    $role_list = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    exit('エラー（typeテーブル読み込み時）:' . $e->getMessage());
-}
-
-//stateテーブルから読み込み
-try {
-    // DBへ接続
-    $db = db_connect();
-    // プリペアードステートメント作成
-    $sql = 'SELECT * FROM state ORDER BY id ASC';
-    $stmt = $db->prepare($sql);
-    // SQLの実行
-    $stmt->execute();
-
-    $state_list = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    exit('エラー（stateテーブル読み込み時）:' . $e->getMessage());
-}
+//外部キー対応配列の取得
+$role_list = get_type_list();
+$state_list = get_state_list();
 ?>
 
 
@@ -94,11 +67,11 @@ try {
                     <?php foreach ($contact_list as $contact_datas): ?>
                         <tr>
                             <td><?php echo $contact_datas["id"] ?></td>
-                            <td><?php echo $role_list[0]["role"] ?></td>
+                            <td><?php echo $role_list[$contact_datas["role"]] ?></td>
                             <td><?php echo $contact_datas["name"] ?></td>
                             <td><?php echo $contact_datas["body"] ?></td>
                             <td><?php echo $contact_datas["post_date"] ?></td>
-                            <td><?php echo $contact_datas["status"] ?></td>
+                            <td><?php echo $state_list[$contact_datas["status"]] ?></td>
                             <td>
                                 <form action="form_detail.php" method="post">
                                     <input type="hidden" name="id" value="<?php echo $contact_datas["id"] ?>">
