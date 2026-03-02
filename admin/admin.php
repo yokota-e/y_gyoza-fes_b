@@ -96,7 +96,7 @@ try {
         <ul class="list-group list-group-flush">
           <?php foreach ($result as $user): ?>
 
-            <li class="list-group-item"><?php echo $user['name'] ?>
+            <li class="list-group-item"><?php echo h($user['name']) ?>
 
             <?php endforeach; ?>
             <div class="d-block">
@@ -110,19 +110,19 @@ try {
 
               <dt>ID</dt>
               <dd class="list-group-item card-text">
-                <?php echo $logged_in_account['id'] ?>
+                <?php echo h($logged_in_account['id']) ?>
               </dd>
 
 
               <dt>名前</dt>
               <dd class="list-group-item card-text">
-                <?php echo $logged_in_account['name'] ?>
+                <?php echo h($logged_in_account['name']) ?>
               </dd>
 
 
               <dt>追加日時</dt>
               <dd class="list-group-item card-text">
-                <?php echo date('Y年m月d日',  strtotime($logged_in_account['date'])) ?>
+                <?php echo date('Y年m月d日',  strtotime(h($logged_in_account['date']))) ?>
               </dd>
 
 

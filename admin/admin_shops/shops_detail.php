@@ -46,64 +46,64 @@ try {
 
                         <dt>店舗ID</dt>
                         <dd class="list-group-item card-text">
-                            <?php echo $result['id'] ?>
-                            <input type="hidden" name=id value=<?php echo $result['id'] ?>>
+                            <?php echo h($result['id']) ?>
+                            <input type="hidden" name=id value=<?php echo h($result['id']) ?>>
                         </dd>
 
 
 
                         <dt>店舗名</dt>
                         <dd class="list-group-item card-text">
-                            <?php echo $result['name'] ?>
-                            <input type="hidden" name=name value=<?php echo $result['name'] ?>>
+                            <?php echo h($result['name']) ?>
+                            <input type="hidden" name=name value=<?php echo h($result['name']) ?>>
                         </dd>
 
 
                         <dt>店舗詳細</dt>
                         <dd class="list-group-item card-text">
-                            <?php echo $result['description'] ?>
-                            <input type="hidden" name=description value=<?php echo $result['description'] ?>>
+                            <?php echo h($result['description']) ?>
+                            <input type="hidden" name=description value=<?php echo h($result['description']) ?>>
                         </dd>
 
                         <dt>ブース番号</dt>
                         <dd class="list-group-item card-text">
-                            <?php echo $result['booth'] ?>
-                            <input type="hidden" name=booth value=<?php echo $result['booth'] ?>>
+                            <?php echo h($result['booth']) ?>
+                            <input type="hidden" name=booth value=<?php echo h($result['booth']) ?>>
                         </dd>
 
                         <dt>電話番号</dt>
                         <dd class="list-group-item card-text">
-                            <?php echo $result['tel'] ?>
-                            <input type="hidden" name=tel value=<?php echo $result['tel'] ?>>
+                            <?php echo h($result['tel']) ?>
+                            <input type="hidden" name=tel value=<?php echo h($result['tel']) ?>>
                         </dd>
 
                         <dt>メールアドレス</dt>
                         <dd class="list-group-item card-text">
-                            <?php echo $result['address'] ?>
-                            <input type="hidden" name=address value=<?php echo $result['address'] ?>>
+                            <?php echo h($result['address']) ?>
+                            <input type="hidden" name=address value=<?php echo h($result['address']) ?>>
                         </dd>
 
                         <dt>追加日時</dt>
                         <dd class="list-group-item card-text">
-                            <?php echo date('Y年m月d日',  strtotime($result['created_at'])) ?>
+                            <?php echo date('Y年m月d日',  strtotime(h($result['created_at']))) ?>
 
                         </dd>
 
                         <dt>追加者</dt>
                         <dd class="list-group-item card-text">
-                            <?php echo $result['created_user_id'] ?>
+                            <?php echo h($result['created_user_id']) ?>
                         </dd>
 
                         <dt>更新日時</dt>
                         <dd class="list-group-item card-text">
-                            <?php echo date('Y年m月d日',  strtotime($result['updated_at'])) ?>
-                            <input type="hidden" name=updated_at value=<?php echo $result['updated_at'] ?>>
+                            <?php echo date('Y年m月d日',  strtotime(h($result['updated_at']))) ?>
+                            <input type="hidden" name=updated_at value=<?php echo h($result['updated_at']) ?>>
                         </dd>
 
                         <dt>更新者</dt>
                         <dd class="list-group-item card-text">
-                            <?php echo $result['updated_user_id'] ?>
-                            <input type="hidden" name=updated_user_id value=<?php echo $result['updated_user_id'] ?>>
+                            <?php echo h($result['updated_user_id']) ?>
+                            <input type="hidden" name=updated_user_id value=<?php echo h($result['updated_user_id']) ?>>
                         </dd>
                         </dd>
                     </dl>

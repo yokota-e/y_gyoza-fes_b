@@ -25,7 +25,7 @@ include('function/function.php');
     <!-- my style css -->
     <link rel="stylesheet" href="./css/style.css">
     <!-- slick css -->
-     <link rel="stylesheet" href="./slick/slick.css">
+    <link rel="stylesheet" href="./slick/slick.css">
     <link rel="stylesheet" href="./slick/slick-theme.css">
     <!-- ファビコン -->
     <link rel="icon" href="./img/logo_symbol_02.svg" type="image/svg+xml">
@@ -35,8 +35,6 @@ include('function/function.php');
 
 <body>
     <header class="l-header">
-        <?php var_dump($result) ?>
-       
         <?php include('./common/nav_var.php');  ?>
 
         <div class="c-mv-area">
@@ -82,17 +80,31 @@ include('function/function.php');
             <div class="l-shop-list-section l-wrapper">
                 <h2 class="c-section-title c-section-title--black">出店店舗一覧</h2>
                 <div class="l-scroll-list">
- 
+
                     <div class="slideshow">
-                        <div><a href="./shop-detail"><img src="./img/menu01.jpg" alt="肉汁あふれる焼き餃子"> <p class="c-shop-card__name">博多ぎょうざ堂</p></a></div>
-                        <div><a href="./shop-detail.php?id=2"><img src="./img/menu02.jpg" alt="ふっくら蒸しあげ餃子"><p class="c-shop-card__name">中華食堂 蒸々屋</p></a></div>
-                        <div><a href="./shop-detail.php?id=3"><img src="./img/menu03.jpg" alt="中華風スープ餃子"><p class="c-shop-card__name">餃子茶寮 彩香</p></a></div>
-                        <div><a href="./shop-detail.php?id=4"><img src="./img/menu04.jpg" alt="カリもち！揚げ餃子"><p class="c-shop-card__name">餃子バル 風雷坊</p></a></div>
-                        <div><a href="./shop-detail.php?id=5"><img src="./img/menu05.jpg" alt="お口に広がる地中海の風"><p class="c-shop-card__name">Mediterraneo Gyoza</p></a></div>
-                        <div><a href="./shop-detail.php?id=6"><img src="./img/menu06.jpg" alt="素材の旨味ひきたつ水餃子"><p class="c-shop-card__name">餃子処 湯心</p></a></div>
-                        <div><a href="./shop-detail.php?id=7"><img src="./img/menu07.jpg" alt="しびうまラー油餃子"><p class="c-shop-card__name">辛味房 赤龍</p></a></div>
+                        <div><a href="./shop-detail"><img src="./img/menu01.jpg" alt="肉汁あふれる焼き餃子">
+                                <p class="c-shop-card__name">博多ぎょうざ堂</p>
+                            </a></div>
+                        <div><a href="./shop-detail.php?id=2"><img src="./img/menu02.jpg" alt="ふっくら蒸しあげ餃子">
+                                <p class="c-shop-card__name">中華食堂 蒸々屋</p>
+                            </a></div>
+                        <div><a href="./shop-detail.php?id=3"><img src="./img/menu03.jpg" alt="中華風スープ餃子">
+                                <p class="c-shop-card__name">餃子茶寮 彩香</p>
+                            </a></div>
+                        <div><a href="./shop-detail.php?id=4"><img src="./img/menu04.jpg" alt="カリもち！揚げ餃子">
+                                <p class="c-shop-card__name">餃子バル 風雷坊</p>
+                            </a></div>
+                        <div><a href="./shop-detail.php?id=5"><img src="./img/menu05.jpg" alt="お口に広がる地中海の風">
+                                <p class="c-shop-card__name">Mediterraneo Gyoza</p>
+                            </a></div>
+                        <div><a href="./shop-detail.php?id=6"><img src="./img/menu06.jpg" alt="素材の旨味ひきたつ水餃子">
+                                <p class="c-shop-card__name">餃子処 湯心</p>
+                            </a></div>
+                        <div><a href="./shop-detail.php?id=7"><img src="./img/menu07.jpg" alt="しびうまラー油餃子">
+                                <p class="c-shop-card__name">辛味房 赤龍</p>
+                            </a></div>
                     </div>
-                                        <!-- <div class="c-scroll-btn"><img src="./img/btn_scroll.png" alt=""></div>
+                    <!-- <div class="c-scroll-btn"><img src="./img/btn_scroll.png" alt=""></div>
                     <ul class="c-shop-card__list">
                         <li class="c-shop-card__item">
                             <a href="./shop-detail.php">
@@ -118,7 +130,7 @@ include('function/function.php');
                     <div class="l-btn-area">
                         <a class="c-btn c-btn--shop-list" href="shop-list.php">店舗一覧へ</a>
                     </div>
-            </div>
+                </div>
         </section>
         <section id="event-info" class="c-section c-section--event-info">
             <div class="l-wrapper l-event-info">
@@ -245,7 +257,7 @@ include('function/function.php');
         <?php include('./common/footer_bar.php');  ?>
 
     </footer>
-     <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
     <script src="./slick/slick.min.js"></script>
     <script src="./js/script.js"></script>
 </body>

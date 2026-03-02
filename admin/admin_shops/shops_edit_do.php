@@ -14,15 +14,6 @@ if (!empty($_POST)) {
         $tel = $_POST['tel'];
         $address = $_POST['address'];
 
-        // $_SESSION['shops_edit'] = [
-        //     'id' => $id,
-        //     'name' => $name,
-        //     'description' => $description,
-        //     'booth' => $booth,
-        //     'tel' => $tel,
-        //     'address' => $address,
-
-        // ];
 
         // TODO: 書式、正規表現のチェック追加
 
