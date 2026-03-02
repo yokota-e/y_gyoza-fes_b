@@ -58,7 +58,7 @@ $user_array = get_users_list();
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6">
                 <div class="card shadow mt-5 mb-5">
-                    <div class="card-header bg-info text-white text-center fs-3">お問い合わせ詳細</div>
+                    <div class="card-header bg-primary text-white text-center fs-3">お問い合わせ詳細</div>
                     <div class="card-body">
                         <form method="POST" action="form_check_do.php" class="text-center">
                             <dl class="row">
@@ -74,32 +74,32 @@ $user_array = get_users_list();
                                 <hr>
                                 <dt class="col-sm-4 text-center">名前（ふりがな）</dt>
                                 <dd class="col-sm-8">
-                                    <?php echo ($contact_datas["name"] . "（" . $contact_datas["name_kana"] . "）") ?>
+                                    <?php echo h(($contact_datas["name"] . "（" . $contact_datas["name_kana"] . "）")) ?>
                                 </dd>
                                 <hr>
                                 <dt class="col-sm-4 text-center">会社名</dt>
                                 <dd class="col-sm-8">
-                                    <?php echo ($contact_datas["company"]) ?>
+                                    <?php echo h(($contact_datas["company"])) ?>
                                 </dd>
                                 <hr>
                                 <dt class="col-sm-4 text-center">電話番号</dt>
                                 <dd class="col-sm-8">
-                                    <?php echo ($contact_datas["tel"]) ?>
+                                    <?php echo h(($contact_datas["tel"])) ?>
                                 </dd>
                                 <hr>
                                 <dt class="col-sm-4 text-center">メールアドレス</dt>
                                 <dd class="col-sm-8">
-                                    <?php echo ($contact_datas["address"]) ?>
+                                    <?php echo h(($contact_datas["address"])) ?>
                                 </dd>
                                 <hr>
                                 <dt class="col-sm-4 text-center">店名・媒体名</dt>
                                 <dd class="col-sm-8">
-                                    <?php echo ($contact_datas["shop_name"]) ?>
+                                    <?php echo h(($contact_datas["shop_name"])) ?>
                                 </dd>
                                 <hr>
                                 <dt class="col-sm-4 text-center">お問い合わせ内容</dt>
                                 <dd class="col-sm-8">
-                                    <?php echo ($contact_datas["body"]) ?>
+                                    <?php echo h(($contact_datas["body"])) ?>
                                 </dd>
                                 <hr>
                                 <dt class="col-sm-4 text-center">投稿日時</dt>
@@ -137,7 +137,7 @@ $user_array = get_users_list();
                             </a>
 
                             <input type="hidden" name="id" value="<?php echo $id ?>">
-                            <input type="submit" class="btn btn-info mb-3 me-5" value="変更確定">
+                            <input type="submit" class="btn btn-primary mb-3 me-5" value="変更確定">
                         </form>
                     </div>
                 </div>

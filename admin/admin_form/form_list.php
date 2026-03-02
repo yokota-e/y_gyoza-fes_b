@@ -52,7 +52,7 @@ $state_list = get_state_list();
         <h1 class="text-center m-5">お問い合わせ一覧</h1>
         <div class="row">
             <table class="col-10 table table-striped mt-5">
-                <thead class="table-dark">
+                <thead class="table-primary">
                     <tr>
                         <th>ID</th>
                         <th>問い合わせ種別</th>
@@ -68,14 +68,14 @@ $state_list = get_state_list();
                         <tr>
                             <td><?php echo $contact_datas["id"] ?></td>
                             <td><?php echo $role_list[$contact_datas["role"]] ?></td>
-                            <td><?php echo $contact_datas["name"] ?></td>
-                            <td><?php echo $contact_datas["body"] ?></td>
+                            <td><?php echo h($contact_datas["name"]) ?></td>
+                            <td><?php echo h($contact_datas["body"]) ?></td>
                             <td><?php echo $contact_datas["post_date"] ?></td>
                             <td><?php echo $state_list[$contact_datas["status"]] ?></td>
                             <td>
                                 <form action="form_detail.php" method="post">
                                     <input type="hidden" name="id" value="<?php echo $contact_datas["id"] ?>">
-                                    <input type="submit" class="btn btn-info" value="詳細">
+                                    <input type="submit" class="btn btn-primary" value="詳細">
                                 </form>
                             </td>
                         </tr>
