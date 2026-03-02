@@ -15,6 +15,13 @@ function db_connect()
     return $db;
 }
 
+// XSS対策
+function h($str)
+{
+    return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+}
+
+
 //お問い合わせの種別IDから種別名を返す関数
 function get_type_list()
 {
