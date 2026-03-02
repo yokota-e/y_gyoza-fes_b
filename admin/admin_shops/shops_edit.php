@@ -43,7 +43,6 @@ try {
 
                 <div class="mb-3">
                     <label for="name" class="form-label">店舗名</label>
-                    <input type="text" name="name" id="name" class="form-control" value="<?php echo htmlspecialchars($target['name'], ENT_QUOTES, 'UTF-8'); ?>">
                     <input type="text" name="name" id="name" class="form-control" value="<?php echo  h($target['name']); ?>">
 
 
