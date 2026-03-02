@@ -117,16 +117,19 @@ $user_array = get_users_list();
                                     <?php echo ($user_array[$contact_datas["admin_name"]]) ?>
                                 </dd>
                                 <hr>
-                                <dt class="col-sm-4 text-center">対応状況</dt>
+                                <dt class="col-sm-4 text-center">現在の対応状況</dt>
                                 <dd class="col-sm-8">
                                     <?php echo ($state_array[$contact_datas["status"]]) ?>
-                                    <label for="status_select" class="form-label"></label>
-                                    <select name="status" class="form-select" id="status_select">
-                                        <!-- kan_to_do：あらかじめ選んでいたものが選ばれるように！ -->
-                                        <option disabled selected>変更する内容を選んでください</option>
-                                        <option value="1">未対応</option>
-                                        <option value="2">対応中</option>
-                                        <option value="3">対応済み</option>
+                                </dd>
+                                <hr>
+                                <dt class="col-sm-4 text-center">
+                                    <label for="status_select" class="form-label">対応状況の変更</label>
+                                </dt>
+                                <dd class="col-sm-8">
+                                    <select name="status" class="form-select" id="status_select" require>
+                                        <option value="1" <?php echo $contact_datas["status"] == 1 ? "selected" : "" ?>>未対応</option>
+                                        <option value="2" <?php echo $contact_datas["status"] == 2 ? "selected" : "" ?>>対応中</option>
+                                        <option value="3" <?php echo $contact_datas["status"] == 3 ? "selected" : "" ?>>対応済み</option>
                                     </select>
                                 </dd>
                                 <hr>
