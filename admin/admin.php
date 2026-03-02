@@ -11,7 +11,7 @@ try {
   $db = db_connect();
 
   // ユーザー一覧用
-  $sql = 'SELECT id,name FROM users ORDER BY id ASC';
+  $sql = 'SELECT id,name,is_deleted FROM users WHERE is_deleted != 1 ORDER BY id ASC ';
   $stmt = $db->prepare($sql);
 
   $stmt->execute();
@@ -95,7 +95,9 @@ try {
         <h2 class="text-center mt-5">ユーザー一覧</h2>
         <ul class="list-group list-group-flush">
           <?php foreach ($result as $user): ?>
+
             <li class="list-group-item"><?php echo $user['name'] ?>
+
             <?php endforeach; ?>
             <div class="d-block">
               <a href="./admin_user/user_add.php" class="btn btn-outline-primary m-5">ユーザーを追加する</a>
