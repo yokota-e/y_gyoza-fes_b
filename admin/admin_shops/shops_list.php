@@ -23,7 +23,7 @@ try {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -35,10 +35,6 @@ try {
 
 <body>
 
-    <?php
-    $test = get_state_list();
-    var_dump($test);
-    ?>
     <h1 class="text-center m-5">店舗一覧</h1>
     <main class="d-flex flex-column align-items-center m-5">
         <div class="card " style="width: 18rem;">
