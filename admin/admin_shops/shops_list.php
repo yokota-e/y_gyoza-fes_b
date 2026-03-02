@@ -10,7 +10,7 @@ try {
     // DBへ接続
     $db = db_connect();
     // プリペアードステートメント作成
-    $sql = 'SELECT id,name FROM shops ORDER BY id ASC';
+    $sql = 'SELECT id,name,is_deleted FROM shops ORDER BY id ASC';
     $stmt = $db->prepare($sql);
 
 
@@ -35,12 +35,18 @@ try {
 
 <body>
 
+    <?php
+    $test = get_state_list();
+    var_dump($test);
+    ?>
     <h1 class="text-center m-5">店舗一覧</h1>
     <main class="d-flex flex-column align-items-center m-5">
         <div class="card " style="width: 18rem;">
             <ul class="list-group list-group-flush">
                 <?php foreach ($result as $shop): ?>
-                    <li class="list-group-item"><a href="shops_detail.php?id=<?php echo $shop['id'] ?>"><?php echo $shop['name'] ?></a></li>
+                    <?php if ($shop['is_deleted'] == 0): ?>
+                        <li class="list-group-item"><a href="shops_detail.php?id=<?php echo $shop['id'] ?>"><?php echo $shop['name'] ?></a></li>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
         </div>

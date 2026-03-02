@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../../function/function.php';
 
-session_start();
+// session_start();
 
 
 if (!empty($_POST)) {
@@ -14,15 +14,15 @@ if (!empty($_POST)) {
         $tel = $_POST['tel'];
         $address = $_POST['address'];
 
-        $_SESSION['shops_edit'] = [
-            'id' => $id,
-            'name' => $name,
-            'description' => $description,
-            'booth' => $booth,
-            'tel' => $tel,
-            'address' => $address,
+        // $_SESSION['shops_edit'] = [
+        //     'id' => $id,
+        //     'name' => $name,
+        //     'description' => $description,
+        //     'booth' => $booth,
+        //     'tel' => $tel,
+        //     'address' => $address,
 
-        ];
+        // ];
 
         // TODO: 書式、正規表現のチェック追加
 
