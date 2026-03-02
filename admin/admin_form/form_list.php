@@ -42,7 +42,7 @@ $state_list = get_state_list();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【管理用】店舗一覧</title>
+    <title>【管理用】お問い合わせ一覧</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -75,7 +75,7 @@ $state_list = get_state_list();
                             <td>
                                 <form action="form_detail.php" method="post">
                                     <input type="hidden" name="id" value="<?php echo $contact_datas["id"] ?>">
-                                    <input type="submit" class="btn btn-primary" value="詳細">
+                                    <input type="submit" class="btn btn-info" value="詳細">
                                 </form>
                             </td>
                         </tr>
