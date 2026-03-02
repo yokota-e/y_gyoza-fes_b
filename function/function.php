@@ -21,7 +21,6 @@ function h($str)
     return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 }
 
-
 //お問い合わせの種別IDから種別名を返す関数
 function get_type_list()
 {
@@ -42,7 +41,6 @@ function get_type_list()
         exit('エラー: ' . $e->getMessage());
     }
 }
-
 
 //お問い合わせの対応状況IDから対応状況名を返す関数
 function get_state_list()
@@ -65,9 +63,6 @@ function get_state_list()
         exit('エラー: ' . $e->getMessage());
     }
 }
-
-
-
 //管理者IDから管理者名を返す関数
 function get_users_list()
 {

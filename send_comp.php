@@ -68,58 +68,58 @@ $type = get_type_list();
                             <dt class="c-contact-type__title">
                                 <label for="inquiry-type">お問い合わせ種別</label>
                             </dt>
-                            <p><?php echo $type[$role] ?></p>
-                            <input type="hidden" name="type" value="<?php echo $role ?>">
+                            <p><?php echo h($type[$role]) ?></p>
+                            <input type="hidden" name="type" value="<?php echo h($role) ?>">
                         </div>
                         <div class="c-contact-type">
                             <dt class="c-contact-type__title">
                                 <label for="user-name">お名前</label>
                             </dt>
-                            <p><?php echo $name ?></p>
-                            <input type="hidden" name="name" value="<?php echo $name ?>">
+                            <p><?php echo h($name) ?></p>
+                            <input type="hidden" name="name" value="<?php echo h($name) ?>">
                         </div>
                         <div class="c-contact-type">
                             <dt class="c-contact-type__title">
                                 <label for="user-name-furigana">ふりがな</label>
                             </dt>
-                            <p><?php echo $name_kana ?></p>
-                            <input type="hidden" name="name_kana" value="<?php echo $name_kana ?>">
+                            <p><?php echo h($name_kana) ?></p>
+                            <input type="hidden" name="name_kana" value="<?php echo h($name_kana) ?>">
 
                         </div>
                         <div class="c-contact-type">
                             <dt class="c-contact-type__title">
                                 <label for="company-name">会社名</label>
                             </dt>
-                            <p><?php echo $company ?></p>
-                            <input type="hidden" name="company" value="<?php echo $company ?>">
+                            <p><?php echo h($company) ?></p>
+                            <input type="hidden" name="company" value="<?php echo h($company) ?>">
                         </div>
                         <div class="c-contact-type">
                             <dt class="c-contact-type__title">
                                 <label for="telephone-number">電話番号</label>
                             </dt>
-                            <p><?php echo $tel ?></p>
-                            <input type="hidden" name="tel" value="<?php echo $tel ?>">
+                            <p><?php echo h($tel) ?></p>
+                            <input type="hidden" name="tel" value="<?php echo h($tel) ?>">
                         </div>
                         <div class="c-contact-type">
                             <dt class="c-contact-type__title">
                                 <label for="user-email-address">メールアドレス</label>
                             </dt>
-                            <p><?php echo $address ?></p>
-                            <input type="hidden" name="address" value="<?php echo $address ?>">
+                            <p><?php echo h($address) ?></p>
+                            <input type="hidden" name="address" value="<?php echo h($address) ?>">
                         </div>
                         <div class="c-contact-type">
                             <dt class="c-contact-type__title">
                                 <label for="store-name">店名・媒体名</label>
                             </dt>
-                            <p><?php echo $shop_name ?></p>
-                            <input type="hidden" name="store" value="<?php echo $shop_name ?>">
+                            <p><?php echo h($shop_name) ?></p>
+                            <input type="hidden" name="store" value="<?php echo h($shop_name) ?>">
                         </div>
                         <div class="c-contact-type">
                             <dt class="c-contact-type__title">
                                 <label for="inquiry-details">お問い合わせ内容</label>
                             </dt>
-                            <p><?php echo $text_body ?></p>
-                            <input type="hidden" name="text" value="<?php echo $text_body ?>">
+                            <p><?php echo h($text_body) ?></p>
+                            <input type="hidden" name="text" value="<?php echo h($text_body) ?>">
                         </div>
                     </dl>
                 </form>
@@ -128,10 +128,8 @@ $type = get_type_list();
     </main>
     <footer class="l-footer">
         <?php include('./common/footer_bar.php');  ?>
-
     </footer>
     <script src="./js/script.js"></script>
-
 </body>
 
 </html>
