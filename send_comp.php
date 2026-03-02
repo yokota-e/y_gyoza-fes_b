@@ -122,12 +122,6 @@ $type = get_type_list();
                             <input type="hidden" name="text" value="<?php echo $text_body ?>">
                         </div>
                     </dl>
-                    <div class="l-contact-agree">
-                        <form action="./form.php" method="post">
-                            <input class="c-btn-return" type="button" value="前の画面に戻る" onclick="history.back()">
-                        </form>
-                        <input class="c-btn" type="submit" value="送信する">
-                    </div>
                 </form>
             </div>
         </div>

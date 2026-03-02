@@ -15,7 +15,7 @@ function db_connect()
     return $db;
 }
 
-//お問い合わせの種別IDから種別名を返すID
+//お問い合わせの種別IDから種別名を返す関数
 function get_type_list()
 {
     $role = array();
@@ -26,8 +26,6 @@ function get_type_list()
         $stmt = $db->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        // debug_check_array($result);
-        // var_dump($result);
         //$resultを使って$role配列を作成
         foreach ($result as $row) {
             $role[$row['id']] = $row['role'];
@@ -37,4 +35,49 @@ function get_type_list()
         exit('エラー: ' . $e->getMessage());
     }
 }
-//管理者IDから管理者名を返すID
+
+
+//お問い合わせの対応状況IDから対応状況名を返す関数
+function get_state_list()
+{
+    $role = array();
+    try {
+        //rolesテーブルから全レコードを取得
+        $db = db_connect();
+        $sql = 'SELECT * FROM state';
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($result as $row) {
+            $role[$row['id']] = $row['status'];
+        }
+        return $role;
+    } catch (PDOException $e) {
+        exit('エラー: ' . $e->getMessage());
+    }
+}
+
+
+
+//管理者IDから管理者名を返す関数
+function get_users_list()
+{
+    $role = array();
+    try {
+        //rolesテーブルから全レコードを取得
+        $db = db_connect();
+        $sql = 'SELECT * FROM users';
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $row) {
+            $role[$row['id']] = $row['name'];
+        }
+        return $role;
+    } catch (PDOException $e) {
+        exit('エラー: ' . $e->getMessage());
+    }
+}
