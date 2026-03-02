@@ -27,8 +27,6 @@ function get_type_list()
         $stmt->execute();
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        // debug_check_array($result);
-        var_dump($result);
         //$resultを使って$role配列を作成
         foreach ($result as $row) {
             $role[$row['id']] = $row['role'];
