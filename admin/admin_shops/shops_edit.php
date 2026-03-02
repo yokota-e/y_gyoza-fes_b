@@ -50,22 +50,22 @@ try {
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">店舗詳細文</label>
-                    <textarea name="description" id="description" class="form-control" rows="6"><?php echo htmlspecialchars($target['description'], ENT_QUOTES, 'UTF-8'); ?></textarea>
+                    <textarea name="description" id="description" class="form-control" rows="6"><?php echo h($target['description']); ?></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="booth" class="form-label">ブース番号</label>
-                    <input type="text" name="booth" id="booth" class="form-control" value="<?php echo htmlspecialchars($target['booth'], ENT_QUOTES, 'UTF-8'); ?>">
+                    <input type="text" name="booth" id="booth" class="form-control" value="<?php echo h($target['booth']); ?>">
                 </div>
 
                 <div class="mb-3">
                     <label for="tel" class="form-label">電話番号</label>
-                    <input type="tel" name="tel" id="tel" class="form-control" value="<?php echo htmlspecialchars($target['tel'], ENT_QUOTES, 'UTF-8'); ?>">
+                    <input type="tel" name="tel" id="tel" class="form-control" value="<?php echo h($target['tel']); ?>">
                 </div>
 
                 <div class="mb-3">
                     <label for="address" class="form-label">メールアドレス</label>
-                    <input type="email" name="address" id="address" class="form-control" value="<?php echo htmlspecialchars($target['address'], ENT_QUOTES, 'UTF-8'); ?>">
+                    <input type="email" name="address" id="address" class="form-control" value="<?php echo h($target['address']); ?>">
                 </div>
 
                 <div class="mb-3">
