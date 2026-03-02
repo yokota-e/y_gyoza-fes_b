@@ -3,57 +3,59 @@
 <?php include('../function/function.php'); ?>
 
 <!doctype html>
-<html lang="ja" >
-  <head>
-    <title>ログイン</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<html lang="ja">
 
-    <style>
-      form  {
-        width: 100%;
-        max-width: 330px;
-        padding: 15px;
-        margin: auto;
-        text-align: center;
-      }
+<head>
+  <title>管理者画面</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
-      #name{
-        margin-bottom: -1px;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-      }
+  <style>
+    form {
+      width: 100%;
+      max-width: 330px;
+      padding: 15px;
+      margin: auto;
+      text-align: center;
+    }
 
-      #password{
-        margin-bottom: 10px;
-        border-top-right-radius: 0;
-        border-top-left-radius: 0;
-      }
+    #name {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
 
-    </style>
+    #password {
+      margin-bottom: 10px;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+    }
+  </style>
 
-  </head>
-  <body>
+</head>
 
-    <main role="main" class="container" style="padding:60px 15px 0">
-      <div>
-        <!-- ここから「本文」-->
+<body>
 
-        <form action="login_do.php" method="post">
-          <h1>サークルサイト</h1>
-          <label for="name" class="sr-only">ユーザー名</label>
-          <input type="text" name="name" id="name" class="form-control" placeholder="ユーザー名" required>
-          <label for="password" class="sr-only" >パスワード</label>
-          <input type="password" id="password" name="password" class="form-control" placeholder="パスワード" required>
-          <input type="submit" class="btn btn-primary btn-block" value="ログイン">
+  <main role="main" class="container" style="padding:60px 15px 0">
+    <div>
+      <!-- ここから「本文」-->
 
-        </form>
-       
+      <form action="login_do.php" method="post">
+        <h1>管理者画面</h1>
+        <label for="name" class="sr-only">ユーザー名</label>
+        <input type="text" name="name" id="name" class="form-control" placeholder="ユーザー名" required>
+        <label for="password" class="sr-only">パスワード</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="パスワード" required>
+        <input type="submit" class="btn btn-primary btn-block" value="ログイン">
 
-        <!-- 本文ここまで -->
-      </div>
-    </main>
+      </form>
 
-    <script src="../js/script.js"></script>
-  </body>
+
+      <!-- 本文ここまで -->
+    </div>
+  </main>
+
+  <script src="../js/script.js"></script>
+</body>
+
 </html>
