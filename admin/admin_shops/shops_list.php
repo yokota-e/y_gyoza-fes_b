@@ -40,7 +40,7 @@ try {
         <div class="card " style="width: 18rem;">
             <ul class="list-group list-group-flush">
                 <?php foreach ($result as $shop): ?>
-                    <?php echo $result['is_deleted'] ?>
+                    <!-- <?php echo $result['is_deleted'] ?> -->
                     <li class="list-group-item"><a href="shops_detail.php?id=<?php echo $shop['id'] ?>"><?php echo $shop['name'] ?></a></li>
 
                 <?php endforeach; ?>
