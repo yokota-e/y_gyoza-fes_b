@@ -41,69 +41,78 @@ try {
     <main class="d-flex flex-column align-items-center m-5">
         <div class="card " style="width: 18rem;">
             <div class="card-body">
-                <dl class="list-group list-group-flush">
+                <form action="shops_del_do.php" method="post">
+                    <dl class="list-group list-group-flush">
 
-                    <dt>店舗ID</dt>
-                    <dd class="list-group-item card-text">
-                        <?php echo $result['id'] ?>
-                    </dd>
-
-
-                    <dt>店舗名</dt>
-                    <dd class="list-group-item card-text">
-                        <?php echo $result['name'] ?>
-                    </dd>
-
-
-                    <dt>店舗詳細</dt>
-                    <dd class="list-group-item card-text">
-                        <?php echo $result['description'] ?>
-                    </dd>
-
-                    <dt>ブース番号</dt>
-                    <dd class="list-group-item card-text">
-                        <?php echo $result['booth'] ?>
-                    </dd>
-
-                    <dt>電話番号</dt>
-                    <dd class="list-group-item card-text">
-                        <?php echo $result['tel'] ?>
-                    </dd>
-
-                    <dt>メールアドレス</dt>
-                    <dd class="list-group-item card-text">
-                        <?php echo $result['address'] ?>
-                    </dd>
-
-                    <dt>追加日時</dt>
-                    <dd class="list-group-item card-text">
-                        <?php echo date('Y年m月d日',  strtotime($result['created_at'])) ?>
-                    </dd>
-
-                    <dt>追加者</dt>
-                    <dd class="list-group-item card-text">
-                        <?php echo $result['created_user_id'] ?>
-                    </dd>
-
-                    <dt>更新日時</dt>
-                    <dd class="list-group-item card-text">
-                        <?php echo date('Y年m月d日',  strtotime($result['updated_at'])) ?>
-                    </dd>
-
-                    <dt>更新者</dt>
-                    <dd class="list-group-item card-text">
-                        <?php echo $result['updated_user_id'] ?>
-                    </dd>
+                        <dt>店舗ID</dt>
+                        <dd class="list-group-item card-text">
+                            <?php echo $result['id'] ?>
+                            <input type="hidden" name=id value=<?php echo $result['id'] ?>>
+                        </dd>
 
 
 
-                </dl>
+                        <dt>店舗名</dt>
+                        <dd class="list-group-item card-text">
+                            <?php echo $result['name'] ?>
+                            <input type="hidden" name=name value=<?php echo $result['name'] ?>>
+                        </dd>
+
+
+                        <dt>店舗詳細</dt>
+                        <dd class="list-group-item card-text">
+                            <?php echo $result['description'] ?>
+                            <input type="hidden" name=description value=<?php echo $result['description'] ?>>
+                        </dd>
+
+                        <dt>ブース番号</dt>
+                        <dd class="list-group-item card-text">
+                            <?php echo $result['booth'] ?>
+                            <input type="hidden" name=booth value=<?php echo $result['booth'] ?>>
+                        </dd>
+
+                        <dt>電話番号</dt>
+                        <dd class="list-group-item card-text">
+                            <?php echo $result['tel'] ?>
+                            <input type="hidden" name=tel value=<?php echo $result['tel'] ?>>
+                        </dd>
+
+                        <dt>メールアドレス</dt>
+                        <dd class="list-group-item card-text">
+                            <?php echo $result['address'] ?>
+                            <input type="hidden" name=address value=<?php echo $result['address'] ?>>
+                        </dd>
+
+                        <dt>追加日時</dt>
+                        <dd class="list-group-item card-text">
+                            <?php echo date('Y年m月d日',  strtotime($result['created_at'])) ?>
+
+                        </dd>
+
+                        <dt>追加者</dt>
+                        <dd class="list-group-item card-text">
+                            <?php echo $result['created_user_id'] ?>
+                        </dd>
+
+                        <dt>更新日時</dt>
+                        <dd class="list-group-item card-text">
+                            <?php echo date('Y年m月d日',  strtotime($result['updated_at'])) ?>
+                            <input type="hidden" name=updated_at value=<?php echo $result['updated_at'] ?>>
+                        </dd>
+
+                        <dt>更新者</dt>
+                        <dd class="list-group-item card-text">
+                            <?php echo $result['updated_user_id'] ?>
+                            <input type="hidden" name=updated_user_id value=<?php echo $result['updated_user_id'] ?>>
+                        </dd>
+                        </dd>
+                    </dl>
             </div>
         </div>
 
         <a href="shops_edit.php?id=<?php echo $id ?>" class="btn btn-outline-primary mt-5">店舗情報を編集する</a>
-        <a href="shops_del_do.php" class="btn btn-outline-danger m-5">店舗を削除する</a>
-
+        <input type="submit" value="店舗を削除する" class="btn btn-outline-danger m-5">
+        </form>
     </main>
     <footer class="text-center m-5">
         <a href="../admin.php" class="btn btn-primary">管理者TOPに戻る</a>
