@@ -8,7 +8,7 @@ if (!empty($_SESSION)) {
     if (!empty($_SESSION['id'])) {
         // TODO: idのチェック（空の場合）
         $id = $_SESSION['id'];
-      
+
         // DBに接続
         try {
             $db = db_connect();
@@ -20,10 +20,10 @@ if (!empty($_SESSION)) {
             $stmt->execute();
 
             // トップページへ画面遷移
-            header('location:../admin.php');
+            header('location:../login.php');
             exit();
         } catch (PDOException $e) {
-            exit('エラー: '.$e->getMessage());
+            exit('エラー: ' . $e->getMessage());
         }
     }
 }
