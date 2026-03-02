@@ -1,15 +1,16 @@
 <?php
 include('./function/function.php');
 
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-$role = $_POST["type"];
-$name = $_POST["name"];
-$name_kana = $_POST["name_kana"];
-$company = $_POST["company"];
-$tel = $_POST["tel"];
-$address = $_POST["address"];
-$shop_name = $_POST["store"];
-$text_body = $_POST["text"];
+    $role = $_POST["type"];
+    $name = $_POST["name"];
+    $name_kana = $_POST["name_kana"];
+    $company = $_POST["company"];
+    $tel = $_POST["tel"];
+    $address = $_POST["address"];
+    $shop_name = $_POST["store"];
+    $text_body = $_POST["text"];
 }
 //必須項目チェック
 if ($role == '' || $name == '' || $name_kana == '' ||  $company == '' || $tel == '' || $address == '' || $shop_name == '' || $text_body == '') {
@@ -34,6 +35,19 @@ try {
     $stmt->bindParam(':body', $text_body, PDO::PARAM_STR);
     //SQL実行
     $stmt->execute();
+
+    $_SESSION["type"] = $role;
+    $_SESSION["name"] = $name;
+    $_SESSION["name_kana"] = $name_kana;
+    $_SESSION["company"] = $company;
+    $_SESSION["tel"] = $tel;
+    $_SESSION["address"] = $address;
+    $_SESSION["store"] = $shop_name;
+    $_SESSION["text"] = $text_body;
+
+    //send_compへ移行する
+    header('Location: send_comp.php');
+    exit();
 } catch (PDOException $e) {
     exit('エラー' . $e->getMessage());
 }
