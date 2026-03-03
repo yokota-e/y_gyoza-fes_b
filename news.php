@@ -42,22 +42,18 @@
                 <div class="l-news-time">
                     <time class="c-news-date" datetime="2030-12-17">
                         2030.12.17 (土)
+                        <!-- ここをphpで反映させる -->
                     </time>
                 </div>
                 <h1 class="c-sub-page-heading c-sub-page-heading--news">ふくおか餃子FES開催決定!</h1>
-                <p class="c-news__text">テキストテキストテキストテキストテキストテキストテキスト</p>
-
+                <!-- ここをphpで反映させる -->
+                <!-- <p class="c-news__text">テキストテキストテキストテキストテキストテキストテキスト</p> -->
                 <div class="l-news-img">
                     <img class="gyoza-img" src="./img/news_img1.png" alt="餃子の写真">
+                    <!-- ここをphpで反映させる -->
                 </div>
                 <p class="c-news__text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-
-                <p class="c-news__subtitle">サブタイトルサブタイトル</p>
-                <p class="c-news__text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-
-                <div class="l-news-img">
-                    <img class="gyoza-img" src="./img/news_img2.png" alt="餃子を食べる女性">
-                </div>
+                <!-- ここをphpで反映させる -->
 
                 <div class="l-btn-area l-news-cat">
                     <a class="c-btn" href="index.php#news">一覧に戻る</a>
@@ -90,7 +86,7 @@
             </div>
         </article>
     </main>
-       <footer class="l-footer">
+    <footer class="l-footer">
         <?php include('./common/footer_bar.php');  ?>
 
     </footer>

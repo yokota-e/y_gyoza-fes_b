@@ -199,6 +199,7 @@ include('function/function.php');
                 <div class="l-wrapper-inner">
                     <div class="scroll">
                         <dl>
+                            <!-- ここから下をphpで反映させる -->
                             <div class="c-news__item">
                                 <a href="./news.php">
                                     <dt><time datetime="2030-02-16">2030.2.16（土）</time></dt>
