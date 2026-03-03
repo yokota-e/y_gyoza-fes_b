@@ -1,5 +1,5 @@
-<!-- カンごみ：2026/03/02 記述 -->
-<!-- カンごみ：http://localhost:8080/y_gyoza-fes_b/admin/admin_form/form_list.php -->
+<!-- カン：2026/03/02 記述 -->
+<!-- http://localhost:8080/y_gyoza-fes_b/admin/admin_form/form_list.php -->
 
 <?php
 require_once __DIR__ . '/../../function/function.php';
