@@ -1,7 +1,8 @@
 <?php
 require_once __DIR__ . '/../../function/function.php';
+require_once __DIR__ . '/../../common/login_check.php';
 
-// session_start();
+
 
 
 if (!empty($_POST)) {
@@ -13,6 +14,11 @@ if (!empty($_POST)) {
         $booth = $_POST['booth'];
         $tel = $_POST['tel'];
         $address = $_POST['address'];
+
+        $get_id = get_users_list();
+
+        $updated_user_id = $_SESSION['id'];
+
 
 
         // TODO: 書式、正規表現のチェック追加
@@ -35,7 +41,7 @@ if (!empty($_POST)) {
 
             // shopsテーブルに登録
 
-            $sql_2 = 'UPDATE shops SET name=:name,description=:description,booth=:booth,tel=:tel,address=:address  WHERE id=:id';
+            $sql_2 = 'UPDATE shops SET name=:name,description=:description,booth=:booth,tel=:tel,address=:address, updated_at=now(),updated_user_id=:updated_user_id WHERE id=:id';
 
             $stmt_2 = $db->prepare($sql_2);
             $stmt_2->bindParam(':name', $name, PDO::PARAM_STR);
@@ -43,6 +49,7 @@ if (!empty($_POST)) {
             $stmt_2->bindParam(':booth', $booth, PDO::PARAM_STR);
             $stmt_2->bindParam(':tel', $tel, PDO::PARAM_STR);
             $stmt_2->bindParam(':address', $address, PDO::PARAM_STR);
+            $stmt_2->bindParam(':updated_user_id', $updated_user_id, PDO::PARAM_INT);
 
             $stmt_2->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt_2->execute();
