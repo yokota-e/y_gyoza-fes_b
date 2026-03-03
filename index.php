@@ -7,16 +7,18 @@ try {
     // プリペアードステートメント作成
     $sql = 'SELECT shops.id AS shop_id,shops.name AS shop_name,menus.name AS menu_name,menus.amount,menus.price,menus.image FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.id';
     $stmt = $db->prepare($sql);
-
-
     // SQLの実行
     $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    $sql_2 = 'SELECT date,title FROM news';
+    $stmt = $db->prepare($sql_2);
+    // SQLの実行
+    $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     exit('エラー:' . $e->getMessage());
 }
-
 
 
 ?>
@@ -52,6 +54,8 @@ try {
 
 <body>
     <header class="l-header">
+        <?php var_dump($result) ?>
+
         <?php include('./common/nav_var.php');  ?>
 
         <div class="c-mv-area">
@@ -98,18 +102,52 @@ try {
                 <h2 class="c-section-title c-section-title--black">出店店舗一覧</h2>
                 <div class="l-scroll-list">
 
-
                     <div class="slideshow">
-                        <?php foreach ($result as $shop): ?>
-                            <div>
-                                <a href="./shop-detail.php?id=<?php echo $shop['shop_id'] ?>"><img src="./img/<?php echo $shop['image'] ?>" alt="<?php echo h($shop['shop_name']) ?>">
-                                    <p class="c-shop-card__name"><?php echo h($shop['shop_name']) ?></p>
-                                </a>
-                            </div>
-                        <?php endforeach; ?>
+                        <div><a href="./shop-detail"><img src="./img/menu01.jpg" alt="肉汁あふれる焼き餃子">
+                                <p class="c-shop-card__name">博多ぎょうざ堂</p>
+                            </a></div>
+                        <div><a href="./shop-detail.php?id=2"><img src="./img/menu02.jpg" alt="ふっくら蒸しあげ餃子">
+                                <p class="c-shop-card__name">中華食堂 蒸々屋</p>
+                            </a></div>
+                        <div><a href="./shop-detail.php?id=3"><img src="./img/menu03.jpg" alt="中華風スープ餃子">
+                                <p class="c-shop-card__name">餃子茶寮 彩香</p>
+                            </a></div>
+                        <div><a href="./shop-detail.php?id=4"><img src="./img/menu04.jpg" alt="カリもち！揚げ餃子">
+                                <p class="c-shop-card__name">餃子バル 風雷坊</p>
+                            </a></div>
+                        <div><a href="./shop-detail.php?id=5"><img src="./img/menu05.jpg" alt="お口に広がる地中海の風">
+                                <p class="c-shop-card__name">Mediterraneo Gyoza</p>
+                            </a></div>
+                        <div><a href="./shop-detail.php?id=6"><img src="./img/menu06.jpg" alt="素材の旨味ひきたつ水餃子">
+                                <p class="c-shop-card__name">餃子処 湯心</p>
+                            </a></div>
+                        <div><a href="./shop-detail.php?id=7"><img src="./img/menu07.jpg" alt="しびうまラー油餃子">
+                                <p class="c-shop-card__name">辛味房 赤龍</p>
+                            </a></div>
                     </div>
-
-
+                    <!-- <div class="c-scroll-btn"><img src="./img/btn_scroll.png" alt=""></div>
+                    <ul class="c-shop-card__list">
+                        <li class="c-shop-card__item">
+                            <a href="./shop-detail.php">
+                                <img src="./img/menu01.jpg" alt="肉汁あふれる焼き餃子" class="c-shop-card__img">
+                                <p class="c-shop-card__name">博多ぎょうざ堂</p>
+                            </a>
+                        </li>
+                        <li class="c-shop-card__item">
+                            <a href="./shop-detail.php">
+                                <img src="./img/menu02.jpg" alt="ふっくら蒸しあげ餃子" class="c-shop-card__img">
+                                <p class="c-shop-card__name">中華食堂 蒸々屋（むしむしや）</p>
+                            </a>
+                        </li>
+                        <li class="c-shop-card__item">
+                            <a href="./shop-detail.php">
+                                <img src="./img/menu03.jpg" alt="中華風スープ餃子" class="c-shop-card__img">
+                                <p class="c-shop-card__name">餃子茶寮 彩香（さいか）</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="c-scroll-btn"><img src="./img/btn_scroll.png" alt=""></div>
+                </div> -->
                     <div class="l-btn-area">
                         <a class="c-btn c-btn--shop-list" href="shop-list.php">店舗一覧へ</a>
                     </div>
@@ -194,42 +232,14 @@ try {
                 <div class="l-wrapper-inner">
                     <div class="scroll">
                         <dl>
-                            <div class="c-news__item">
-                                <a href="./news.php">
-                                    <dt><time datetime="2030-02-16">2030.2.16（土）</time></dt>
-                                    <dd>ふくおか餃子FES開催決定!</dd>
-                                </a>
-                            </div>
-                            <div class="c-news__item">
-                                <a href="./news.php">
-                                    <dt><time datetime="2030-02-23">2030.2.23（土）</time></dt>
-                                    <dd>お得な前売り券は公式アプリで</dd>
-                                </a>
-                            </div>
-                            <div class="c-news__item">
-                                <a href="./news.php">
-                                    <dt><time datetime="2030-02-25">2030.2.25（月）</time></dt>
-                                    <dd>出展者インタビュー 博多で人気の「博多ぎょうざ堂」</dd>
-                                </a>
-                            </div>
-                            <div class="c-news__item">
-                                <a href="./news.php">
-                                    <dt><time datetime="2030-02-16">2030.2.16（土）</time></dt>
-                                    <dd>ふくおか餃子FES開催決定!</dd>
-                                </a>
-                            </div>
-                            <div class="c-news__item">
-                                <a href="./news.php">
-                                    <dt><time datetime="2030-02-16">2030.2.16（土）</time></dt>
-                                    <dd>ふくおか餃子FES開催決定!</dd>
-                                </a>
-                            </div>
-                            <div class="c-news__item">
-                                <a href="./news.php">
-                                    <dt><time datetime="2030-02-16">2030.2.16（土）</time></dt>
-                                    <dd>ふくおか餃子FES開催決定!</dd>
-                                </a>
-                            </div>
+                            <?php foreach ($result as $news):?> 
+                                <div class="c-news__item">
+                                    <a href="./news.php">
+                                        <dt><?php echo date('Y.m.d.date("w")',strtotime($news['date'])) ?></dt>
+                                        <dd><?php echo $news['title'] ?></dd>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
                         </dl>
                     </div>
                 </div>
@@ -240,7 +250,7 @@ try {
         <?php include('./common/footer_bar.php');  ?>
 
     </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
     <script src="./slick/slick.min.js"></script>
     <script src="./js/script.js"></script>
 </body>

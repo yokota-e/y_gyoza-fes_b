@@ -1,3 +1,25 @@
+<?php
+include('function/function.php');
+
+$page_id = htmlspecialchars($_GET['id']);
+
+try {
+    // DBへ接続
+    $db = db_connect();
+    // プリペアードステートメント作成
+    $sql_2 = 'SELECT date,title,image,body FROM news WHERE news.id = :page_id';
+    $stmt = $db->prepare($sql_2);
+    $stmt->bindParam(':page_id', $page_id, PDO::PARAM_STR);
+
+    // SQLの実行
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    exit('エラー:' . $e->getMessage());
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -40,25 +62,16 @@
         <article class="l-wrapper">
             <div class="l-wrapper-inner">
                 <div class="l-news-time">
-                    <time class="c-news-date" datetime="2030-12-17">
-                        2030.12.17 (土)
+                    <time class="c-news-date" datetime="<?php echo date('Y.m.d.date("w")',strtotime($news['date'])) ?>">
+                        <!-- ここをphpで反映させる -->
                     </time>
                 </div>
-                <h1 class="c-sub-page-heading c-sub-page-heading--news">ふくおか餃子FES開催決定!</h1>
-                <p class="c-news__text">テキストテキストテキストテキストテキストテキストテキスト</p>
-
+                <!-- ここをphpで反映させる -->
+                <h1 class="c-sub-page-heading c-sub-page-heading--news"><?php echo $result['title']; ?></h1>
                 <div class="l-news-img">
-                    <img class="gyoza-img" src="./img/news_img1.png" alt="餃子の写真">
+                    <img class="gyoza-img" src="./img/<?php echo $result['image'] ?>" alt="餃子の写真">
                 </div>
-                <p class="c-news__text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-
-                <p class="c-news__subtitle">サブタイトルサブタイトル</p>
-                <p class="c-news__text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-
-                <div class="l-news-img">
-                    <img class="gyoza-img" src="./img/news_img2.png" alt="餃子を食べる女性">
-                </div>
-
+                <p class="c-news__text"><?php echo $result['body'] ?></p>
                 <div class="l-btn-area l-news-cat">
                     <a class="c-btn" href="index.php#news">一覧に戻る</a>
                 </div>
@@ -90,7 +103,7 @@
             </div>
         </article>
     </main>
-       <footer class="l-footer">
+    <footer class="l-footer">
         <?php include('./common/footer_bar.php');  ?>
 
     </footer>
