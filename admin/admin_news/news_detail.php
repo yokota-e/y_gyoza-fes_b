@@ -46,7 +46,7 @@ try {
     <main class="d-flex flex-column align-items-center m-5">
         <div class="card " style="width: 18rem;">
             <div class="card-body">
-                <form action="shops_del_do.php" method="post">
+                <form action="news_del_do.php" method="post">
                     <dl class="list-group list-group-flush">
 
                         <dt>ID</dt>
