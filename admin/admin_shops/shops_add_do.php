@@ -51,6 +51,4 @@ if (!empty($_POST)) {
         }
     }
 }
-
-
 header('location:./shops_list.php');
