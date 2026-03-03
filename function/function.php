@@ -15,6 +15,12 @@ function db_connect()
     return $db;
 }
 
+function PrintDebug($hensu){
+    echo "<pre>";
+    var_dump($hensu);
+    echo "</pre>";
+}
+
 // XSS対策
 function h($str)
 {
