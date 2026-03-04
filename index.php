@@ -11,7 +11,7 @@ try {
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $sql_2 = 'SELECT date,title FROM news';
+    $sql_2 = 'SELECT id,date,title,image,body FROM news';
     $stmt = $db->prepare($sql_2);
     // SQLの実行
     $stmt->execute();
@@ -54,8 +54,6 @@ try {
 
 <body>
     <header class="l-header">
-        <?php var_dump($result) ?>
-
         <?php include('./common/nav_var.php');  ?>
 
         <div class="c-mv-area">
@@ -232,10 +230,10 @@ try {
                 <div class="l-wrapper-inner">
                     <div class="scroll">
                         <dl>
-                            <?php foreach ($result as $news):?> 
+                            <?php foreach ($result as $news): ?>
                                 <div class="c-news__item">
-                                    <a href="./news.php">
-                                        <dt><?php echo date('Y.m.d.date("w")',strtotime($news['date'])) ?></dt>
+                                    <a href="news.php?id=<?php echo $news['id'] ?>">
+                                        <dt><?php echo date('Y.m.d', strtotime($news['date'])) . '(' . ['日','月','火','水','木','金','土'][date('w', strtotime($news['date']))] . ')'; ?></dt>
                                         <dd><?php echo $news['title'] ?></dd>
                                     </a>
                                 </div>

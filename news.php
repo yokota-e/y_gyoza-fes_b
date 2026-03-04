@@ -1,23 +1,36 @@
 <?php
 include('function/function.php');
 
-$page_id = htmlspecialchars($_GET['id']);
+// $page_id = htmlspecialchars($_GET['id']);
+$page_id = $_GET['id'];
 
 try {
     // DBへ接続
     $db = db_connect();
     // プリペアードステートメント作成
-    $sql_2 = 'SELECT date,title,image,body FROM news WHERE news.id = :page_id';
+    $sql_2 = 'SELECT id,date,title,image,body FROM news WHERE id = :page_id';
     $stmt = $db->prepare($sql_2);
-    $stmt->bindParam(':page_id', $page_id, PDO::PARAM_STR);
+    $stmt->bindParam(':page_id', $page_id, PDO::PARAM_INT);
 
     // SQLの実行
     $stmt->execute();
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    // if ($result === false) {
+    //     echo "デバッグ情報: <br>";
+    //     echo "URLから受け取ったID: " . var_export($page_id, true) . "<br>";
+    //     echo "DBからデータが見つかりませんでした。";
+    //     exit;
+    // }
 } catch (PDOException $e) {
     exit('エラー:' . $e->getMessage());
 }
+// 1. 曜日の配列を用意する
+$weeks = ['日', '月', '火', '水', '木', '金', '土'];
+
+// 2. 日付から曜日の番号（0〜6）を取得
+$w = date('w', strtotime($result['date']));
+
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +75,8 @@ try {
         <article class="l-wrapper">
             <div class="l-wrapper-inner">
                 <div class="l-news-time">
-                    <time class="c-news-date" datetime="<?php echo date('Y.m.d.date("w")',strtotime($news['date'])) ?>">
+                    <time class="c-news-date">
+                        <?php echo date('Y.m.d', strtotime($result['date'])) . '(' . $weeks[$w] . ')'; ?>
                         <!-- ここをphpで反映させる -->
                     </time>
                 </div>
