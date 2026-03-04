@@ -89,3 +89,24 @@ function get_users_list()
         exit('エラー: ' . $e->getMessage());
     }
 }
+
+//管理者IDから管理者名を返す関数
+function get_shop_list()
+{
+    $role = array();
+    try {
+        //rolesテーブルから全レコードを取得
+        $db = db_connect();
+        $sql = 'SELECT * FROM shops';
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $row) {
+            $role[$row['id']] = $row['name'];
+        }
+        return $role;
+    } catch (PDOException $e) {
+        exit('エラー: ' . $e->getMessage());
+    }
+}
