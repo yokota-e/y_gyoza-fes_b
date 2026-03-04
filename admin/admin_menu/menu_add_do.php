@@ -115,6 +115,13 @@ if (empty($_SESSION["id"])) {
     $now_user_num = $_SESSION["id"];
 }
 
+if (empty($_POST["mother_shop"])) {
+    $error_message .= "所属店舗が選択されていません";
+    $error_num = 16;
+} else {
+    $mother_shop = $_POST["mother_shop"];
+}
+
 ?>
 <!-- エラー表示処理 -->
 <?php if ($error_num !== 0): ?>
@@ -154,9 +161,9 @@ if (empty($_SESSION["id"])) {
 <?php
 //メイン処理
 if ($error_num == 0) {
-    // shopsテーブルに登録
+    // menusテーブルに登録
     try {
-        $sql = 'INSERT INTO menus (id,name,amount,price,description,image,created_at,created_user_id) VALUES (:id,:name,:amount,:price,:description,:image_name,NOW(),:created_user_id)';
+        $sql = 'INSERT INTO menus (id,name,amount,price,description,image,created_at,created_user_id,mother_shop) VALUES (:id,:name,:amount,:price,:description,:image_name,NOW(),:created_user_id,:mother_shop)';
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':id', $table_row_new_num, PDO::PARAM_INT);
         $stmt->bindParam(':name', $menu_name, PDO::PARAM_STR);
@@ -165,6 +172,7 @@ if ($error_num == 0) {
         $stmt->bindParam(':description', $menu_desc, PDO::PARAM_STR);
         $stmt->bindParam(':image_name', $new_file_name, PDO::PARAM_STR);
         $stmt->bindParam(':created_user_id', $now_user_num, PDO::PARAM_INT);
+        $stmt->bindParam(':mother_shop', $mother_shop, PDO::PARAM_INT);
 
         $stmt->execute();
     } catch (PDOException $e) {
