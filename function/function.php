@@ -15,7 +15,8 @@ function db_connect()
     return $db;
 }
 
-function PrintDebug($hensu){
+function PrintDebug($hensu)
+{
     echo "<pre>";
     var_dump($hensu);
     echo "</pre>";
@@ -83,6 +84,27 @@ function get_users_list()
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
             $role[$row['id']] = $row['name'];
+        }
+        return $role;
+    } catch (PDOException $e) {
+        exit('エラー: ' . $e->getMessage());
+    }
+}
+
+//よくある質問の種別IDから種別名を返す関数
+function get_categories_list()
+{
+    $role = array();
+    try {
+        //rolesテーブルから全レコードを取得
+        $db = db_connect();
+        $sql = 'SELECT * FROM categories';
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //$resultを使って$role配列を作成
+        foreach ($result as $row) {
+            $role[$row['id']] = $row['category'];
         }
         return $role;
     } catch (PDOException $e) {

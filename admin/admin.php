@@ -88,7 +88,10 @@ try {
             <p>お知らせ</p>
             <a href="./admin_news/news_list.php" class="btn btn-primary">一覧</a>
           </li>
-
+          <li class="list-group-item d-flex justify-content-between">
+            <p>よくある質問</p>
+            <a href="./admin_faq/faq_list.php" class="btn btn-primary">一覧</a>
+          </li>
         </ul>
       </div>
       <div>
