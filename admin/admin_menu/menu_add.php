@@ -81,7 +81,7 @@ try {
             </form>
 
             <footer class="text-center m-5 d-flex justify-content-center gap-5">
-                <a href="./shops_list.php" class="btn btn-primary">店舗一覧に戻る</a>
+                <a href="./menu_list.php" class="btn btn-primary">メニュー一覧に戻る</a>
                 <a href="../admin.php" class="btn btn-primary">管理者TOPに戻る</a>
             </footer>
             <!-- 本文ここまで -->
