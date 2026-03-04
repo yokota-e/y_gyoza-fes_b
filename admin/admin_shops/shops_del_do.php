@@ -9,6 +9,9 @@ if (!empty($_POST)) {
 
         $id = $_POST['id'];
 
+
+
+
         // DBに接続
         try {
             $db = db_connect();
