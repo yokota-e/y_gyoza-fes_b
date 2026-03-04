@@ -3,6 +3,27 @@
 <?php
 require_once __DIR__ . '/../../function/function.php';
 require_once __DIR__ . '/../../common/login_check.php';
+
+try {
+    // DBへ接続
+    $db = db_connect();
+    // プリペアードステートメント作成
+    $sql = 'SELECT id,name FROM shops WHERE is_deleted = 0';
+    $stmt = $db->prepare($sql);
+
+    // SQLの実行
+    $stmt->execute();
+
+    $shops_name = $stmt->fetchALL(PDO::FETCH_ASSOC);
+
+
+
+    $user_array = get_users_list();
+} catch (PDOException $e) {
+    exit('エラー:' . $e->getMessage());
+}
+
+
 ?>
 <!doctype html>
 <html lang="ja">
@@ -44,6 +65,16 @@ require_once __DIR__ . '/../../common/login_check.php';
                     <label for="image_file" class="form-label">画像ファイル</label>
                     <input type="file" name="image_file" id="image_file" class="form-control">
                 </div>
+
+                <div class="mb-3">
+                    <label for="mother_shop" class="form-label">出店店舗</label>
+                    <select name="mother_shop" id="mother_shop">
+                        <option value="">選択してください</option>
+                        <?php foreach ($shops_name as $data): ?>
+                            <option value="<?php echo $data['id'] ?>"><?php echo $data['name'] ?></option>
+                        <?php endforeach; ?>
+                </div>
+                </select>
                 <div class="mb-3">
                     <input type="submit" value="登録する" class="btn btn-primary">
                 </div>
