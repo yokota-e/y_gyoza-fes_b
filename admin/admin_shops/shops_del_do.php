@@ -11,22 +11,61 @@ if (!empty($_POST)) {
 
 
 
-
-        // DBに接続
         try {
+            // DBへ接続
             $db = db_connect();
-            // usersテーブルから1行削除するSQL
-            $sql = 'UPDATE shops SET is_deleted= 1 WHERE id = :id';
+            // プリペアードステートメント作成
+            $sql = 'SELECT id,is_deleted FROM shops WHERE :id = id';
             $stmt = $db->prepare($sql);
-            // idをプレースホルダへバインド
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
 
-            // トップページへ画面遷移
-            header('location:./shops_list.php');
-            exit();
+            // SQLの実行
+            $stmt->execute();
+            $deleted_check = $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            exit('エラー: ' . $e->getMessage());
+            exit('エラー:' . $e->getMessage());
+        }
+
+
+
+        // 復元したい時
+        if ($deleted_check['is_deleted'] = 1) {
+            try {
+                $db = db_connect();
+                // usersテーブルから1行削除するSQL
+                $sql = 'UPDATE shops SET is_deleted= 0 WHERE id = :id';
+                $stmt = $db->prepare($sql);
+                // idをプレースホルダへバインド
+                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+                $stmt->execute();
+
+                // トップページへ画面遷移
+                header('location:./shops_list.php');
+                exit();
+            } catch (PDOException $e) {
+                exit('エラー: ' . $e->getMessage());
+            }
+        }
+
+
+        // 削除したい時
+
+        if ($deleted_check['is_deleted'] = 0) {
+            try {
+                $db = db_connect();
+                // usersテーブルから1行削除するSQL
+                $sql = 'UPDATE shops SET is_deleted= 1 WHERE id = :id';
+                $stmt = $db->prepare($sql);
+                // idをプレースホルダへバインド
+                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+                $stmt->execute();
+
+                // トップページへ画面遷移
+                header('location:./shops_list.php');
+                exit();
+            } catch (PDOException $e) {
+                exit('エラー: ' . $e->getMessage());
+            }
         }
     }
 }

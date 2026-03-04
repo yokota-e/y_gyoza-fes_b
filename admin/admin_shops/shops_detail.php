@@ -120,9 +120,17 @@ try {
 
         <a href="shops_edit.php?id=<?php echo $id ?>" class="btn btn-outline-primary mt-5">店舗情報を編集する</a>
         <input type="submit" value="店舗を削除する" class="btn btn-outline-danger m-5">
+
         </form>
+
+        <a href="shops_list.php" class="btn btn-secondary mt-2 mb-4">
+            一覧へ戻る
+        </a>
+
     </main>
+
     <footer class="text-center m-5">
+
         <a href="../admin.php" class="btn btn-primary">管理者TOPに戻る</a>
     </footer>
 </body>
