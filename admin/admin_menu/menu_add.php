@@ -1,4 +1,4 @@
-<!-- http://localhost:8080/gyoza-fes_b/admin/admin_shops/menu_add.php -->
+<!-- http://localhost:8080/y_gyoza-fes_b/admin/admin_shops/menu_add.php -->
 
 <?php
 require_once __DIR__ . '/../../function/function.php';
