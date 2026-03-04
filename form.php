@@ -55,10 +55,9 @@
                             <dd class="c-contact-type__content c-contact-type__content--select">
                                 <select name="inquiry-type" id="inquiry-type" required>
                                     <option value="選択してください" hidden>選択してください</option>
-                                    <option value="1">FESに関すること</option>
-                                    <option value="2">店舗に関すること</option>
-                                    <option value="3">会場に関すること</option>
-                                    <option value="4">その他お問い合わせ</option>
+                                    <option value="1">来場について</option>
+                                    <option value="2">会場について</option>
+                                    <option value="3">その他</option>
                                 </select>
                             </dd>
                         </div>
