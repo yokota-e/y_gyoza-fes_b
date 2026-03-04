@@ -64,17 +64,17 @@ body {
     justify-content: center;
 }
 
-.c-btn{
+.c-btn {
     display: inline-block;
     background-color: var(--color-yellow);
     color: var(--color-black);
     font-weight: bold;
     font-size: var(--fz-16px);
-    padding-inline:72px;
+    padding-inline: 72px;
     padding-block: 16px;
 }
 
-.c-btn-return{
+.c-btn-return {
     display: inline-block;
     background-color: var(--color-white);
     color: var(--color-black);
@@ -94,77 +94,80 @@ a:hover {
 /* ハンバーガーメニュー ここから */
 /* メニューのスタイル */
 .hum-menu {
-  position: fixed;
-  top: 0;
-  right: -100%; /* 初期状態では画面の外に隠れている */
-  width: 300px;
-  height: 100%;
-  background-color: #fafad2;
-  color: #333;
-  transition: right 0.3s ease; /* スライドインのアニメーション */
-  padding: 20px;
-  box-sizing: border-box;
-  z-index: 10;
-  color: var(--color-black);
+    position: fixed;
+    top: 0;
+    right: -100%;
+    /* 初期状態では画面の外に隠れている */
+    width: 300px;
+    height: 100%;
+    background-color: #fafad2;
+    color: #333;
+    transition: right 0.3s ease;
+    /* スライドインのアニメーション */
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 10;
+    color: var(--color-black);
 }
 
 /* メニューが開いているとき */
 .open {
-  right: 0;
+    right: 0;
 }
 
 /* ボタンのスタイル */
 .hamburger {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 30px;
-  cursor: pointer;
-  z-index: 20;
-  
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    cursor: pointer;
+    z-index: 20;
+
 }
 
 .hamburger span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background-color: #333;
-  margin: 5px 0;
-  transition: 0.4s;
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #333;
+    margin: 5px 0;
+    transition: 0.4s;
 }
 
 /* バツ印に変化するスタイル */
 .hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(5px, 5px);
 }
 
 .hamburger.active span:nth-child(2) {
-  opacity: 0;
+    opacity: 0;
 }
 
 .hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* メニューリストのスタイル */
-.hum-menu{
+.hum-menu {
     background-color: color-mix(in srgb, var(--color-red) 70%, transparent 30%);
 }
+
 .hum-menu ul {
-  list-style-type: none;
-  padding: 0;
-  margin-top: 80px;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 80px;
 }
 
 .hum-menu li {
-  padding: 20px 0;
-  border-bottom: 1px solid #fff;
+    padding: 20px 0;
+    border-bottom: 1px solid #fff;
 }
 
 .hum-menu ul li a {
-  color: #fff;
-  text-decoration: none;
-  display: block;
+    color: #fff;
+    text-decoration: none;
+    display: block;
 }
 
 /* ハンバーガーメニュー ここまで */
@@ -327,22 +330,24 @@ a:hover {
 
 /* スライドショー ここから*/
 .slideshow {
-  min-width:  340px;
-  margin: auto;
+    min-width: 340px;
+    margin: auto;
 }
 
 .slideshow img {
-  width: 100%;
-  height: 450px;
-  object-fit: cover;
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
 }
 
 .slideshow .slick-slide {
-  margin: 0 10px;  /* ← ここで左右の間隔を調整 */
+    margin: 0 10px;
+    /* ← ここで左右の間隔を調整 */
 }
 
 .slideshow .slick-list {
-  margin: 0 -10px; /* ← 外側のズレを打ち消す（重要） */
+    margin: 0 -10px;
+    /* ← 外側のズレを打ち消す（重要） */
 }
 
 /* スライドショー ここまで*/
@@ -697,6 +702,12 @@ a:hover {
 ----------------------------------------- */
 .l-section__shop-detail+* {
     margin-block-start: 30px;
+}
+
+.l-section__shop-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
 .c-section-title+* {
@@ -1101,7 +1112,7 @@ a:hover {
     }
 
     /* ハンバーガーメニュー */
-    .hum-menu{
+    .hum-menu {
         display: none;
     }
 
@@ -1177,7 +1188,7 @@ a:hover {
         padding: 10px;
     }
 
-     /* 店舗詳細
+    /* 店舗詳細
     ----------------------------------------- */
     .c-product-introduction {
         flex-direction: row;

@@ -5,11 +5,11 @@ try {
     // DBへ接続
     $db = db_connect();
     // プリペアードステートメント作成
-    $sql = 'SELECT shops.id AS shop_id,shops.name AS shop_name,menus.name AS menu_name,menus.amount,menus.price,menus.image FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.id';
+    $sql = 'SELECT shops.id AS shop_id,shops.name AS shop_name,menus.image FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.id WHERE shops.is_deleted = 0 ORDER BY shops.id ASC';
     $stmt = $db->prepare($sql);
     // SQLの実行
     $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $shops_result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $sql_2 = 'SELECT id,date,title,image,body FROM news WHERE is_deleted = 0 ORDER BY date DESC';
     $stmt = $db->prepare($sql_2);
@@ -102,51 +102,15 @@ try {
                 <div class="l-scroll-list">
 
                     <div class="slideshow">
-                        <div><a href="./shop-detail"><img src="./img/menu01.jpg" alt="肉汁あふれる焼き餃子">
-                                <p class="c-shop-card__name">博多ぎょうざ堂</p>
-                            </a></div>
-                        <div><a href="./shop-detail.php?id=2"><img src="./img/menu02.jpg" alt="ふっくら蒸しあげ餃子">
-                                <p class="c-shop-card__name">中華食堂 蒸々屋</p>
-                            </a></div>
-                        <div><a href="./shop-detail.php?id=3"><img src="./img/menu03.jpg" alt="中華風スープ餃子">
-                                <p class="c-shop-card__name">餃子茶寮 彩香</p>
-                            </a></div>
-                        <div><a href="./shop-detail.php?id=4"><img src="./img/menu04.jpg" alt="カリもち！揚げ餃子">
-                                <p class="c-shop-card__name">餃子バル 風雷坊</p>
-                            </a></div>
-                        <div><a href="./shop-detail.php?id=5"><img src="./img/menu05.jpg" alt="お口に広がる地中海の風">
-                                <p class="c-shop-card__name">Mediterraneo Gyoza</p>
-                            </a></div>
-                        <div><a href="./shop-detail.php?id=6"><img src="./img/menu06.jpg" alt="素材の旨味ひきたつ水餃子">
-                                <p class="c-shop-card__name">餃子処 湯心</p>
-                            </a></div>
-                        <div><a href="./shop-detail.php?id=7"><img src="./img/menu07.jpg" alt="しびうまラー油餃子">
-                                <p class="c-shop-card__name">辛味房 赤龍</p>
-                            </a></div>
+                        <?php foreach ($shops_result as $shop): ?>
+                            <div>
+                                <a href="./shop-detail.php?id=<?php echo $shop['shop_id'] ?>"><img src="./img/<?php echo $shop['image'] ?>" alt="<?php echo h($shop['shop_name']) ?>">
+                                    <p class="c-shop-card__name"><?php echo h($shop['shop_name']) ?></p>
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
-                    <!-- <div class="c-scroll-btn"><img src="./img/btn_scroll.png" alt=""></div>
-                    <ul class="c-shop-card__list">
-                        <li class="c-shop-card__item">
-                            <a href="./shop-detail.php">
-                                <img src="./img/menu01.jpg" alt="肉汁あふれる焼き餃子" class="c-shop-card__img">
-                                <p class="c-shop-card__name">博多ぎょうざ堂</p>
-                            </a>
-                        </li>
-                        <li class="c-shop-card__item">
-                            <a href="./shop-detail.php">
-                                <img src="./img/menu02.jpg" alt="ふっくら蒸しあげ餃子" class="c-shop-card__img">
-                                <p class="c-shop-card__name">中華食堂 蒸々屋（むしむしや）</p>
-                            </a>
-                        </li>
-                        <li class="c-shop-card__item">
-                            <a href="./shop-detail.php">
-                                <img src="./img/menu03.jpg" alt="中華風スープ餃子" class="c-shop-card__img">
-                                <p class="c-shop-card__name">餃子茶寮 彩香（さいか）</p>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="c-scroll-btn"><img src="./img/btn_scroll.png" alt=""></div>
-                </div> -->
+
                     <div class="l-btn-area">
                         <a class="c-btn c-btn--shop-list" href="shop-list.php">店舗一覧へ</a>
                     </div>
@@ -234,7 +198,7 @@ try {
                             <?php foreach ($result as $news): ?>
                                 <div class="c-news__item">
                                     <a href="news.php?id=<?php echo $news['id'] ?>">
-                                        <dt><?php echo date('Y.m.d', strtotime($news['date'])) . '(' . ['日','月','火','水','木','金','土'][date('w', strtotime($news['date']))] . ')'; ?></dt>
+                                        <dt><?php echo date('Y.m.d', strtotime($news['date'])) . '(' . ['日', '月', '火', '水', '木', '金', '土'][date('w', strtotime($news['date']))] . ')'; ?></dt>
                                         <dd><?php echo $news['title'] ?></dd>
                                     </a>
                                 </div>

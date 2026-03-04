@@ -7,6 +7,7 @@ $path_to_img = __DIR__ . "/../../img/";
 
 $id = $_GET['id'];
 $user_array = get_users_list();
+$shop_list = get_shop_list();
 
 // ログインしてる人用
 try {
@@ -82,7 +83,7 @@ try {
                         <!-- kantodo：文字表示する -->
                         <dt>店舗</dt>
                         <dd class="list-group-item card-text">
-                            <?php echo h($result["mother_shop"]) ?>
+                            <?php echo h($shop_list[$result["mother_shop"]]) ?>
                             <input type="hidden" name="mother_shop" value="<?php echo h($result['mother_shop']) ?>">
                         </dd>
 
@@ -116,7 +117,8 @@ try {
         <input type="submit" value="メニューを削除する" class="btn btn-outline-danger m-5">
         </form>
     </main>
-    <footer class="text-center m-5">
+    <footer class="text-center m-5 d-flex justify-content-center gap-5">
+        <a href="./menu_list.php" class="btn btn-primary">メニュー一覧に戻る</a>
         <a href="../admin.php" class="btn btn-primary">管理者TOPに戻る</a>
     </footer>
 </body>

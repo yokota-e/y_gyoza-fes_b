@@ -1,4 +1,4 @@
-<!-- http://localhost:8080/y_gyoza-fes_b/admin/admin_shops/shops_list.php -->
+<!-- http://localhost:8080/y_gyoza-fes_b/admin/admin_shops/shops_deleted_list.php -->
 
 <?php
 require_once __DIR__ . '/../../function/function.php';
@@ -35,23 +35,22 @@ try {
 
 <body>
 
-    <h1 class="text-center m-5">店舗一覧</h1>
+    <h1 class="text-center m-5">削除済みの店舗一覧</h1>
     <main class="d-flex flex-column align-items-center m-5">
         <div class="card " style="width: 18rem;">
             <ul class="list-group list-group-flush">
                 <?php foreach ($result as $shop): ?>
-                    <?php if ($shop['is_deleted'] == 0): ?>
-                        <li class="list-group-item"><a href="shops_detail.php?id=<?php echo h($shop['id']) ?>"><?php echo h($shop['name']) ?></a></li>
+                    <?php if ($shop['is_deleted'] == 1): ?>
+                        <li class="list-group-item">
+                            <p><?php echo h($shop['name']) ?></p><a href="shops_detail.php?id=<?php echo h($shop['id']) ?>">復元する</a>
+                        </li>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
         </div>
-        <div class="d-block">
-            <a href="shops_add.php" class="btn btn-outline-primary mt-4">店舗を追加する</a>
-        </div>
-        <div class="d-block">
-            <a href="shops_deleted_list.php" class="btn btn-outline-secondary m-5">削除済みの店舗を復元する</a>
-        </div>
+        <a href="shops_list.php" class="btn btn-secondary mt-5">
+            一覧へ戻る
+        </a>
     </main>
     <footer class="text-center m-5">
         <a href="../admin.php" class="btn btn-primary">管理者TOPに戻る</a>
