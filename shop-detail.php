@@ -9,7 +9,7 @@ try {
     // DBへ接続
     $db = db_connect();
     // プリペアードステートメント作成
-    $sql = 'SELECT shops.id AS shop_id,shops.name AS shop_name,shops.description AS shop_description,shops.tel,shops.address,menus.name AS menu_name,menus.amount,menus.price,menus.description,menus.image FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.id WHERE shops.id = :page_id';
+    $sql = 'SELECT shops.id AS shop_id,shops.name AS shop_name,shops.description AS shop_description,shops.tel,shops.address,menus.name AS menu_name,menus.amount,menus.price,menus.description,menus.image FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.mother_shop WHERE menus.id = :page_id';
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':page_id', $page_id, PDO::PARAM_STR);
 
