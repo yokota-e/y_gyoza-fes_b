@@ -4,7 +4,7 @@ try {
     // DBへ接続
     $db = db_connect();
     // プリペアードステートメント作成
-    $sql = 'SELECT shops.id AS shop_id,shops.name AS shop_name,menus.name AS menu_name,menus.amount,menus.price,menus.image FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.mother_shop WHERE shops.is_deleted = 0 ORDER BY shops.id ASC';
+    $sql = 'SELECT shops.id AS shop_id,shops.name AS shop_name,menus.name AS menu_name,menus.amount,menus.price,menus.image FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.id WHERE shops.is_deleted = 0 ORDER BY shops.id ASC';
     $stmt = $db->prepare($sql);
 
 

@@ -8,15 +8,24 @@ $page_id = htmlspecialchars($_GET['id']);
 try {
     // DBへ接続
     $db = db_connect();
-    // プリペアードステートメント作成
-    $sql = 'SELECT shops.id AS shop_id,shops.name AS shop_name,shops.description AS shop_description,shops.tel,shops.address,menus.name AS menu_name,menus.amount,menus.price,menus.description,menus.image FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.mother_shop WHERE menus.id = :page_id';
+    // 店舗情報を取得
+    $sql = 'SELECT shops.id AS shop_id,shops.name AS shop_name,shops.description AS shop_description,shops.tel,shops.address,menus.mother_shop FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.mother_shop WHERE shops.id = :page_id';
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':page_id', $page_id, PDO::PARAM_STR);
 
     // SQLの実行
     $stmt->execute();
+    $shops_result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // 商品情報を取得
+    $sql = 'SELECT shops.id AS shop_id,menus.name AS menu_name,menus.amount,menus.price,menus.description,menus.image,menus.mother_shop FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.mother_shop WHERE shops.id = :page_id';
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':page_id', $page_id, PDO::PARAM_STR);
+
+    // SQLの実行
+    $stmt->execute();
+    $menus_result = $stmt->fetchALL(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     exit('エラー:' . $e->getMessage());
 }
@@ -94,34 +103,38 @@ try {
     <main class="l-main">
         <div class="l-wrapper">
             <p class="c-sub-page-heading">店舗詳細</p>
-
+            <!-- 店舗情報 -->
             <div class="l-section__shop-detail">
                 <div class="c-shop-introduction">
                     <div class="c-shop-introduction__description">
-                        <h1 class="c-shop-introduction__description__name"><?php echo $result['shop_name'] ?></h1>
+                        <h1 class="c-shop-introduction__description__name"><?php echo $shops_result['shop_name'] ?></h1>
                         <p class="c-shop-introduction__description__text">
-                            <?php echo $result['shop_description'] ?>
+                            <?php echo $shops_result['shop_description'] ?>
                         </p>
                     </div>
                     <div class="c-shop-introduction__address">
-                        <p class="c-shop-introduction__address__phone-number"><?php echo $result['tel'] ?></p>
-                        <p class="c-shop-introduction__address__email-address"><?php echo $result['address'] ?>/p>
+                        <p class="c-shop-introduction__address__phone-number"><?php echo $shops_result['tel'] ?></p>
+                        <p class="c-shop-introduction__address__email-address"><?php echo $shops_result['address'] ?>/p>
                     </div>
                 </div>
-                <div class="c-product-introduction">
-                    <div class="c-product-introduction__img">
-                        <img src="./img/<?php echo $result['image'] ?>" alt="<?php echo $result['menu_name'] ?>">
-                    </div>
-                    <div class="c-product-introduction__description">
-                        <div class="c-product-introduction__description__detail">
-                            <p><?php echo $result['menu_name'] ?></p>
-                            <p><?php echo $result['amount'] ?>個入り <?php echo $result['price'] ?>円（税込み）</p>
+
+                <!-- 商品情報 -->
+                <?php foreach ($menus_result as $data): ?>
+                    <div class="c-product-introduction">
+                        <div class="c-product-introduction__img">
+                            <img src="./img/<?php echo $data['image'] ?>" alt="<?php echo $data['menu_name'] ?>">
                         </div>
-                        <p class="c-product-introduction__description__text">
-                            <?php echo $result['description'] ?>
-                        </p>
+                        <div class="c-product-introduction__description">
+                            <div class="c-product-introduction__description__detail">
+                                <p><?php echo $data['menu_name'] ?></p>
+                                <p><?php echo $data['amount'] ?>個入り <?php echo $data['price'] ?>円（税込み）</p>
+                            </div>
+                            <p class="c-product-introduction__description__text">
+                                <?php echo $data['description'] ?>
+                            </p>
+                        </div>
                     </div>
-                </div>
+                <?php endforeach; ?>
             </div>
 
             <div class="l-btn-area">
