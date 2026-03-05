@@ -99,12 +99,15 @@ try {
         <ul class="list-group list-group-flush">
           <?php foreach ($result as $user): ?>
 
-            <li class="list-group-item"><?php echo h($user['name']) ?>
+            <li class="list-group-item"><?php echo h($user['name']) ?></li>
 
-            <?php endforeach; ?>
-            <div class="d-block">
-              <a href="./admin_user/user_add.php" class="btn btn-outline-primary m-5">ユーザーを追加する</a>
-            </div>
+          <?php endforeach; ?>
+          <div class="d-block">
+            <a href="./admin_user/user_add.php" class="btn btn-outline-primary mt-4">ユーザーを追加する</a>
+          </div>
+          <div class="d-block">
+            <a href="./admin_user/user_deleted_list.php" class="btn btn-outline-secondary mt-5 mb-5">削除済みのユーザーを復元する</a>
+          </div>
         </ul>
         <div class="card" style="width: 18rem;">
           <div class="card-body">
