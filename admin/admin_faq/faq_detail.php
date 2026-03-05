@@ -34,11 +34,9 @@ $category_array = get_categories_list();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>【管理用】よくある質問詳細</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-
     <h1 class="text-center m-5">よくある質問詳細</h1>
     <main class="d-flex flex-column align-items-center m-5">
         <div class="card " style="width: 25rem;">
@@ -71,7 +69,7 @@ $category_array = get_categories_list();
             </div>
         </div>
 
-        <a href="faq_edit.php?id=<?php echo $id ?>" class="btn btn-outline-primary mt-5">情報を編集する</a>
+        <a href="faq_edit.php?id=<?php echo $id ?>" class="btn btn-outline-primary mt-5">よくある質問を編集する</a>
         <input type="submit" value="この質問を削除する" class="btn btn-outline-danger m-5">
         </form>
     </main>
