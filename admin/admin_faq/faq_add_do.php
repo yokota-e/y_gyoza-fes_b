@@ -11,13 +11,6 @@ if (!empty($_POST)) {
         $question = $_POST['question'];
         $answer = $_POST['answer'];
 
-
-        // TO DO 正規表現のチェック
-        // if (!preg_match('/^[a-zA-Z0-9_-]{4,}$/', $name)) {
-        //     header('location:shops_add.php');
-        //     exit();
-        // }
-
         // TODO: 店舗名が重複していないかチェック
         try {
             $db = db_connect();
