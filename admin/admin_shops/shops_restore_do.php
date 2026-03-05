@@ -15,11 +15,11 @@ if (!empty($_POST)) {
         $stmt->execute();
         $deleted_check = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // 削除したい時
-        if ($deleted_check['is_deleted'] == 0) {
+        // 復元したい時
+        if ($deleted_check['is_deleted'] == 1) {
             try {
                 $db = db_connect();
-                $sql = 'UPDATE shops SET is_deleted= 1 WHERE id = :id';
+                $sql = 'UPDATE shops SET is_deleted= 0 WHERE id = :id';
                 $stmt = $db->prepare($sql);
                 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
                 $stmt->execute();
