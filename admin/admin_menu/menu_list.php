@@ -58,7 +58,10 @@ try {
             </ul>
         </div>
         <div class="d-block">
-            <a href="menu_add.php" class="btn btn-outline-primary m-5">メニューを追加する</a>
+            <a href="menu_add.php" class="btn btn-outline-primary mt-4">メニューを追加する</a>
+        </div>
+        <div class="d-block">
+            <a href="menu_deleted_list.php" class="btn btn-outline-secondary m-5">削除済みのメニューを復元する</a>
         </div>
     </main>
     <footer class="text-center m-5">
