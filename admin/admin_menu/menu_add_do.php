@@ -16,7 +16,8 @@ $param .= mt_rand();
 <?php
 //エラー用の変数宣言
 $error_message = "";
-$error_num = 0;
+$error_num_ary = array();
+$error_num_ary[0] = 0;
 
 //shopsテーブルの列数取得
 try {
@@ -40,7 +41,8 @@ try {
     $result = $stmt->fetch(PDO::FETCH_NUM);
     if ($result[0] !== 0) {
         $error_message .= "メニュー名が同じものが登録されています！！！";
-        $error_num = 1;
+        $error_num_ary[1] = 1;
+        $error_num_ary[0] = 1;
     }
 } catch (PDOException $e) {
     exit('エラー（shopsテーブルの重複確認時）: ' . $e->getMessage());
@@ -48,39 +50,65 @@ try {
 
 if (empty($_POST)) {
     $error_message .= "POST通信ができていません/";
-    $error_num = 10;
+    $error_num_ary[10] = 10;
+    $error_num_ary[0] = 1;
 }
 if (empty($_POST['name'])) {
     $error_message .= "商品名が取得できていません/";
-    $error_num = 12;
+    $error_num_ary[12] = 12;
+    $error_num_ary[0] = 1;
 } else {
     $menu_name = $_POST["name"];
 }
 if (empty($_POST["amount"])) {
     $error_message .= "商品個数が取得できていません/";
-    $error_num = 13;
+    $error_num_ary[13] = 13;
+    $error_num_ary[0] = 1;
 } else {
-    $menu_amount = $_POST["amount"];
+    $menu_amount = intval($_POST["amount"]);
+    if(is_int($menu_amount) && ($menu_amount > 0)){
+    }else{
+        $error_message .= "商品個数は正の値で整数値を入力してください/";
+        $error_num_ary[60] = 60;
+        $error_num_ary[0] = 1;
+    }
 }
 if (empty($_POST["price"])) {
     $error_message .= "商品の値段が取得できていません/";
-    $error_num = 14;
+    $error_num_ary[14] = 14;
+    $error_num_ary[0] = 1;
 } else {
-    $menu_price = $_POST["price"];
+    $menu_price = intval($_POST["price"]);
+    if (is_int($menu_price) && ($menu_price > 0)) {
+    } else {
+        $error_message .= "商品の値段は正の値で整数値を入力してください/";
+        $error_num_ary[61] = 61;
+        $error_num_ary[0] = 1;
+    }
 }
 if (empty($_POST["description"])) {
     $error_message .= "商品詳細が取得できていません/";
-    $error_num = 15;
+    $error_num_ary[15] = 15;
+    $error_num_ary[0] = 1;
 } else {
     $menu_desc = $_POST["description"];
 }
+if (empty($_POST["mother_shop"])) {
+    $error_message .= "所属店舗が選択されていません";
+    $error_num_ary[16] = 16;
+    $error_num_ary[0] = 1;
+} else {
+    $mother_shop = $_POST["mother_shop"];
+}
 if (empty($_FILES)) {
     $error_message .= "FILE通信ができていません/";
-    $error_num = 30;
+    $error_num_ary[30] = 30;
+    $error_num_ary[0] = 1;
 }
 if (!is_uploaded_file($_FILES["image_file"]["tmp_name"])) {
-    $error_message .= "ファイルがアップロードできていません(tmpファイルがないです)/";
-    $error_num = 31;
+    $error_message .= "ファイルをアップロードしてください(tmpファイルがないです)/";
+    $error_num_ary[31] = 31;
+    $error_num_ary[0] = 1;
 } else {
     $image_tmp_path = $_FILES["image_file"]["tmp_name"];
     //ファイル命名処理
@@ -99,34 +127,30 @@ if (!is_uploaded_file($_FILES["image_file"]["tmp_name"])) {
             break;
 
         default:
+            $file_type = ".error";
             $error_message .= "ファイルが画像ではありません";
-            $error_num = 32;
+            $error_num_ary[32] = 32;
+            $error_num_ary[0] = 1;
             break;
     }
     $new_file_name =  $param . "_" . "menu" . $table_row_new_num . $file_type;
     if (!move_uploaded_file($image_tmp_path, $path_to_img . $new_file_name)) {
         $error_message .= "ファイルのアップロードに失敗しました。";
-        $error_num = 50;
+        $error_num_ary[50] = 50;
+        $error_num_ary[0] = 1;
     }
 }
 
 if (empty($_SESSION["id"])) {
     $error_message .= "セッションの情報（ユーザーのID）を取得できていません";
-    $error_num = 40;
+    $error_num_ary[40] = 40;
+    $error_num_ary[0] = 1;
 } else {
     $now_user_num = $_SESSION["id"];
 }
-
-if (empty($_POST["mother_shop"])) {
-    $error_message .= "所属店舗が選択されていません";
-    $error_num = 16;
-} else {
-    $mother_shop = $_POST["mother_shop"];
-}
-
 ?>
 <!-- エラー表示処理 -->
-<?php if ($error_num !== 0): ?>
+<?php if ($error_num_ary[0] !== 0): ?>
     <!DOCTYPE html>
     <html lang="ja">
 
@@ -141,7 +165,7 @@ if (empty($_POST["mother_shop"])) {
     <body>
         <main>
             <div class="card shadow mt-5">
-                <div class="card-header bg-danger text-white text-center fs-3">エラー！エラーナンバー：<?php echo $error_num ?></div>
+                <div class="card-header bg-danger text-white text-center fs-3">エラー！エラーナンバー：<?php foreach($error_num_ary as $key => $num){if($key != 0){echo $num . "/";}} ?></div>
                 <div class="card-body">
                     <h2><?php echo $error_message ?></h2>
                     <a href="menu_list.php" class="btn btn-secondary me-3">
@@ -162,7 +186,7 @@ if (empty($_POST["mother_shop"])) {
 ------------------------------------------------------------------------->
 <?php
 //メイン処理
-if ($error_num == 0) {
+if ($error_num_ary[0] == 0) {
     // menusテーブルに登録
     try {
         $sql = 'INSERT INTO menus (id,name,amount,price,description,image,created_at,created_user_id,mother_shop) VALUES (:id,:name,:amount,:price,:description,:image_name,NOW(),:created_user_id,:mother_shop)';
