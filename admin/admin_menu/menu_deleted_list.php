@@ -9,14 +9,9 @@ require_once __DIR__ . '/../../common/login_check.php';
 try {
     // DBへ接続
     $db = db_connect();
-    // プリペアードステートメント作成
     $sql = 'SELECT id,name,is_deleted FROM menus WHERE is_deleted = 1 ORDER BY id ASC';
     $stmt = $db->prepare($sql);
-
-
-    // SQLの実行
     $stmt->execute();
-
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     exit('エラー:' . $e->getMessage());
@@ -47,7 +42,6 @@ try {
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <p><?php echo h($menu['name']) ?></p>
                                 <a href="menu_restore_do.php?id=<?php echo h($menu['id']) ?>" class="btn btn-outline-primary">復元する</a>
-
                             </li>
                         <?php endif; ?>
                     <?php endforeach; ?>

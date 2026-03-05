@@ -88,7 +88,6 @@ try {
                 <a href="./menu_list.php" class="btn btn-primary">メニュー一覧に戻る</a>
                 <a href="../admin.php" class="btn btn-primary">管理者TOPに戻る</a>
             </footer>
-            <!-- 本文ここまで -->
         </div>
     </main>
 

@@ -13,14 +13,10 @@ require_once __DIR__ . '/../../common/login_check.php';
 <?php
 // menuテーブルから読み込み
 try {
-    // DBへ接続
     $db = db_connect();
-    // プリペアードステートメント作成
     $sql = 'SELECT id,name,is_deleted FROM menus ORDER BY id ASC';
     $stmt = $db->prepare($sql);
-    // SQLの実行
     $stmt->execute();
-
     $menu_list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     exit('エラー（menuテーブル読み込み時）:' . $e->getMessage());
