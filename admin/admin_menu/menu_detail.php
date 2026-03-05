@@ -41,7 +41,7 @@ try {
     <main class="d-flex flex-column align-items-center m-5">
         <div class="card " style="width: 18rem;">
             <div class="card-body">
-                <form action="menu_del_do.php" method="post">
+                <form action="menu_del_do.php" method="post" onsubmit="return confirm('削除してよろしいですか？')">
                     <dl class="list-group list-group-flush">
 
                         <dt>メニューID</dt>
