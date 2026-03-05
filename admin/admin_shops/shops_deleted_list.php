@@ -41,8 +41,10 @@ try {
             <ul class="list-group list-group-flush">
                 <?php foreach ($result as $shop): ?>
                     <?php if ($shop['is_deleted'] == 1): ?>
-                        <li class="list-group-item d-flex justify-content-between">
-                            <a href="shops_detail_deleted.php?id=<?php echo h($shop['id']) ?>"><?php echo h($shop['name']) ?></a>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <p><?php echo h($shop['name']) ?></p>
+                            <a href="shops_restore_do.php?id=<?php echo h($shop['id']) ?>" class="btn btn-outline-primary">復元する</a>
+
                         </li>
                     <?php endif; ?>
                 <?php endforeach; ?>
