@@ -53,9 +53,6 @@ try {
                 <?php endif; ?>
             </ul>
         </div>
-        <a href="shops_list.php" class="btn btn-secondary mt-5">
-            一覧へ戻る
-        </a>
     </main>
     <footer class="text-center m-5">
         <a href="../admin.php" class="btn btn-primary">管理者TOPに戻る</a>
