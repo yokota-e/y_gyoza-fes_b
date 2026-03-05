@@ -13,8 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $text_body = $_POST["text"];
 }
 //必須項目チェック
-if ($role == '' || $name == '' || $name_kana == '' ||  $company == '' || $tel == '' || $address == '' || $shop_name == '' || $text_body == '') {
-    // header("Location: form_addition.php");
+if ($role == '' || $name == '' || $name_kana == ''  || $address == '' ||  $text_body == '') {
+    header('Location: form.php');
     exit();
 }
 
