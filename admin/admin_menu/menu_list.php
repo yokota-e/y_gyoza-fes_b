@@ -23,7 +23,7 @@ try {
 
     $menu_list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    exit('エラー（contactテーブル読み込み時）:' . $e->getMessage());
+    exit('エラー（menuテーブル読み込み時）:' . $e->getMessage());
 }
 ?>
 
@@ -50,7 +50,6 @@ try {
         <div class="card " style="width: 18rem;">
             <ul class="list-group list-group-flush">
                 <?php foreach ($menu_list as $menu_data): ?>
-                    <!-- kan_to_do：is_detetedが１の時消えるか確認 -->
                     <?php if ($menu_data['is_deleted'] == 0): ?>
                         <li class="list-group-item"><a href="menu_detail.php?id=<?php echo h($menu_data['id']) ?>"><?php echo h($menu_data['name']) ?></a></li>
                     <?php endif; ?>

@@ -13,62 +13,72 @@ $param .= mt_rand();
 <?php
 //エラー用の変数宣言
 $error_message = "";
-$error_num = 0;
-$id = $_POST["id"];
-//menusテーブルの重複確認
-try {
-    $db = db_connect();
-    $sql = 'SELECT COUNT(name) FROM menus WHERE name=:name AND id!=:id';
-    $stmt = $db->prepare($sql);
-    $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
-    $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_NUM);
-    if ($result[0] !== 0) {
-        $error_message .= "メニュー名が同じものが登録されています！！！";
-        $error_num = 1;
-    }
-} catch (PDOException $e) {
-    exit('エラー（menusテーブルの重複確認時）: ' . $e->getMessage());
-}
+$error_num_ary[0] = 0;
+
 
 if (empty($_POST)) {
     $error_message .= "POST通信ができていません/";
-    $error_num = 10;
+    $error_num_ary[10] = 10;
+    $error_num_ary[0] = 1;
 }
 if (empty($_POST['id'])) {
     $error_message .= "idが取得できていません/";
-    $error_num = 11;
+    $error_num_ary[11] = 11;
+    $error_num_ary[0] = 1;
 } else {
     $id = $_POST["id"];
 }
 if (empty($_POST['name'])) {
     $error_message .= "商品名が取得できていません/";
-    $error_num = 12;
+    $error_num_ary[12] = 12;
+    $error_num_ary[0] = 1;
 } else {
     $menu_name = $_POST["name"];
 }
 if (empty($_POST["amount"])) {
     $error_message .= "商品個数が取得できていません/";
-    $error_num = 13;
+    $error_num_ary[13] = 13;
+    $error_num_ary[0] = 1;
 } else {
-    $menu_amount = $_POST["amount"];
+    $menu_amount = intval($_POST["amount"]);
+    if (is_int($menu_amount) && ($menu_amount > 0)) {
+    } else {
+        $error_message .= "商品個数は正の値で整数値を入力してください/";
+        $error_num_ary[60] = 60;
+        $error_num_ary[0] = 1;
+    }
 }
 if (empty($_POST["price"])) {
     $error_message .= "商品の値段が取得できていません/";
-    $error_num = 14;
+    $error_num_ary[14] = 14;
+    $error_num_ary[0] = 1;
 } else {
-    $menu_price = $_POST["price"];
+    $menu_price = intval($_POST["price"]);
+    if (is_int($menu_price) && ($menu_price > 0)) {
+    } else {
+        $error_message .= "商品の値段は正の値で整数値を入力してください/";
+        $error_num_ary[61] = 61;
+        $error_num_ary[0] = 1;
+    }
 }
 if (empty($_POST["description"])) {
     $error_message .= "商品詳細が取得できていません/";
-    $error_num = 15;
+    $error_num_ary[15] = 15;
+    $error_num_ary[0] = 1;
 } else {
     $menu_desc = $_POST["description"];
 }
+if (empty($_POST["mother_shop"])) {
+    $error_message .= "所属店舗が選択されていません";
+    $error_num[16] = 16;
+    $error_num_ary[0] = 1;
+} else {
+    $mother_shop = $_POST["mother_shop"];
+}
 if (empty($_FILES)) {
     $error_message .= "FILE通信ができていません/";
-    $error_num = 30;
+    $error_num_ary[30] = 30;
+    $error_num_ary[0] = 1;
 }
 if (!is_uploaded_file($_FILES["image_file"]["tmp_name"])) {
     //menusテーブからファイル名取得
@@ -78,7 +88,6 @@ if (!is_uploaded_file($_FILES["image_file"]["tmp_name"])) {
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_STR);
         $stmt->execute();
-        // $menu_file_name = $param;
         $menu_file_name = $stmt->fetchColumn();
     } catch (PDOException $e) {
         exit('エラー（menusテーブからファイル名取得時）: ' . $e->getMessage());
@@ -102,33 +111,47 @@ if (!is_uploaded_file($_FILES["image_file"]["tmp_name"])) {
 
         default:
             $error_message .= "ファイルが画像ではありません";
-            $error_num = 32;
+            $error_num_ary[32] = 32;
+            $error_num_ary[0] = 1;
+            $file_type = ".error";
             break;
     }
     $menu_file_name = $param . "_" . "menu" . $id . $file_type;
     if (!move_uploaded_file($image_tmp_path, $path_to_img . $menu_file_name)) {
         $error_message .= "ファイルのアップロードに失敗しました。";
-        $error_num = 50;
+        $error_num[50] = 50;
+        $error_num_ary[0] = 1;
     }
 }
 
 if (empty($_SESSION["id"])) {
     $error_message .= "セッションの情報（ユーザーのID）を取得できていません";
-    $error_num = 40;
+    $error_num[40] = 40;
+    $error_num_ary[0] = 1;
 } else {
     $now_user_num = $_SESSION["id"];
 }
 
-if (empty($_POST["mother_shop"])) {
-    $error_message .= "所属店舗が選択されていません";
-    $error_num = 16;
-} else {
-    $mother_shop = $_POST["mother_shop"];
+//menusテーブルの重複確認
+try {
+    $db = db_connect();
+    $sql = 'SELECT COUNT(name) FROM menus WHERE name=:name AND id!=:id';
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_NUM);
+    if ($result[0] !== 0) {
+        $error_message .= "メニュー名が同じものが登録されています！！！";
+        $error_num[1] = 1;
+        $error_num_ary[0] = 1;
+    }
+} catch (PDOException $e) {
+    exit('エラー（menusテーブルの重複確認時）: ' . $e->getMessage());
 }
-
 ?>
 <!-- エラー表示処理 -->
-<?php if ($error_num !== 0): ?>
+<?php if ($error_num_ary[0] !== 0): ?>
     <!DOCTYPE html>
     <html lang="ja">
 
@@ -143,7 +166,7 @@ if (empty($_POST["mother_shop"])) {
     <body>
         <main>
             <div class="card shadow mt-5">
-                <div class="card-header bg-danger text-white text-center fs-3">エラー！エラーナンバー：<?php echo $error_num ?></div>
+                <div class="card-header bg-danger text-white text-center fs-3">エラー！エラーナンバー：<?php foreach ($error_num_ary as $key => $num) {if ($key != 0) {echo $num . "/";}} ?></div>
                 <div class="card-body">
                     <h2><?php echo $error_message ?></h2>
                     <a href="menu_list.php" class="btn btn-secondary me-3">
@@ -164,7 +187,7 @@ if (empty($_POST["mother_shop"])) {
 ------------------------------------------------------------------------->
 <?php
 //メイン処理
-if ($error_num == 0) {
+if ($error_num_ary[0] == 0) {
     // menusテーブルに登録
     try {
         $sql = 'UPDATE menus SET name=:name, amount=:amount, price=:price, description=:description, image=:image, updated_at=NOW(), updated_user_id=:updated_user_id, mother_shop=:mother_shop WHERE id=:id';

@@ -80,7 +80,6 @@ try {
                             <input type="hidden" name="image" value="<?php echo h($result['image']) ?>">
                         </dd>
 
-                        <!-- kantodo：文字表示する -->
                         <dt>店舗</dt>
                         <dd class="list-group-item card-text">
                             <?php echo h($shop_list[$result["mother_shop"]]) ?>
