@@ -3,10 +3,10 @@ require_once __DIR__ . '/../../function/function.php';
 require_once __DIR__ . '/../../common/login_check.php';
 
 
-if (!empty($_POST)) {
-    // POST送信されたとき
-    if (!empty($_POST['id'])) {
-        $id = $_POST['id'];
+if (!empty($_GET)) {
+
+    if (!empty($_GET['id'])) {
+        $id = $_GET['id'];
 
         $db = db_connect();
         $sql = 'SELECT id,is_deleted FROM faq WHERE :id = id';
@@ -15,11 +15,11 @@ if (!empty($_POST)) {
         $stmt->execute();
         $deleted_check = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // 削除したい時
-        if ($deleted_check['is_deleted'] == 0) {
+        // 復元したい時
+        if ($deleted_check['is_deleted'] == 1) {
             try {
                 $db = db_connect();
-                $sql = 'UPDATE faq SET is_deleted= 1 WHERE id = :id';
+                $sql = 'UPDATE faq SET is_deleted= 0 WHERE id = :id';
                 $stmt = $db->prepare($sql);
                 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
                 $stmt->execute();
