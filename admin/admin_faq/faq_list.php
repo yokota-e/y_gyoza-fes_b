@@ -1,4 +1,4 @@
-<!-- http://localhost:8080/y_gyoza-fes_b/admin/admin_shops/shops_list.php -->
+<!-- http://localhost:8080/y_gyoza-fes_b/admin/faq_shops/shops_list.php -->
 
 <?php
 require_once __DIR__ . '/../../function/function.php';
@@ -37,7 +37,7 @@ try {
 
     <h1 class="text-center m-5">よくある質問一覧</h1>
     <main class="d-flex flex-column align-items-center m-5">
-        <div class="card " style="width: 18rem;">
+        <div class="card " style="width: 25rem;">
             <ul class="list-group list-group-flush">
                 <?php foreach ($result as $faq): ?>
                     <?php if ($faq['is_deleted'] == 0): ?>
@@ -47,7 +47,10 @@ try {
             </ul>
         </div>
         <div class="d-block">
-            <a href="faq_add.php" class="btn btn-outline-primary m-5">よくある質問を追加する</a>
+            <a href="faq_add.php" class="btn btn-outline-primary mt-4">よくある質問を追加する</a>
+        </div>
+        <div class="d-block">
+            <a href="faq_deleted_list.php" class="btn btn-outline-secondary m-5">削除済みのよくある質問を復元する</a>
         </div>
     </main>
     <footer class="text-center m-5">

@@ -41,9 +41,9 @@ $category_array = get_categories_list();
 
     <h1 class="text-center m-5">よくある質問詳細</h1>
     <main class="d-flex flex-column align-items-center m-5">
-        <div class="card " style="width: 18rem;">
+        <div class="card " style="width: 25rem;">
             <div class="card-body">
-                <form action="faq_del_do.php" method="post">
+                <form action="faq_del_do.php" method="post" onsubmit="return confirm('削除してよろしいですか？')">
                     <dl class="list-group list-group-flush">
                         <dt>ID</dt>
                         <dd class="list-group-item card-text">
@@ -71,8 +71,8 @@ $category_array = get_categories_list();
             </div>
         </div>
 
-        <a href="faq_edit.php?id=<?php echo $id ?>" class="btn btn-outline-primary mt-5">店舗情報を編集する</a>
-        <input type="submit" value="店舗を削除する" class="btn btn-outline-danger m-5">
+        <a href="faq_edit.php?id=<?php echo $id ?>" class="btn btn-outline-primary mt-5">情報を編集する</a>
+        <input type="submit" value="この質問を削除する" class="btn btn-outline-danger m-5">
         </form>
     </main>
     <footer class="text-center m-5">
