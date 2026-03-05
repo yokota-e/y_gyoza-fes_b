@@ -27,7 +27,7 @@ if (!empty($_POST)) {
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
             $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_NUM); //キーが連番の配列で取り出す
+            $result = $stmt->fetch(PDO::FETCH_NUM);
 
             if ($result[0] !== 0) {
                 header('location:news_edit.php?id=' . $id);

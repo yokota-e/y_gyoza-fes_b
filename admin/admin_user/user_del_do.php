@@ -2,11 +2,11 @@
 require_once __DIR__ . '/../../function/function.php';
 require_once __DIR__ . '/../../common/login_check.php';
 
-// TODO: データ受け取り
+// データ受け取り
 if (!empty($_SESSION)) {
     // POST送信されたとき
     if (!empty($_SESSION['id'])) {
-        // TODO: idのチェック（空の場合）
+        // idのチェック
         $id = $_SESSION['id'];
 
         // DBに接続

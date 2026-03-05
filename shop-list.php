@@ -6,11 +6,8 @@ try {
     // プリペアードステートメント作成
     $sql = 'SELECT shops.id AS shop_id,shops.name AS shop_name,menus.name AS menu_name,menus.amount,menus.price,menus.image FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.id WHERE shops.is_deleted = 0 ORDER BY shops.id ASC';
     $stmt = $db->prepare($sql);
-
-
     // SQLの実行
     $stmt->execute();
-
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     exit('エラー:' . $e->getMessage());
@@ -86,9 +83,9 @@ try {
 
     <footer class="l-footer">
         <?php include('./common/footer_bar.php');  ?>
-
     </footer>
     <script src="./js/script.js"></script>
+    
 </body>
 
 </html>

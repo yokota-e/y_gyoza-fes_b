@@ -13,10 +13,8 @@ try {
     $sql = 'SELECT * FROM faq WHERE id = :id';
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-
     // SQLの実行
     $stmt->execute();
-
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     exit('エラー:' . $e->getMessage());

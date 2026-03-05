@@ -24,14 +24,13 @@ if (!empty($_POST)) {
             $stmt = $db->prepare($sql);
             $stmt->bindParam(':title', $title, PDO::PARAM_STR);
             $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_NUM); //キーが連番の配列で取り出す
+            $result = $stmt->fetch(PDO::FETCH_NUM);
 
             if ($result[0] !== 0) {
                 header('location:news_add.php');
                 exit();
             }
 
-            // 今から登録するレコードのIDを、画像のファイル名に入れ込みたい
             // レコードIDを取得
             $sql = 'SELECT id FROM news ORDER BY id DESC LIMIT 1';
             $stmt = $db->prepare($sql);
@@ -70,7 +69,6 @@ if (!empty($_POST)) {
 
 
             // newsテーブルに登録
-
             $sql_2 = 'INSERT INTO news (user_id,title,image,body,date) VALUES (:user_id,:title,:image,:body,now()) ';
             $stmt_2 = $db->prepare($sql_2);
             $stmt_2->bindParam(':user_id', $user_id, PDO::PARAM_INT);

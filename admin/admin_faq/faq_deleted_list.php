@@ -12,8 +12,6 @@ try {
     // プリペアードステートメント作成
     $sql = 'SELECT id,question,is_deleted FROM faq WHERE is_deleted = 1 ORDER BY id ASC';
     $stmt = $db->prepare($sql);
-
-
     // SQLの実行
     $stmt->execute();
 

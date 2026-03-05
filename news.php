@@ -11,17 +11,9 @@ try {
     $sql_2 = 'SELECT id,date,title,image,body FROM news WHERE id = :page_id';
     $stmt = $db->prepare($sql_2);
     $stmt->bindParam(':page_id', $page_id, PDO::PARAM_INT);
-
     // SQLの実行
     $stmt->execute();
-
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    // if ($result === false) {
-    //     echo "デバッグ情報: <br>";
-    //     echo "URLから受け取ったID: " . var_export($page_id, true) . "<br>";
-    //     echo "DBからデータが見つかりませんでした。";
-    //     exit;
-    // }
 } catch (PDOException $e) {
     exit('エラー:' . $e->getMessage());
 }
@@ -30,7 +22,6 @@ $weeks = ['日', '月', '火', '水', '木', '金', '土'];
 
 // 2. 日付から曜日の番号（0〜6）を取得
 $w = date('w', strtotime($result['date']));
-
 ?>
 
 <!DOCTYPE html>

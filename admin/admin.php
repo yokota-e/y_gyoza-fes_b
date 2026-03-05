@@ -66,10 +66,8 @@ try {
   <!-- <?php include('navbar.php'); ?> -->
 
   <main role="main" class="container" style="padding:60px 15px 0">
-
-    <!-- ここから「本文」-->
     <h1 class="text-center m-5">管理者画面</h1>
-    <main class="d-flex flex-column align-items-center m-5">
+    <div class="d-flex flex-column align-items-center m-5">
       <div class="card" style="width: 18rem;">
         <ul class="list-group list-group-flush">
           <li class="list-group-item d-flex justify-content-between">
@@ -143,14 +141,7 @@ try {
       <div class="m-5">
         <a href="./logout.php" class="btn btn-warning">ログアウトする</a>
       </div>
-    </main>
-
-
-
-
-
-    <!-- 本文ここまで -->
-
+    </div>
   </main>
 
   <script src="../js/script.js"></script>

@@ -15,8 +15,6 @@
     <!-- <?php include('navbar.php'); ?> -->
 
     <main role="main" class="container" style="padding:60px 15px 0">
-
-        <!-- ここから「本文」-->
         <h1 class="my-5">新規ユーザー登録</h1>
       <form action="user_add_do.php" method="post">
         <div class="row">
@@ -34,9 +32,6 @@
         </div>
       </form>
       <a href="../admin.php">管理者画面に戻る</a>
-
-        <!-- 本文ここまで -->
- 
     </main>
 
     <script src="../js/script.js"></script>

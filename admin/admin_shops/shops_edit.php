@@ -36,8 +36,6 @@ try {
 
     <main class="d-flex flex-column align-items-center m-5">
         <div>
-            <!-- ここから「本文」-->
-
             <h1 class="my-5">店舗詳細 - 編集</h1>
             <form action="shops_edit_do.php" method="post">
 
@@ -74,7 +72,6 @@ try {
                 </div>
             </form>
             <a href="../admin.php" class="btn btn-primary">管理者画面に戻る</a>
-            <!-- 本文ここまで -->
         </div>
     </main>
 

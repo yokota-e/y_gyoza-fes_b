@@ -12,11 +12,8 @@ try {
     // プリペアードステートメント作成
     $sql = 'SELECT id,title,is_deleted FROM news WHERE is_deleted = 1 ORDER BY id ASC';
     $stmt = $db->prepare($sql);
-
-
     // SQLの実行
     $stmt->execute();
-
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     exit('エラー:' . $e->getMessage());

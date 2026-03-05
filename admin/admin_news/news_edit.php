@@ -4,7 +4,6 @@
 require_once __DIR__ . '/../../function/function.php';
 require_once __DIR__ . '/../../common/login_check.php';
 // DBに接続
-// TODO: ID取得とバリデーション
 
 $id = $_GET['id'];
 
@@ -65,7 +64,6 @@ try {
                 </div>
             </form>
             <a href="../admin.php">管理者画面に戻る</a>
-            <!-- 本文ここまで -->
         </div>
     </main>
 

@@ -38,8 +38,6 @@
 
   <main role="main" class="container" style="padding:60px 15px 0">
     <div>
-      <!-- ここから「本文」-->
-
       <form action="login_do.php" method="post">
         <h1>管理者画面</h1>
         <label for="name" class="sr-only">ユーザー名</label>
@@ -49,9 +47,6 @@
         <input type="submit" class="btn btn-primary btn-block" value="ログイン">
 
       </form>
-
-
-      <!-- 本文ここまで -->
     </div>
   </main>
 

@@ -10,7 +10,6 @@ try {
     // SQLの実行
     $stmt->execute();
     $shops_result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
     $sql_2 = 'SELECT id,date,title,image,body FROM news WHERE is_deleted = 0 ORDER BY date DESC';
     $stmt = $db->prepare($sql_2);
     // SQLの実行

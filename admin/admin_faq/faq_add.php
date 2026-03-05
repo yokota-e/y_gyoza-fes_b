@@ -19,8 +19,6 @@ require_once __DIR__ . '/../../function/function.php';
 
     <main class="d-flex flex-column align-items-center m-5">
         <div>
-            <!-- ここから「本文」-->
-
             <h1 class="my-5">よくある質問 - 新規追加</h1>
             <form action="faq_add_do.php" method="post">
 
@@ -51,7 +49,6 @@ require_once __DIR__ . '/../../function/function.php';
             <footer class="text-center m-5">
                 <a href="../admin.php" class="btn btn-primary">管理者TOPに戻る</a>
             </footer>
-            <!-- 本文ここまで -->
         </div>
     </main>
 

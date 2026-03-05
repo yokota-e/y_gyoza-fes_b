@@ -12,17 +12,13 @@ try {
     $sql = 'SELECT shops.id AS shop_id,shops.name AS shop_name,shops.description AS shop_description,shops.tel,shops.address,menus.mother_shop FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.mother_shop WHERE shops.id = :page_id AND shops.is_deleted = 0 ORDER BY shops.id ASC';
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':page_id', $page_id, PDO::PARAM_STR);
-
     // SQLの実行
     $stmt->execute();
     $shops_result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
     // 商品情報を取得
     $sql = 'SELECT shops.id AS shop_id,menus.name AS menu_name, shops.name AS shop_name, menus.amount,menus.price,menus.description,menus.image,menus.mother_shop FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.mother_shop WHERE shops.id = :page_id AND menus.is_deleted = 0';
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':page_id', $page_id, PDO::PARAM_STR);
-
     // SQLの実行
     $stmt->execute();
     $menus_result = $stmt->fetchALL(PDO::FETCH_ASSOC);
