@@ -27,7 +27,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【管理用】店舗詳細 - 変更</title>
+    <title>【管理用】よくある質問 - 変更</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -38,7 +38,7 @@ try {
         <div>
             <!-- ここから「本文」-->
 
-            <h1 class="my-5">よくある質問詳細 - 編集</h1>
+            <h1 class="my-5">よくある質問 - 編集</h1>
             <form action="faq_edit_do.php" method="post">
 
                 <div class="mb-3">

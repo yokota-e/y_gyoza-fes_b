@@ -57,5 +57,95 @@ try {
         <a href="../admin.php" class="btn btn-primary">管理者TOPに戻る</a>
     </footer>
 </body>
-
 </html>
+
+        <section class="l-faq" id="held-in">
+            <div class="l-wrapper">
+                <div class="l-faq-bg">
+                    <h3 class="l-faq-about">来場について</h3>
+                </div>
+                <div class="l-wrapper-inner">
+                    <dl class="c-faq">
+                        <div class="c-faq-content">
+                            <dt class="c-faq-question">
+                                Q.入場料はかかりますか？</dt>
+                            <dd class="c-faq-answer">A.入場は無料です。どなたでもご自由にお楽しみいただけます。飲食の購入は各店舗でお支払いください。</dd>
+                        </div>
+                        <div class="c-faq-content">
+                            <dt class="c-faq-question">Q.開催時間を教えてください</dt>
+                            <dd class="c-faq-answer">A.開催時間は各日10:00~20:00を予定しています。最終日は終了時間が早まる場合があります。</dd>
+                        </div>
+                        <div class="c-faq-content">
+                            <dt class="c-faq-question">Q.雨天の場合も開催されますか？</dt>
+                            <dd class="c-faq-answer">A.雨天決行ですが、荒天の場合は、安全を考慮し中止となる場合があります。最新情報はSNSでお知らせします。</dd>
+                        </div>
+                        <div class="c-faq-content">
+                            <dt class="c-faq-question">Q.支払方法を教えてください</dt>
+                            <dd class="c-faq-answer">A.現金のほか、主要な電子マネー・QRコード決済がご利用いただけます。</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+        <section class="l-faq" id="event">
+            <div class="l-wrapper">
+                <div class="l-faq-bg">
+                    <h3 class="l-faq-about">会場について</h3>
+                </div>
+                <div class="l-wrapper-inner">
+                    <dl class="c-faq">
+                        <div class="c-faq-content">
+                            <dt class="c-faq-question">Q.喫煙所はありますか？</dt>
+                            <dd class="c-faq-answer">A.会場内は全面禁煙ですが、敷地外に指定の喫煙エリアを設けています。スタッフの案内に従ってご利用ください。</dd>
+                        </div>
+                        <div class="c-faq-content">
+                            <dt class="c-faq-question">Q.授乳室やおむつ替えスペースはありますか？</dt>
+                            <dd class="c-faq-answer">A.はい、メインゲート付近に授乳室とオムツ替え代を設置しています。小さなお子様連れでも安心してご利用いただけます</dd>
+                        </div>
+                        <div class="c-faq-content">
+                            <dt class="c-faq-question">Q.駐車場はありますか？</dt>
+                            <dd class="c-faq-answer">A.専用駐車場はございません。公共交通機関のご利用をおすすめします。</dd>
+                        </div>
+                        <div class="c-faq-content">
+                            <dt class="c-faq-question">Q.ペットを連れて入場できますか？</dt>
+                            <dd class="c-faq-answer">A.混雑が予想されるため、ペットの同伴はご遠慮ください。ただし、補助犬は入場可能です。</dd>
+                        </div>
+                        <div class="c-faq-content">
+                            <dt class="c-faq-question">Q.ゴミはどうすればよいですか？</dt>
+                            <dd class="c-faq-answer">A.会場内に分別ゴミ箱を設置しています。リサイクルにご協力をお願いします。</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+        <section class="l-faq" id="other">
+            <div class="l-wrapper">
+                <div class="l-faq-bg">
+                    <h3 class="l-faq-about">その他</h3>
+                </div>
+                <div class="l-wrapper-inner">
+                    <dl class="c-faq">
+                        <div class="c-faq-content">
+                            <dt class="c-faq-question">Q.忘れ物をした場合はどうすればよいですか？</dt>
+                            <dd class="c-faq-answer">A.会場本部でお預かりしています。イベント終了後は実行委員会までお問い合わせください。</dd>
+                        </div>
+                        <div class="c-faq-content">
+                            <dt class="c-faq-question">Q.トイレはどこにありますか？</dt>
+                            <dd class="c-faq-answer">A.会場内に複数の仮設トイレを設置しています。マップの「トイレ」アイコンをご確認ください。</dd>
+                        </div>
+                        <div class="c-faq-content">
+                            <dt class="c-faq-question">Q.SNSで写真を投稿しても良いですか？</dt>
+                            <dd class="c-faq-answer">A.はい、大歓迎です！公式ハッシュタグ「＃ふくおか餃子FES」をつけて投稿してください。</dd>
+                        </div>
+                        <div class="c-faq-content">
+                            <dt class="c-faq-question">Q.開催中止の場合はどうなりますか？</dt>
+                            <dd class="c-faq-answer">A.安全を最優先に判断し、中止の場合は公式サイトとSNSでお知らせします。</dd>
+                        </div>
+                        <div class="c-faq-content">
+                            <dt class="c-faq-question">Q.問い合わせ先を教えてください</dt>
+                            <dd class="c-faq-answer">A.「<a href="form.php">お問い合わせ</a>」ページのフォームまたは事務局メール宛にご連絡ください。</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </section>
