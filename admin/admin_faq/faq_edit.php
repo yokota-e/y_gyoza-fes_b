@@ -9,7 +9,7 @@ $id = $_GET['id'];
 // DB接続
 try {
     $db = db_connect();
-    $sql = 'SELECT category,question,answer FROM faq WHERE id=:id';
+    $sql = 'SELECT id,category,question,answer FROM faq WHERE id=:id';
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
@@ -61,10 +61,10 @@ try {
                 </div>
 
                 <div class="mb-3">
-                    <!-- <input type="hidden" name="id" value="<?
-                    //  php echo $target['id']; ?>"> -->                      
+
                     <input type="submit" value="変更する" class="btn btn-primary">
                 </div>
+                <input type="hidden" name="id" value="<?php echo $target['id']; ?>">
             </form>
             <a href="../admin.php" class="btn btn-primary">管理者画面に戻る</a>
             <!-- 本文ここまで -->
