@@ -19,7 +19,7 @@ try {
 
 
     // 商品情報を取得
-    $sql = 'SELECT shops.id AS shop_id,menus.name AS menu_name,menus.amount,menus.price,menus.description,menus.image,menus.mother_shop FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.mother_shop WHERE shops.id = :page_id';
+    $sql = 'SELECT shops.id AS shop_id,menus.name AS menu_name, shops.name AS shop_name, menus.amount,menus.price,menus.description,menus.image,menus.mother_shop FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.mother_shop WHERE shops.id = :page_id';
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':page_id', $page_id, PDO::PARAM_STR);
 
@@ -95,7 +95,7 @@ try {
                 <ol class="c-breadcrumbs__list">
                     <li class="c-breadcrumbs__item"><a href="./index.php">Home</a></li>
                     <li class="c-breadcrumbs__item"><a href="./shop-list.php">店舗一覧</a></li>
-                    <li class="c-breadcrumbs__item"><a href="./shop-detail.php">博多ぎょうざ堂</a></li>
+                    <li class="c-breadcrumbs__item"><a href="./shop-detail.php?id=<?php echo h($shops_result["shop_id"]) ?>"><?php echo h($shops_result["shop_name"]) ?></a></li>
                 </ol>
             </div>
         </nav>
@@ -114,7 +114,7 @@ try {
                     </div>
                     <div class="c-shop-introduction__address">
                         <p class="c-shop-introduction__address__phone-number"><?php echo $shops_result['tel'] ?></p>
-                        <p class="c-shop-introduction__address__email-address"><?php echo $shops_result['address'] ?>/p>
+                        <p class="c-shop-introduction__address__email-address"><?php echo $shops_result['address'] ?></p>
                     </div>
                 </div>
 
