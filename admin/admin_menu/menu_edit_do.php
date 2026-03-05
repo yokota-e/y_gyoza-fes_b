@@ -81,7 +81,7 @@ if (!is_uploaded_file($_FILES["image_file"]["tmp_name"])) {
         // $menu_file_name = $param;
         $menu_file_name = $stmt->fetchColumn();
     } catch (PDOException $e) {
-        exit('エラー（menusテーブからファイル名取得時）: ' . $e->getMessage());
+        exit('エラー（menusテーブルからファイル名取得時）: ' . $e->getMessage());
     }
 } else {
     $image_tmp_path = $_FILES["image_file"]["tmp_name"];

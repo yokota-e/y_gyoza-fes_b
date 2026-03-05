@@ -1,4 +1,4 @@
-<!-- http://localhost:8080/gyoza-fes_b/admin/admin_news/news_edit.php?id= -->
+<!-- http://localhost:8080/y_gyoza-fes_b/admin/admin_news/news_edit.php?id= -->
 
 <?php
 require_once __DIR__ . '/../../function/function.php';
@@ -39,14 +39,19 @@ try {
     <main class="d-flex flex-column align-items-center m-5">
         <div>
             <h1 class="my-5">お知らせ詳細 - 編集</h1>
-            <form action="news_edit_do.php" method="post">
+            <form action="news_edit_do.php" method="post" enctype="multipart/form-data">
 
                 <div class="mb-3">
                     <label for="title" class="form-label">タイトル</label>
                     <input type="text" name="title" id="title" class="form-control" value="<?php echo  h($target['title']); ?>">
                 </div>
 
-                <!-- TODO　画像の差し替え？？ -->
+                <div class="mb-3 col-8">
+                    <p>現在の画像<?php echo $target["image"] ?></p>
+                    <p><img src="<?php echo "/y_gyoza-fes_b/img/" . $target['image'] ?>" alt="" class="w-50"></p>
+                    <label for="image_file" class="form-label">画像ファイル</label>
+                    <input type="file" name="image_file" id="image_file" class="form-control">
+                </div>
 
                 <div class="mb-3">
                     <label for="body" class="form-label">本文</label>
