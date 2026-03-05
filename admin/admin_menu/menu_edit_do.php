@@ -69,6 +69,17 @@ if (empty($_FILES)) {
     $error_num = 30;
 }
 if (!is_uploaded_file($_FILES["image_file"]["tmp_name"])) {
+    //menusテーブからファイル名取得
+    try {
+        $db = db_connect();
+        $sql = 'SELECT image FROM menus WHERE id=:id';
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+        $stmt->execute();
+        $menu_file_name = $stmt->fetchColumn();
+    } catch (PDOException $e) {
+        exit('エラー（menusテーブからファイル名取得時）: ' . $e->getMessage());
+    }
 } else {
     $image_tmp_path = $_FILES["image_file"]["tmp_name"];
     //ファイル命名処理
@@ -91,8 +102,8 @@ if (!is_uploaded_file($_FILES["image_file"]["tmp_name"])) {
             $error_num = 32;
             break;
     }
-    $new_file_name = "menu" . $id . $file_type;
-    if (!move_uploaded_file($image_tmp_path, $path_to_img . $new_file_name)) {
+    $menu_file_name = "menu" . $id . $file_type;
+    if (!move_uploaded_file($image_tmp_path, $path_to_img . $menu_file_name)) {
         $error_message .= "ファイルのアップロードに失敗しました。";
         $error_num = 50;
     }
@@ -153,16 +164,16 @@ if (empty($_POST["mother_shop"])) {
 if ($error_num == 0) {
     // menusテーブルに登録
     try {
-        $sql = 'UPDATE menus SET name=:name, amount=:amount, price=:price, description=:description, updated_at=NOW(), updated_user_id=:updated_user_id, mother_shop=:mother_shop WHERE id=:id';
+        $sql = 'UPDATE menus SET name=:name, amount=:amount, price=:price, description=:description, image=:image, updated_at=NOW(), updated_user_id=:updated_user_id, mother_shop=:mother_shop WHERE id=:id';
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->bindParam(':name', $menu_name, PDO::PARAM_STR);
         $stmt->bindParam(':amount', $menu_amount, PDO::PARAM_INT);
         $stmt->bindParam(':price', $menu_price, PDO::PARAM_INT);
         $stmt->bindParam(':description', $menu_desc, PDO::PARAM_STR);
+        $stmt->bindParam(':image', $menu_file_name, PDO::PARAM_INT);
         $stmt->bindParam(':updated_user_id', $now_user_num, PDO::PARAM_INT);
         $stmt->bindParam(':mother_shop', $mother_shop, PDO::PARAM_INT);
-
         $stmt->execute();
     } catch (PDOException $e) {
         exit('エラー（menusテーブルの更新時）: ' . $e->getMessage());
