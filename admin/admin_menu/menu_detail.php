@@ -9,11 +9,8 @@ $id = $_GET['id'];
 $user_array = get_users_list();
 $shop_list = get_shop_list();
 
-// ログインしてる人用
 try {
-    // DBへ接続
     $db = db_connect();
-    // プリペアードステートメント作成
     $sql = 'SELECT * FROM menus WHERE :id = id';
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);

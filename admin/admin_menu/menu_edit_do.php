@@ -69,8 +69,8 @@ if (empty($_POST["description"])) {
     $menu_desc = $_POST["description"];
 }
 if (empty($_POST["mother_shop"])) {
-    $error_message .= "所属店舗が選択されていません";
-    $error_num[16] = 16;
+    $error_message .= "所属店舗が選択されていません/";
+    $error_num_ary[16] = 16;
     $error_num_ary[0] = 1;
 } else {
     $mother_shop = $_POST["mother_shop"];
@@ -119,7 +119,7 @@ if (!is_uploaded_file($_FILES["image_file"]["tmp_name"])) {
     $menu_file_name = $param . "_" . "menu" . $id . $file_type;
     if (!move_uploaded_file($image_tmp_path, $path_to_img . $menu_file_name)) {
         $error_message .= "ファイルのアップロードに失敗しました。";
-        $error_num[50] = 50;
+        $error_num_ary[50] = 50;
         $error_num_ary[0] = 1;
     }
 }
@@ -166,7 +166,7 @@ try {
     <body>
         <main>
             <div class="card shadow mt-5">
-                <div class="card-header bg-danger text-white text-center fs-3">エラー！エラーナンバー：<?php foreach ($error_num_ary as $key => $num) {if ($key != 0) {echo $num . "/";}} ?></div>
+                <div class="card-header bg-danger text-white text-center fs-3">エラー！エラーナンバー：<?php echo implode("/", array_slice($error_num_ary, 1)) ?></div>
                 <div class="card-body">
                     <h2><?php echo $error_message ?></h2>
                     <a href="menu_list.php" class="btn btn-secondary me-3">

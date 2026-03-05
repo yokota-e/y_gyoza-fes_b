@@ -5,19 +5,11 @@ require_once __DIR__ . '/../../function/function.php';
 require_once __DIR__ . '/../../common/login_check.php';
 
 try {
-    // DBへ接続
     $db = db_connect();
-    // プリペアードステートメント作成
     $sql = 'SELECT id,name FROM shops WHERE is_deleted = 0';
     $stmt = $db->prepare($sql);
-
-    // SQLの実行
     $stmt->execute();
-
     $shops_name = $stmt->fetchALL(PDO::FETCH_ASSOC);
-
-
-
     $user_array = get_users_list();
 } catch (PDOException $e) {
     exit('エラー:' . $e->getMessage());
@@ -40,8 +32,6 @@ try {
 
     <main class="d-flex flex-column align-items-center m-5">
         <div>
-            <!-- ここから「本文」-->
-
             <h1 class="my-5">メニュー - 新規追加</h1>
             <form action="menu_add_do.php" method="post" enctype="multipart/form-data">
 
@@ -84,7 +74,6 @@ try {
                 <a href="./menu_list.php" class="btn btn-primary">メニュー一覧に戻る</a>
                 <a href="../admin.php" class="btn btn-primary">管理者TOPに戻る</a>
             </footer>
-            <!-- 本文ここまで -->
         </div>
     </main>
 

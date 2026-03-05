@@ -19,7 +19,7 @@ $error_message = "";
 $error_num_ary = array();
 $error_num_ary[0] = 0;
 
-//shopsテーブルの列数取得
+//menuテーブルの列数取得
 try {
     $db = db_connect();
     $sql = "SELECT COUNT(id) FROM menus";
@@ -54,27 +54,27 @@ if (empty($_POST)) {
     $error_num_ary[0] = 1;
 }
 if (empty($_POST['name'])) {
-    $error_message .= "商品名が取得できていません/";
+    $error_message .= "商品名が入力できていません/";
     $error_num_ary[12] = 12;
     $error_num_ary[0] = 1;
 } else {
     $menu_name = $_POST["name"];
 }
 if (empty($_POST["amount"])) {
-    $error_message .= "商品個数が取得できていません/";
+    $error_message .= "商品個数が入力できていません/";
     $error_num_ary[13] = 13;
     $error_num_ary[0] = 1;
 } else {
     $menu_amount = intval($_POST["amount"]);
-    if(is_int($menu_amount) && ($menu_amount > 0)){
-    }else{
+    if (is_int($menu_amount) && ($menu_amount > 0)) {
+    } else {
         $error_message .= "商品個数は正の値で整数値を入力してください/";
         $error_num_ary[60] = 60;
         $error_num_ary[0] = 1;
     }
 }
 if (empty($_POST["price"])) {
-    $error_message .= "商品の値段が取得できていません/";
+    $error_message .= "商品の値段が入力できていません/";
     $error_num_ary[14] = 14;
     $error_num_ary[0] = 1;
 } else {
@@ -87,14 +87,14 @@ if (empty($_POST["price"])) {
     }
 }
 if (empty($_POST["description"])) {
-    $error_message .= "商品詳細が取得できていません/";
+    $error_message .= "商品詳細が入力できていません/";
     $error_num_ary[15] = 15;
     $error_num_ary[0] = 1;
 } else {
     $menu_desc = $_POST["description"];
 }
 if (empty($_POST["mother_shop"])) {
-    $error_message .= "所属店舗が選択されていません";
+    $error_message .= "所属店舗が入力されていません/";
     $error_num_ary[16] = 16;
     $error_num_ary[0] = 1;
 } else {
@@ -165,7 +165,7 @@ if (empty($_SESSION["id"])) {
     <body>
         <main>
             <div class="card shadow mt-5">
-                <div class="card-header bg-danger text-white text-center fs-3">エラー！エラーナンバー：<?php foreach($error_num_ary as $key => $num){if($key != 0){echo $num . "/";}} ?></div>
+                <div class="card-header bg-danger text-white text-center fs-3">エラー！エラーナンバー：<?php echo implode("/", array_slice($error_num_ary, 1)) ?></div>
                 <div class="card-body">
                     <h2><?php echo $error_message ?></h2>
                     <a href="menu_list.php" class="btn btn-secondary me-3">
