@@ -49,7 +49,7 @@ try {
             </ul>
         </div>
         <div class="d-block">
-            <a href="news_add.php" class="btn btn-outline-primary m-5">お知らせを追加する</a>
+            <a href="news_add.php" class="btn btn-outline-primary mt-4">お知らせを追加する</a>
         </div>
         <div class="d-block">
             <a href="news_deleted_list.php" class="btn btn-outline-secondary m-5">削除済みの店舗を復元する</a>

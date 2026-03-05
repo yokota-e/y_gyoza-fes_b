@@ -10,7 +10,7 @@ try {
     // DBへ接続
     $db = db_connect();
     // プリペアードステートメント作成
-    $sql = 'SELECT id,name,is_deleted FROM shops ORDER BY id ASC';
+    $sql = 'SELECT id,title,is_deleted FROM news ORDER BY id ASC';
     $stmt = $db->prepare($sql);
 
 
@@ -37,20 +37,19 @@ try {
 
     <h1 class="text-center m-5">削除済みの店舗一覧</h1>
     <main class="d-flex flex-column align-items-center m-5">
-        <div class="card " style="width: 18rem;">
+        <div class="card" style="width: 20rem;">
             <ul class="list-group list-group-flush">
-                <?php foreach ($result as $shop): ?>
-                    <?php if ($shop['is_deleted'] == 1): ?>
+                <?php foreach ($result as $news): ?>
+                    <?php if ($news['is_deleted'] == 1): ?>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <p><?php echo h($shop['name']) ?></p>
-                            <a href="shops_restore_do.php?id=<?php echo h($shop['id']) ?>" class="btn btn-outline-primary">復元する</a>
-
+                            <p><?php echo h($news['title']) ?></p>
+                            <a href="news_restore_do.php?id=<?php echo h($news['id']) ?>" class="btn btn-outline-primary">復元する</a>
                         </li>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
         </div>
-        <a href="shops_list.php" class="btn btn-secondary mt-5">
+        <a href="news_list.php" class="btn btn-secondary mt-5">
             一覧へ戻る
         </a>
     </main>
