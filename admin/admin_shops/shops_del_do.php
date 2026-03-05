@@ -9,7 +9,7 @@ if (!empty($_POST)) {
         $id = $_POST['id'];
 
         $db = db_connect();
-        $sql = 'SELECT id,is_deleted FROM shops WHERE :id = id';
+        $sql = 'SELECT is_deleted FROM shops WHERE :id = id';
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();

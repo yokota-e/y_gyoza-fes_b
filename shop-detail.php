@@ -9,7 +9,7 @@ try {
     // DBへ接続
     $db = db_connect();
     // 店舗情報を取得
-    $sql = 'SELECT shops.id AS shop_id,shops.name AS shop_name,shops.description AS shop_description,shops.tel,shops.address,menus.mother_shop FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.mother_shop WHERE shops.id = :page_id';
+    $sql = 'SELECT shops.id AS shop_id,shops.name AS shop_name,shops.description AS shop_description,shops.tel,shops.address,menus.mother_shop FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.mother_shop WHERE shops.id = :page_id AND shops.is_deleted = 0 ORDER BY shops.id ASC';
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':page_id', $page_id, PDO::PARAM_STR);
 
