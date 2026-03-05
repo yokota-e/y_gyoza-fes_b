@@ -1,4 +1,4 @@
-<!-- http://localhost:8080/gyoza-fes_b/admin/admin_news/news_edit.php?id= -->
+<!-- http://localhost:8080/y_gyoza-fes_b/admin/admin_news/news_edit.php?id= -->
 
 <?php
 require_once __DIR__ . '/../../function/function.php';
