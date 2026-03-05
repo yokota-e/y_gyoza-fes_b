@@ -61,35 +61,8 @@ try {
 
 <body>
     <header class="l-header l-header--sub-page">
-        <div id="top" class="c-top">
-            <div class="l-wrapper c-top__contents">
-                <h1 class="c-logo">
-                    <a href="index.php">
-                        <picture>
-                            <source srcset="./img/logo_02.svg" media="(min-width: 768px)">
-                            <img src="./img/logo_line_02.svg" alt="ふくおか餃子FES">
-                        </picture>
-                    </a>
-                </h1>
-                <nav class="c-header-nav">
-                    <ul class="c-header-nav__list">
-                        <li class="c-header-nav__item">
-                            <a href="./index.php">Home</a>
-                        </li>
-                        <li class="c-header-nav__item">
-                            <a href="./shop-list.php">店舗一覧</a>
-                        </li>
-                        <li class="c-header-nav__item">
-                            <a href="./faq.php">よくある質問</a>
-                        </li>
-                        <li class="c-header-nav__item">
-                            <a href="./form.php">お問い合わせ</a>
-                        </li>
-                    </ul>
-                    <img class="c-header-nav__hamburger" src="./img/icon_hamburger.png" alt="">
-                </nav>
-            </div>
-        </div>
+        <?php include('./common/nav_var.php');  ?>
+
         <nav class="c-breadcrumbs">
             <div class="l-wrapper">
                 <ol class="c-breadcrumbs__list">
