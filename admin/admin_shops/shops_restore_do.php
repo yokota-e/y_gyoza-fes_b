@@ -3,10 +3,10 @@ require_once __DIR__ . '/../../function/function.php';
 require_once __DIR__ . '/../../common/login_check.php';
 
 
-if (!empty($_POST)) {
-    // POST送信されたとき
-    if (!empty($_POST['id'])) {
-        $id = $_POST['id'];
+if (!empty($_GET)) {
+
+    if (!empty($_GET['id'])) {
+        $id = $_GET['id'];
 
         $db = db_connect();
         $sql = 'SELECT id,is_deleted FROM shops WHERE :id = id';
