@@ -47,21 +47,21 @@ try {
             <h1 class="my-5">メニュー - 編集</h1>
             <form action="menu_edit_do.php" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <input type="hidden" name="id" id="id" class="form-control" value="<?php echo $target["id"] ?>">
+                    <input type="hidden" name="id" id="id" class="form-control" value="<?php echo h($target["id"]) ?>">
                     <label for="name" class="form-label">商品名</label>
-                    <input type="text" name="name" id="name" class="form-control" value="<?php echo $target["name"] ?>">
+                    <input type="text" name="name" id="name" class="form-control" value="<?php echo h($target["name"]) ?>">
                 </div>
                 <div class="mb-3">
                     <label for="amount" class="form-label">個数</label>
-                    <input type="text" name="amount" id="amount" class="form-control" value="<?php echo $target["amount"] ?>"">
+                    <input type="text" name="amount" id="amount" class="form-control" value="<?php echo h($target["amount"]) ?>"">
                 </div>
                 <div class=" mb-3">
                     <label for="price" class="form-label">価格</label>
-                    <input type="text" name="price" id="price" class="form-control" value="<?php echo $target["price"] ?>">
+                    <input type="text" name="price" id="price" class="form-control" value="<?php echo h($target["price"]) ?>">
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">説明文</label>
-                    <textarea name="description" id="description" class="form-control" rows="6"><?php echo $target["description"] ?></textarea>
+                    <textarea name="description" id="description" class="form-control" rows="6"><?php echo h($target["description"]) ?></textarea>
                 </div>
                 <div class="mb-3 col-8">
                     <p>現在の画像<?php echo $target["image"] ?></p>
@@ -75,7 +75,7 @@ try {
                     <select name="mother_shop" id="mother_shop">
                         <option value="">選択してください</option>
                         <?php foreach ($shops_name as $data): ?>
-                            <option value="<?php echo $data['id'] ?>" <?php echo $data['id'] ==  $target["mother_shop"] ? "selected" : "" ?>><?php echo $data['name'] ?></option>
+                            <option value="<?php echo h($data['id']) ?>" <?php echo $data['id'] ==  $target["mother_shop"] ? "selected" : "" ?>><?php echo h($data['name']) ?></option>
                         <?php endforeach; ?>
                 </div>
                 </select>

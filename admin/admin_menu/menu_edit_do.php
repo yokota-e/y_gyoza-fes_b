@@ -2,6 +2,8 @@
 require_once __DIR__ . '/../../function/function.php';
 require_once __DIR__ . '/../../common/login_check.php';
 $path_to_img = __DIR__ . "/../../img/";
+$param = date("YmdHis");
+$param .= mt_rand();
 ?>
 
 
@@ -76,6 +78,7 @@ if (!is_uploaded_file($_FILES["image_file"]["tmp_name"])) {
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_STR);
         $stmt->execute();
+        // $menu_file_name = $param;
         $menu_file_name = $stmt->fetchColumn();
     } catch (PDOException $e) {
         exit('エラー（menusテーブからファイル名取得時）: ' . $e->getMessage());
@@ -102,7 +105,7 @@ if (!is_uploaded_file($_FILES["image_file"]["tmp_name"])) {
             $error_num = 32;
             break;
     }
-    $menu_file_name = "menu" . $id . $file_type;
+    $menu_file_name = $param . "_" . "menu" . $id . $file_type;
     if (!move_uploaded_file($image_tmp_path, $path_to_img . $menu_file_name)) {
         $error_message .= "ファイルのアップロードに失敗しました。";
         $error_num = 50;
