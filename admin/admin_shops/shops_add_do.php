@@ -13,22 +13,13 @@ if (!empty($_POST)) {
         $tel = $_POST['tel'];
         $address = $_POST['address'];
 
-
-        // TO DO 正規表現のチェック
-        // if (!preg_match('/^[a-zA-Z0-9_-]{4,}$/', $name)) {
-        //     header('location:shops_add.php');
-        //     exit();
-        // }
-
-        // TODO: 店舗名が重複していないかチェック
         try {
             $db = db_connect();
             $sql = 'SELECT COUNT(name) FROM shops WHERE name=:name';
             $stmt = $db->prepare($sql);
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);
             $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_NUM); //キーが連番の配列で取り出す
-
+            $result = $stmt->fetch(PDO::FETCH_NUM);
             if ($result[0] !== 0) {
                 header('location:shops_add.php');
                 exit();

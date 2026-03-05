@@ -19,12 +19,9 @@ if ($role == '' || $name == '' || $name_kana == ''  || $address == '' ||  $text_
 }
 
 try {
-    //sDBへ接続
     $db = db_connect();
-    //プリペアードステートメント作成
     $sql = 'INSERT INTO contacts(`role`, `name`, `name_kana`, `company`, `tel`, `address`, `shop_name`, `body`,`post_date`) VALUES (:role,:name,:name_kana,:company,:tel,:address,:shop_name,:body,now())';
     $stmt = $db->prepare($sql);
-    //$stmt->bindParam（’プレースホルダ’、プレースホルダに埋め込みたい値、データ型）
     $stmt->bindParam(':role', $role, PDO::PARAM_INT);
     $stmt->bindParam(':name', $name, PDO::PARAM_STR);
     $stmt->bindParam(':name_kana', $name_kana, PDO::PARAM_STR);
@@ -33,7 +30,6 @@ try {
     $stmt->bindParam(':address', $address, PDO::PARAM_STR);
     $stmt->bindParam(':shop_name', $shop_name, PDO::PARAM_STR);
     $stmt->bindParam(':body', $text_body, PDO::PARAM_STR);
-    //SQL実行
     $stmt->execute();
 
     $_SESSION["type"] = $role;

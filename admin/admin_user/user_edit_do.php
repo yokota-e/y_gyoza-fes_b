@@ -5,21 +5,20 @@ require_once __DIR__ . '/../../function/function.php';
 
 if (!empty($_POST)) {
 
-    // TODO: 必須項目が入力されているかチェック
+    // 必須項目が入力されているかチェック
     if (!empty($_POST['name']) && !empty($_POST['id'])) {
-        // TODO: $_POSTから値を取り出す
-        // debug_check_array($_POST);
+        // $_POSTから値を取り出す
+
         $name = $_POST['name'];
         $password = $_POST['password'];
         $id = (int)$_POST['id'];
         echo $password;
-        // TODO: ユーザー名の書式チェック(半角英数4文字以上)
-        // var_dump(preg_match('/^[a-zA-Z0-9_-]{4,}$/',$name));
+        // ユーザー名の書式チェック(半角英数4文字以上)
         if (!preg_match('/^[a-zA-Z0-9_-]{4,}$/', $name)) {
             header('location:user_edit.php');
             exit();
         }
-        // TODO: ユーザー名が重複していないかチェック
+        // ユーザー名が重複していないかチェック
         try {
             $db = db_connect();
             $sql = 'SELECT COUNT(name) FROM users WHERE name=:name AND id!=:id';
@@ -28,16 +27,14 @@ if (!empty($_POST)) {
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
             $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_NUM); //キーが連番の配列で取り出す
-            // debug_check_array($result);
+            $result = $stmt->fetch(PDO::FETCH_NUM);
             if ($result[0] !== 0) {
                 header('location:user_edit.php');
                 exit();
             }
-            // TODO: パスワードが入力されたときだけパスワードをハッシュ化(password_hash())
+            // パスワードが入力されたときだけパスワードをハッシュ化
             if (!empty($password)) {
                 $password_h = password_hash($password, PASSWORD_DEFAULT);
-                // echo $password_h;
             }
             // usersテーブルに登録
             if (!empty($password)) {
@@ -45,13 +42,7 @@ if (!empty($_POST)) {
             } else {
                 $sql_2 = 'UPDATE users SET name=:name WHERE id=:id';
             }
-
-            // $sql_2 = 'UPDATE users SET name=:name,';
-            // if (!empty($password)) {
-            //     $sql_2 .= 'password=:password,';
-            // }
-            // $sql_2 .= 'role=:role WHERE id=:id';
-
+            
             $stmt_2 = $db->prepare($sql_2);
             $stmt_2->bindParam(':name', $name, PDO::PARAM_STR);
             if (!empty($password)) {

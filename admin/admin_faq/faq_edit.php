@@ -1,8 +1,6 @@
 <?php
 require_once __DIR__ . '/../../function/function.php';
 require_once __DIR__ . '/../../common/login_check.php';
-// DBに接続
-// TODO: ID取得とバリデーション
 
 $id = $_GET['id'];
 
@@ -13,7 +11,6 @@ try {
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
-
     // 結果セットを連想配列の形で取得
     $target = $stmt->fetch(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -36,8 +33,6 @@ try {
 
     <main class="d-flex flex-column align-items-center m-5">
         <div>
-            <!-- ここから「本文」-->
-
             <h1 class="my-5">よくある質問 - 編集</h1>
             <form action="faq_edit_do.php" method="post">
 
@@ -67,7 +62,6 @@ try {
                 <input type="hidden" name="id" value="<?php echo $target['id']; ?>">
             </form>
             <a href="../admin.php" class="btn btn-primary">管理者画面に戻る</a>
-            <!-- 本文ここまで -->
         </div>
     </main>
 

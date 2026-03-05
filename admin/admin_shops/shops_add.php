@@ -19,8 +19,6 @@ require_once __DIR__ . '/../../function/function.php';
 
     <main class="d-flex flex-column align-items-center m-5">
         <div>
-            <!-- ここから「本文」-->
-
             <h1 class="my-5">店舗 - 新規追加</h1>
             <form action="shops_add_do.php" method="post">
 
@@ -57,7 +55,6 @@ require_once __DIR__ . '/../../function/function.php';
                 <a href="./shops_list.php" class="btn btn-primary">店舗一覧に戻る</a>
                 <a href="../admin.php" class="btn btn-primary">管理者TOPに戻る</a>
             </footer>
-            <!-- 本文ここまで -->
         </div>
     </main>
 

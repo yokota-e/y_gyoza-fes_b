@@ -21,8 +21,6 @@ require_once __DIR__ . '/../../common/login_check.php';
     <main class="d-flex flex-column align-items-center m-5">
         <div>
             <h1 class="my-5">お知らせ - 新規追加</h1>
-
-
             <form action="news_add_do.php" method="post" enctype="multipart/form-data">
 
                 <div class="mb-3">
@@ -50,7 +48,6 @@ require_once __DIR__ . '/../../common/login_check.php';
                 <a href="./news_list.php" class="btn btn-primary">お知らせ一覧に戻る</a>
                 <a href="../admin.php" class="btn btn-primary">管理者TOPに戻る</a>
             </footer>
-            <!-- 本文ここまで -->
         </div>
     </main>
 

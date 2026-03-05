@@ -11,7 +11,7 @@ require_once __DIR__ . '/../../common/login_check.php';
                             データベース処理
 ------------------------------------------------------------------------->
 <?php
-// contactテーブルから読み込み
+// contactsテーブルから読み込み
 try {
     // DBへ接続
     $db = db_connect();

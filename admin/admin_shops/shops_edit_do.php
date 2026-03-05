@@ -14,14 +14,9 @@ if (!empty($_POST)) {
         $booth = $_POST['booth'];
         $tel = $_POST['tel'];
         $address = $_POST['address'];
-
         $get_id = get_users_list();
-
         $updated_user_id = $_SESSION['id'];
 
-
-
-        // TODO: 書式、正規表現のチェック追加
 
         // ブース番号が重複していないかチェック
         try {
@@ -32,7 +27,7 @@ if (!empty($_POST)) {
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
             $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_NUM); //キーが連番の配列で取り出す
+            $result = $stmt->fetch(PDO::FETCH_NUM);
 
             if ($result[0] !== 0) {
                 header('location:shops_edit.php?id=' . $id);

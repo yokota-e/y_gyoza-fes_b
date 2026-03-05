@@ -37,8 +37,6 @@ try {
 
   <main role="main" class="container" style="padding:60px 15px 0">
     <div>
-      <!-- ここから「本文」-->
-
       <h1 class="my-5">ユーザー - 変更</h1>
       <form action="user_edit_do.php" method="post">
         <div class="row">
@@ -57,7 +55,6 @@ try {
         </div>
       </form>
       <a href="../admin.php">管理者画面に戻る</a>
-      <!-- 本文ここまで -->
     </div>
   </main>
 

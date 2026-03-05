@@ -13,7 +13,7 @@ require_once __DIR__ . '/../../common/login_check.php';
 ------------------------------------------------------------------------->
 <?php
 $id = $_POST["id"];
-// // contactsテーブルからIDと対応したcontact情報の読み込み
+//contactsテーブルからIDと対応したcontact情報の読み込み
 try {
     // DBへ接続
     $db = db_connect();
