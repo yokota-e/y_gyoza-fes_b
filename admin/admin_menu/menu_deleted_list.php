@@ -1,4 +1,4 @@
-<!-- http://localhost:8080/y_gyoza-fes_b/admin/admin_shops/shops_deleted_list.php -->
+<!-- http://localhost:8080/y_gyoza-fes_b/admin/admin_shops/menu_deleted_list.php -->
 
 <?php
 require_once __DIR__ . '/../../function/function.php';
@@ -10,7 +10,7 @@ try {
     // DBへ接続
     $db = db_connect();
     // プリペアードステートメント作成
-    $sql = 'SELECT id,name,is_deleted FROM shops WHERE is_deleted = 1 ORDER BY id ASC';
+    $sql = 'SELECT id,name,is_deleted FROM menus WHERE is_deleted = 1 ORDER BY id ASC';
     $stmt = $db->prepare($sql);
 
 
@@ -28,25 +28,25 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【管理用】削除済みの店舗一覧</title>
+    <title>【管理用】削除済みのメニュー一覧</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
 
-    <h1 class="text-center m-5">削除済みの店舗一覧</h1>
+    <h1 class="text-center m-5">削除済みのメニュー一覧</h1>
     <main class="d-flex flex-column align-items-center m-5">
         <div class="card " style="width: 18rem;">
             <ul class="list-group list-group-flush">
                 <?php if (count($result) == 0): ?>
-                    <p>削除済みの店舗はありません</p>
+                    <p>削除済みのメニューはありません</p>
                 <?php else: ?>
-                    <?php foreach ($result as $shop): ?>
-                        <?php if ($shop['is_deleted'] == 1): ?>
+                    <?php foreach ($result as $menu): ?>
+                        <?php if ($menu['is_deleted'] == 1): ?>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <p><?php echo h($shop['name']) ?></p>
-                                <a href="shops_restore_do.php?id=<?php echo h($shop['id']) ?>" class="btn btn-outline-primary">復元する</a>
+                                <p><?php echo h($menu['name']) ?></p>
+                                <a href="menu_restore_do.php?id=<?php echo h($menu['id']) ?>" class="btn btn-outline-primary">復元する</a>
 
                             </li>
                         <?php endif; ?>
@@ -54,7 +54,7 @@ try {
                 <?php endif; ?>
             </ul>
         </div>
-        <a href="shops_list.php" class="btn btn-secondary mt-5">
+        <a href="menu_list.php" class="btn btn-secondary mt-5">
             一覧へ戻る
         </a>
     </main>
