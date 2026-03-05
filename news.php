@@ -1,7 +1,6 @@
 <?php
 include('function/function.php');
 
-// $page_id = htmlspecialchars($_GET['id']);
 $page_id = $_GET['id'];
 
 try {
@@ -16,12 +15,6 @@ try {
     $stmt->execute();
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    // if ($result === false) {
-    //     echo "デバッグ情報: <br>";
-    //     echo "URLから受け取ったID: " . var_export($page_id, true) . "<br>";
-    //     echo "DBからデータが見つかりませんでした。";
-    //     exit;
-    // }
 } catch (PDOException $e) {
     exit('エラー:' . $e->getMessage());
 }
@@ -85,7 +78,7 @@ $w = date('w', strtotime($result['date']));
                 <div class="l-news-img">
                     <img class="gyoza-img" src="./img/<?php echo $result['image'] ?>" alt="餃子の写真">
                 </div>
-                <p class="c-news__text"><?php echo $result['body'] ?></p>
+                <p class="c-news__text"><?php echo nl2br($result['body']) ?></p>
                 <div class="l-btn-area l-news-cat">
                     <a class="c-btn" href="index.php#news">一覧に戻る</a>
                 </div>
