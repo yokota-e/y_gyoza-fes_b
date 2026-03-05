@@ -19,7 +19,7 @@ try {
 
 
     // 商品情報を取得
-    $sql = 'SELECT shops.id AS shop_id,menus.name AS menu_name,menus.amount,menus.price,menus.description,menus.image,menus.mother_shop FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.mother_shop WHERE shops.id = :page_id';
+    $sql = 'SELECT shops.id AS shop_id,menus.name AS menu_name, shops.name AS shop_name, menus.amount,menus.price,menus.description,menus.image,menus.mother_shop FROM shops AS shops INNER JOIN  menus AS menus ON shops.id = menus.mother_shop WHERE shops.id = :page_id AND menus.is_deleted = 0';
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':page_id', $page_id, PDO::PARAM_STR);
 
@@ -68,7 +68,7 @@ try {
                 <ol class="c-breadcrumbs__list">
                     <li class="c-breadcrumbs__item"><a href="./index.php">Home</a></li>
                     <li class="c-breadcrumbs__item"><a href="./shop-list.php">店舗一覧</a></li>
-                    <li class="c-breadcrumbs__item"><a href="./shop-detail.php">博多ぎょうざ堂</a></li>
+                    <li class="c-breadcrumbs__item"><a href="./shop-detail.php?id=<?php echo h($shops_result["shop_id"]) ?>"><?php echo h($shops_result["shop_name"]) ?></a></li>
                 </ol>
             </div>
         </nav>
@@ -87,7 +87,7 @@ try {
                     </div>
                     <div class="c-shop-introduction__address">
                         <p class="c-shop-introduction__address__phone-number"><?php echo $shops_result['tel'] ?></p>
-                        <p class="c-shop-introduction__address__email-address"><?php echo $shops_result['address'] ?>/p>
+                        <p class="c-shop-introduction__address__email-address"><?php echo $shops_result['address'] ?></p>
                     </div>
                 </div>
 
@@ -116,55 +116,9 @@ try {
         </div>
     </main>
     <footer class="l-footer">
-        <div class="l-wrapper">
-            <div class="l-btn-area l-btn-area--end">
-                <a class="c-top-btn" href="#top">top</a>
-            </div>
-        </div>
-        <div class="l-footer-inner">
-            <div class="l-wrapper l-footer-contets">
-                <div class="c-organization">
-                    <div class="c-logo c-logo--footer">
-                        <a href="index.php"><img src="./img/logo_02.svg" alt="ふくおか餃子FES"></a>
-                    </div>
-                    <dl class="c-organization__list">
-                        <div class="c-organization__item">
-                            <dt>主催</dt>
-                            <dd>ふくおか餃子フェス実行委員会</dd>
-                        </div>
-                        <div class="c-organization__item">
-                            <dt>協賛</dt>
-                            <dd>九州餃子部</dd>
-                        </div>
-                        <div class="c-organization__item">
-                            <dt>制作協力</dt>
-                            <dd>創造社リカレントスクール 福岡校</dd>
-                        </div>
-                    </dl>
-                </div>
-                <nav class="c-footer-nav"><a href="./privacy.php">プライバシーポリシー</a></nav>
-                <div class="c-sns">
-                    <ul class="c-sns__list">
-                        <li class="c-sns__item">
-                            <a href="#"><img src="./img/sns_icon_x.png" alt="エックス"></a>
-                        </li>
-                        <li class="c-sns__item">
-                            <a href="#"><img src="./img/sns_icon_instagram.png" alt="インスタグラム"></a>
-                        </li>
-                        <li class="c-sns__item">
-                            <a href="#"><img src="./img/sns_icon_line.png" alt="ライン"></a>
-                        </li>
-                        <li class="c-sns__item">
-                            <a href="#"><img src="./img/sns_icon_facebook.png" alt="フェイスブック"></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="l-wrapper">
-                <small class="c-copyright">&copy; 2025 ふくおか餃子FES実行委員会</small>
-            </div>
-        </div>
+        <?php include('./common/footer_bar.php');  ?>
     </footer>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
