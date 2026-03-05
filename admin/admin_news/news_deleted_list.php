@@ -1,4 +1,4 @@
-<!-- http://localhost:8080/gyoza-fes_b/admin/admin_shops/news_list.php -->
+<!-- http://localhost:8080/y_gyoza-fes_b/admin/admin_shops/shops_deleted_list.php -->
 
 <?php
 require_once __DIR__ . '/../../function/function.php';
@@ -10,7 +10,7 @@ try {
     // DBへ接続
     $db = db_connect();
     // プリペアードステートメント作成
-    $sql = 'SELECT id,user_id,title,date,is_deleted FROM news ORDER BY id ASC';
+    $sql = 'SELECT id,title,is_deleted FROM news ORDER BY id ASC';
     $stmt = $db->prepare($sql);
 
 
@@ -28,32 +28,30 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【管理用】お知らせ一覧</title>
+    <title>【管理用】店舗一覧</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
 
-    <h1 class="text-center m-5">お知らせ一覧</h1>
+    <h1 class="text-center m-5">削除済みの店舗一覧</h1>
     <main class="d-flex flex-column align-items-center m-5">
-        <div class="card " style="width: 18rem;">
+        <div class="card" style="width: 20rem;">
             <ul class="list-group list-group-flush">
                 <?php foreach ($result as $news): ?>
-                    <?php if ($news['is_deleted'] == 0): ?>
-                        <li class="list-group-item"><a href="news_detail.php?id=<?php echo h($news['id']) ?>"><?php echo h($news['title']) ?></a>
-                            <p><?php echo date('Y年m月d日',  strtotime(h($news['date']))) ?></p>
+                    <?php if ($news['is_deleted'] == 1): ?>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <p><?php echo h($news['title']) ?></p>
+                            <a href="news_restore_do.php?id=<?php echo h($news['id']) ?>" class="btn btn-outline-primary">復元する</a>
                         </li>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
         </div>
-        <div class="d-block">
-            <a href="news_add.php" class="btn btn-outline-primary mt-4">お知らせを追加する</a>
-        </div>
-        <div class="d-block">
-            <a href="news_deleted_list.php" class="btn btn-outline-secondary m-5">削除済みの店舗を復元する</a>
-        </div>
+        <a href="news_list.php" class="btn btn-secondary mt-5">
+            一覧へ戻る
+        </a>
     </main>
     <footer class="text-center m-5">
         <a href="../admin.php" class="btn btn-primary">管理者TOPに戻る</a>
